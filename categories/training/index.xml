@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>training | lazappi</title><link>lazappi.id.au/categories/training/</link><atom:link href="lazappi.id.au/categories/training/index.xml" rel="self" type="application/rss+xml"/><description>training</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 03 Aug 2019 18:37:13 +0100</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>training</title><link>lazappi.id.au/categories/training/</link></image><item><title>R Package Development Workshop</title><link>lazappi.id.au/project/r-pkg-dev/</link><pubDate>Sat, 03 Aug 2019 18:37:13 +0100</pubDate><guid>lazappi.id.au/project/r-pkg-dev/</guid><description>&lt;p>
-&lt;a href="https://combine.org.au/" target="_blank" rel="noopener">COMBINE&lt;/a> is an Australian organisation for student in
-bioinformatics, computational biology and related fields. One way in which
-COMBINE aims to support the student community is by providing training. I was
-the lead author on the materials for this workshop which covers an introduction
-to developing an R package and were produced using
-&lt;a href="https://bookdown.org/" target="_blank" rel="noopener">bookdown&lt;/a>. The workshop was first run in Melbourne in
-September 2019 where I was the lead instructor.&lt;/p></description></item></channel></rss>
