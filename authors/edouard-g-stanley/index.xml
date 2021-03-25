@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Edouard G Stanley | lazappi</title>
+    <link>lazappi.id.au/authors/edouard-g-stanley/</link>
+      <atom:link href="lazappi.id.au/authors/edouard-g-stanley/index.xml" rel="self" type="application/rss+xml" />
+    <description>Edouard G Stanley</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>Edouard G Stanley</title>
+      <link>lazappi.id.au/authors/edouard-g-stanley/</link>
+    </image>
+    
+    <item>
+      <title>Kidney micro-organoids in suspension culture as a scalable source of human pluripotent stem cell-derived kidney cells</title>
+      <link>lazappi.id.au/publication/2019-kumar-micro-organoids/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-kumar-micro-organoids/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

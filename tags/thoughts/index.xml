@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thoughts | lazappi</title>
+    <link>lazappi.id.au/tags/thoughts/</link>
+      <atom:link href="lazappi.id.au/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <description>thoughts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Thu, 18 Aug 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>thoughts</title>
+      <link>lazappi.id.au/tags/thoughts/</link>
+    </image>
+    
+    <item>
+      <title>PyConAU 2016</title>
+      <link>lazappi.id.au/post/2016-08-18-pyconau-2016/</link>
+      <pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2016-08-18-pyconau-2016/</guid>
+      <description>&lt;p&gt;Over the weekend I attended 
+&lt;a href=&#34;https://2016.pycon-au.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PyCon Australia&lt;/a&gt;. This
+was my first time at a purely tech conference and I couldn&amp;rsquo;t help but compare
+it to my previous experiences at scientific conferences.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DISCLAIMER:&lt;/strong&gt; Like I said this was my first tech conference and my scientific
+conference experience is also fairly limited so some of the comments I make
+might be generalisations that don&amp;rsquo;t always apply.&lt;/p&gt;
+&lt;p&gt;PyCon started with miniconfs on Friday and continued coding sprints on Monday
+and Tuesday. I didn&amp;rsquo;t attend any of these so my experience was only of the main
+conference on Saturday and Sunday. Here are some of the highlights for me in
+terms of presentations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Andrew Lonsdale - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=PCZS9wqBUuE&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python for science, side projects and stuff!&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_for_science.jpg&#34; alt=&#34;Python for science, side projects and stuff!&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Alexander Hogue - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=MkSkqMvGBuo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Graphing when your Facebook friends are awake&lt;/a&gt; - Story of discovering a
+hidden Facebook API and using it to track when your friends are online.
+Thoroughly entertaining while still providing the technical details.&lt;/li&gt;
+&lt;li&gt;Rachel Bunder - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=cy5n6XAtA-w&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;I wish I learnt that earlier!&lt;/a&gt; - Description of some of the slightly more advanced features available in
+Python. Could be a great intro for someone new to Python.&lt;/li&gt;
+&lt;li&gt;Russell Keith-Magee - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=1sDyVJm3Ht0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python All the Things&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_all_the_things.jpg&#34; alt=&#34;Python All the Things&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Sebastian Vetter - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=bsJFMtQ5MZU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click: A Pleasure To Write, A Pleasure To Use&lt;/a&gt; - Click is an argument parsing
+library with additional features beyond argparse. Also apparently becoming the
+standard at Facebook (didn&amp;rsquo;t learn that at the conference, but it&amp;rsquo;s a fun
+fact).&lt;/li&gt;
+&lt;li&gt;Justin Warren - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=qjTc5q7MsMg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Predicting the TripleJ Hottest 100 With Python&lt;/a&gt; - Overview of predicting
+the Hottest 100 for the last few years, starting with the method used by the
+
+&lt;a href=&#34;http://warmest100.com.au/2013/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warmest 100&lt;/a&gt; and continuing on how
+to extract and process information from Instagram.&lt;/li&gt;
+&lt;li&gt;Jackson Fairchild - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=Rdc06jpjVIY&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/tackling_burnout.jpg&#34; alt=&#34;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Full schedules for 
+&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/saturday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Saturday&lt;/a&gt; and 
+&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/sunday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sunday&lt;/a&gt;
+and links to videos are available on the PyCon website)&lt;/p&gt;
+&lt;p&gt;Overall I was really impressed by the quality of the talks. There were a couple
+that I thought could be improved a bit or where I wasn&amp;rsquo;t that interested in the
+content but there were no flat-out bad talks like you often see in the
+scientific context. It was clear that the presenters had put a lot of effort
+into planning what they were going to say and how to make that interesting and
+engaging for an audience that might be new to the topic. I don&amp;rsquo;t think I saw
+any slides that were walls of text or full of multiple plots. On the other had
+there was lots of code in slides, including live snippets. I&amp;rsquo;m not usually a
+fan of this but in the context it makes sense, particularly as you can assume
+that everyone has a basic grasp of Python. There were also lots of live demos,
+some of which were pretty impressive, and I don&amp;rsquo;t think I saw any fail.&lt;/p&gt;
+&lt;p&gt;What struck me as being the biggest differences at PyCon compared to a
+scientific conference was the sense of a community and awareness of wider
+social issues. There was a big effort to be inclusive to all genders,
+sexualities, ethnic groups etc. and several of the talks touched on ethical
+issues or the speaker&amp;rsquo;s own experience in the community. While I would hope
+that a scientific gathering wouldn&amp;rsquo;t be discriminatory I can&amp;rsquo;t see diversity
+being embraced in the same way, but hopefully that will continue to improve.
+There was a sense of everyone being in it together and it was common for
+speakers to praise work that they hadn&amp;rsquo;t been involved in, but thought was
+interesting or useful. I didn&amp;rsquo;t see anyone described using their titles and it
+seemed that someone who had learned Python in the last year was as valued as
+someone who had been a major contributor for the last 10 years (although there
+may had been power dynamics that I wasn&amp;rsquo;t aware of).&lt;/p&gt;
+&lt;p&gt;I think that a lot of the differences come from the work/volunteer divide.
+While PyCon was an opportunity to network or advertise your work the focus
+seemed to be on contributing to the community and the speakers were
+enthusiastic and keen to present. In contrast a scientific conference is a
+professional opportunity. As a scientist you are judged on your ability to get
+a talk which means more competition and sometimes speakers who aren&amp;rsquo;t
+interested in presenting. Every talk is a demonstration of your worth which
+makes it hard to present unfinished work and encourages people to try and fit
+to much in. It would be great for scientific conferences to spend more time
+discussing issues around thecommunities they represent but to do so they might
+have to sacrificeopportunities. For example it would be great to see a talk
+about mental health issues like Jackson Fairchild&amp;rsquo;s but that would mean taking
+away a spot from someone that might need it to progress their career.
+Personally I think we could maybe do with less talks from whichever well known
+person is doing the rounds in favour of some outside experts.&lt;/p&gt;
+&lt;p&gt;Overall I enjoyed my time at PyCon. It was a bit different to a scientific
+conference and I think there are probably things they can learn from each
+other. Congratulations to all the speakers and everyone involved in
+organising. Given that it is in Melbourne again I hope to be back next year.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

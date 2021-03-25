@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alicia Oshlack | lazappi</title>
+    <link>lazappi.id.au/authors/alicia-oshlack/</link>
+      <atom:link href="lazappi.id.au/authors/alicia-oshlack/index.xml" rel="self" type="application/rss+xml" />
+    <description>Alicia Oshlack</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>Alicia Oshlack</title>
+      <link>lazappi.id.au/authors/alicia-oshlack/</link>
+    </image>
+    
+    <item>
+      <title>Single cell analysis of the developing mouse kidney provides deeper insight into marker gene expression and ligand-receptor crosstalk</title>
+      <link>lazappi.id.au/publication/2019-combes-mouse-kidney/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-combes-mouse-kidney/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kidney micro-organoids in suspension culture as a scalable source of human pluripotent stem cell-derived kidney cells</title>
+      <link>lazappi.id.au/publication/2019-kumar-micro-organoids/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-kumar-micro-organoids/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nephron progenitor commitment is a stochastic process influenced by cell migration</title>
+      <link>lazappi.id.au/publication/2019-lawlor-nephron-commitment/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-lawlor-nephron-commitment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single-cell analysis reveals congruence between kidney organoids and human fetal kidney</title>
+      <link>lazappi.id.au/publication/2019-combes-kidney-organoids/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-combes-kidney-organoids/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evaluation of variability in human kidney organoids</title>
+      <link>lazappi.id.au/publication/2018-phipson-variability/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2018-phipson-variability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using clustering trees to visualise scRNA-seq data</title>
+      <link>lazappi.id.au/talk/2018-09-17-gi2018/</link>
+      <pubDate>Mon, 17 Sep 2018 15:40:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2018-09-17-gi2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clustering trees for visualising scRNA-seq data</title>
+      <link>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clustering trees: a visualization for evaluating clusterings at multiple resolutions</title>
+      <link>lazappi.id.au/publication/2018-zappia-clustree/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2018-zappia-clustree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exploring the single-cell RNA-seq analysis landscape with the scRNA-tools database</title>
+      <link>lazappi.id.au/publication/2018-zappia-scrnatools/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2018-zappia-scrnatools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clustree</title>
+      <link>lazappi.id.au/project/clustree/</link>
+      <pubDate>Tue, 27 Mar 2018 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/clustree/</guid>
+      <description>&lt;p&gt;Deciding what resolution to use can be a difficult question when approaching a 
+clustering analysis. One way to approach this problem is to look at how samples 
+move as the number of clusters increases. The clustree package is availavble 
+from CRAN (&lt;a href=&#34;https://cran.r-project.org/package=clustree&#34;&gt;https://cran.r-project.org/package=clustree&lt;/a&gt;) allows you to produce 
+clustering trees, a visualisation for interrogating clusterings as resolution 
+increases.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Splatter, a package for simulating single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/talk/2017-11-17-biocasia2017/</link>
+      <pubDate>Fri, 17 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2017-11-17-biocasia2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulation and analysis tools for single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/talk/2017-11-01-gi2017/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2017-11-01-gi2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Splatter: simulation of single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/publication/2017-zappia-splatter/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2017-zappia-splatter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scRNA-tools</title>
+      <link>lazappi.id.au/project/scrna-tools/</link>
+      <pubDate>Mon, 05 Jun 2017 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/scrna-tools/</guid>
+      <description>&lt;p&gt;The scRNA-tools database and website (&lt;a href=&#34;https://www.scRNA-tools.org&#34;&gt;https://www.scRNA-tools.org&lt;/a&gt;) is a
+catalogue of software tools for the analysis of single-cell RNA sequencing data.
+We record details about what the tools can be used as well as where they are
+available and any associated publications. This is designed to be an open
+resource and we welcome submissions and other contributions from the community.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gene length and detection bias in single cell RNA sequencing protocols</title>
+      <link>lazappi.id.au/publication/2017-phipson-gene-length/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2017-phipson-gene-length/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simplifying simulation of single-cell RNA-seq</title>
+      <link>lazappi.id.au/talk/2016-10-31-combine16/</link>
+      <pubDate>Mon, 31 Oct 2016 11:20:00 +1000</pubDate>
+      <guid>lazappi.id.au/talk/2016-10-31-combine16/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Splatter</title>
+      <link>lazappi.id.au/project/splatter/</link>
+      <pubDate>Thu, 06 Oct 2016 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/splatter/</guid>
+      <description>&lt;p&gt;Splatter is a Bioconductor R package for the simulation of single-cell RNA 
+sequencing count data (&lt;a href=&#34;https://bioconductor.org/packages/splatter/)&#34;&gt;https://bioconductor.org/packages/splatter/)&lt;/a&gt;. It
+provides a simple interface for creating complex simulations that are 
+reproducible and well-documented. Parameters can be estimated from real data and 
+functions are provided for comparing real and simulated datasets.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

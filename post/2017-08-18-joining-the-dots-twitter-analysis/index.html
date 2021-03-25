@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Luke Zappia">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Analysis of Twitter activity at the Joining the Dots visualisation symposium.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(324, 100%, 46%)">
+  
+
+  
+  
+  
+  <script src="/lazappi.id.au/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/shades-of-purple.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/shades-of-purple.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code%7CLato%7CRubik&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/lazappi.id.au/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52309538-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-52309538-1', { 'anonymize_ip': true });
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/lazappi.id.au/index.webmanifest">
+  <link rel="icon" type="image/png" href="/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/">
+
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@_lazappi_">
+  <meta property="twitter:creator" content="@_lazappi_">
+  
+  <meta property="og:site_name" content="lazappi">
+  <meta property="og:url" content="lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/">
+  <meta property="og:title" content="Joining the Dots Twitter analysis | lazappi">
+  <meta property="og:description" content="Analysis of Twitter activity at the Joining the Dots visualisation symposium."><meta property="og:image" content="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/featured.png">
+  <meta property="twitter:image" content="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2017-08-18T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-03-25T16:31:49&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/"
+  },
+  "headline": "Joining the Dots Twitter analysis",
+  
+  "image": [
+    "/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/featured.png"
+  ],
+  
+  "datePublished": "2017-08-18T00:00:00Z",
+  "dateModified": "2021-03-25T16:31:49+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "**Luke Zappia**"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "lazappi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Analysis of Twitter activity at the Joining the Dots visualisation symposium."
+}
+</script>
+
+  
+
+  
+
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "hsl(324, 100%, 46%)",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "hsl(324, 100%, 46%)"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://www.cookiesandyou.com"
+      }
+    })});
+  </script>
+
+
+
+  
+
+
+
+
+
+  <title>Joining the Dots Twitter analysis | lazappi</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/lazappi.id.au/">lazappi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/lazappi.id.au/">lazappi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/lazappi.id.au/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/lazappi.id.au/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/lazappi.id.au/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/lazappi.id.au/#talks"><span>Talks</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/lazappi.id.au/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Joining the Dots Twitter analysis</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="lazappi.id.au/authors/luke-zappia/"><strong>Luke Zappia</strong></a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    2021-03-25
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="lazappi.id.au/categories/migrated/">migrated</a>, <a href="lazappi.id.au/categories/migrated2020/">migrated2020</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 540px;">
+  <div style="position: relative">
+    <img src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/featured_hu34c1019dc80e7304fa55fc721f15d2df_276682_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Today I attended the 
+<a href="https://joiningthedots.github.io/" target="_blank" rel="noopener">Joining the Dots</a>
+visualisation symposium. You can see the slides for my talk about clustering
+trees 
+<a href="https://speakerdeck.com/lazappi/building-a-clustering-tree" target="_blank" rel="noopener">here</a>. It
+was a great event and hope we see more meetings like this in the future. Here
+is an analysis of the Twitter activity on the
+
+<a href="https://twitter.com/search?q=%23jtdwehi&amp;src=typd" target="_blank" rel="noopener">#jtdwehi</a> hashtag, thanks to
+code from 
+<a href="https://nsaunders.wordpress.com" target="_blank" rel="noopener">Neil Saunders</a>. You can see it on
+
+<a href="https://github.com/lazappi/jtdwehi-twitter" target="_blank" rel="noopener">Github</a>.</p>
+<h1 id="introduction">Introduction</h1>
+<p>An analysis of tweets from the Joining the Dots symposium. 1237 tweets were
+collected using the <code>rtweet</code> R package:</p>
+<pre><code class="language-r">jtdwehi &lt;- search_tweets(&quot;#jtdwehi&quot;, 10000)
+saveRDS(jtdwehi, &quot;data/jtdwehi.Rds&quot;)
+</code></pre>
+<h2 id="search-all-the-hashtags">Search all the hashtags!</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/hashtags-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h1 id="timeline">Timeline</h1>
+<h2 id="tweets-by-day">Tweets by day</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="tweets-by-day-and-time">Tweets by day and time</h2>
+<p>Filtered for dates July 21-26, Prague time.</p>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-hour-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h1 id="users">Users</h1>
+<h2 id="top-tweeters">Top tweeters</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-users-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="sources">Sources</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-sources-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h1 id="networks">Networks</h1>
+<h2 id="replies">Replies</h2>
+<p>The &ldquo;replies network&rdquo;, composed from users who reply directly to one another,
+coloured by page rank.</p>
+<p>Better to view the original PNG file in the <code>data</code> directory.</p>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_replies.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1024" height="768">
+</a>
+
+
+
+</figure>
+
+<h2 id="mentions">Mentions</h2>
+<p>The &ldquo;mentions network&rdquo;, where users mention other users in their tweets.
+Filtered for k-core &gt;= 4 and coloured by modularity class.</p>
+<p>Better to view the original PNG file in the <code>data</code> directory.</p>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_mentions-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1024" height="768">
+</a>
+
+
+
+</figure>
+
+<h1 id="retweets">Retweets</h1>
+<h2 id="retweet-proportion">Retweet proportion</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-retweet-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="retweet-count">Retweet count</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/retweet-count-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="top-retweets">Top retweets</h2>
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> screen_name </th>
+   <th style="text-align:left;"> text </th>
+   <th style="text-align:right;"> retweet_count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> _lazappi_ </td>
+   <td style="text-align:left;"> Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> _lazappi_ </td>
+   <td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mikejonesmelb </td>
+   <td style="text-align:left;"> Really valuable point from @KathyReid: sometimes #dataviz decisions affected by need to consider political priorities and buy-in #jtdwehi </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gravitron </td>
+   <td style="text-align:left;"> @bestqualitycrab demoing dataviz: ask the tricky Q's not the obvious. Consider the felt not just the instrumental.… https://t.co/ca1zCn4oSO </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mikejonesmelb </td>
+   <td style="text-align:left;"> More on the Transport Network Strategic Investment Tool (TraNSIT) here https://t.co/z5v827bfjd @Xavier_Ho #jtdwehi </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mikejonesmelb </td>
+   <td style="text-align:left;"> To visualise data is to encode it; how can we decode it? So Isabelle created Tracey McTraceface https://t.co/4YoxS4T6OS #jtdwehi </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> oldmateo </td>
+   <td style="text-align:left;"> :: &quot;Research publishing methods stuck in the Stone Age&quot; ::  Brendan Ansell on balancing completeness and salience i… https://t.co/7WVV2Ni31U </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gravitron </td>
+   <td style="text-align:left;"> @bestqualitycrab leading a chorus of Slipping Away. Just your run of the mill dataviz conference. #JoiningTheDots… https://t.co/6oxUMXZfpm </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+</tbody>
+</table>
+<h1 id="favourites">Favourites</h1>
+<h2 id="favourite-proportion">Favourite proportion</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-favorite-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="favourite-count">Favourite count</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/favorite-count-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="top-favourites">Top favourites</h2>
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> screen_name </th>
+   <th style="text-align:left;"> text </th>
+   <th style="text-align:right;"> favorite_count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> _lazappi_ </td>
+   <td style="text-align:left;"> Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Xavier_Ho </td>
+   <td style="text-align:left;"> People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> WEHI_research </td>
+   <td style="text-align:left;"> Welcome to delegates attending today's symposium Joining the Dots: The Art and Science of Data Visualisation! #jtdwehi #dataviz </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> _lazappi_ </td>
+   <td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> robbie_bonelli </td>
+   <td style="text-align:left;"> So inspired by the talk given by @bestqualitycrab on the problem of #genderequality and how #dataviz can help us! Thanks Deb! #jtdwehi </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> KathyReid </td>
+   <td style="text-align:left;"> The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> peterneish </td>
+   <td style="text-align:left;"> Building a clustering tree https://t.co/KDgdRfBejZ #jtdwehi </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+</tbody>
+</table>
+<h1 id="quotes">Quotes</h1>
+<h2 id="quote-proportion">Quote proportion</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-quote-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="quote-count">Quote count</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/quotes-count-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="top-quotes">Top quotes</h2>
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> screen_name </th>
+   <th style="text-align:left;"> text </th>
+   <th style="text-align:right;"> quote_count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> peterneish </td>
+   <td style="text-align:left;"> Would love to see some taxonomic data plotted like this. #jtdwehi https://t.co/EbBL872fum </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Xavier_Ho </td>
+   <td style="text-align:left;"> overlaying clusters: the datavis movie #jtdwehi https://t.co/KA5ovvvW6r </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> frostickle </td>
+   <td style="text-align:left;"> Where can people go from here, to take advantage of things they've learnt at #jtdwehi? @ResPlat? @OKFNau?
+<p>#dataviz <a href="https://t.co/TM6ngns9RS">https://t.co/TM6ngns9RS</a> </td></p>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> rowlandm </td>
+   <td style="text-align:left;"> The money shot from @_lazappi_ ! #jtdwehi https://t.co/nqynLrC7Vg </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Xavier_Ho </td>
+   <td style="text-align:left;"> Slide here: https://t.co/o2E59HHoZE #jtdwehi https://t.co/L98WV1tXgu </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> karinv </td>
+   <td style="text-align:left;"> Thanks to @FCTweedie and @rubin_af for a great day of #dataviz! #jtdwehi https://t.co/Hti5FQtMGz </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> rowlandm </td>
+   <td style="text-align:left;"> LImited funding ... sounds like research! #jtdwehi https://t.co/gZwllFhtRe </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> peterneish </td>
+   <td style="text-align:left;"> Fascinating insights into the life sciences #jtdwehi https://t.co/LpRwfP00ns </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> karinv </td>
+   <td style="text-align:left;"> Adding the correct hashtag! (sorry folks) #jtdwehi https://t.co/PoGZe8k1k8 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> robbie_bonelli </td>
+   <td style="text-align:left;"> Depressing and motivating! #jtdwehi https://t.co/YCGB1ibYkw </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
+<h1 id="media">Media</h1>
+<h2 id="media-count">Media count</h2>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-media-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+<h2 id="top-media">Top media</h2>
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> screen_name </th>
+   <th style="text-align:left;"> text </th>
+   <th style="text-align:right;"> favorite_count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Xavier_Ho </td>
+   <td style="text-align:left;"> People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> _lazappi_ </td>
+   <td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> KathyReid </td>
+   <td style="text-align:left;"> The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> frostickle </td>
+   <td style="text-align:left;"> Now @Xavier_Ho from the @CSIROnews is talking about Visualising the Australian Transport Network
+<p>#jtdwehi #dataviz <a href="https://t.co/DcvXYmD45F">https://t.co/DcvXYmD45F</a> </td></p>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Getting underway for #jtdwehi with acknowledgement of country from @WEHI_research's director https://t.co/oNcnu5wtd9 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FCTweedie </td>
+   <td style="text-align:left;"> Patriarchy looks like this! What happens when we can describe the shape of injustice #jtdwehi https://t.co/8A7EhnFmt5 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> gravitron </td>
+   <td style="text-align:left;"> Best URL of the day goes to @Isa_Kiko's https://t.co/kapY0Aeacy  A great looking tool! #JoiningTheDots #jtdwehi https://t.co/gal2v1PUJY </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+</tbody>
+</table>
+<h3 id="most-liked-media-image">Most liked media image</h3>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/most_liked_media.jpg) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg" class="lazyload" alt="" width="1200" height="900">
+</a>
+
+
+
+</figure>
+
+<h1 id="tweet-text">Tweet text</h1>
+<p>The 100 words used 3 or more times.</p>
+<!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/count-words-1.png) -->
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png" >
+
+
+  <img data-src="/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+</a>
+
+
+
+</figure>
+
+
+    </div>
+
+    
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/lazappi/lazappi_blog/edit/master/content/post%5c2017-08-18-joining-the-dots-twitter-analysis%5cindex.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="lazappi.id.au/tags/conference/">conference</a>
+  
+  <a class="badge badge-light" href="lazappi.id.au/tags/visualisation/">visualisation</a>
+  
+  <a class="badge badge-light" href="lazappi.id.au/tags/twitter/">Twitter</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/&amp;text=Joining%20the%20Dots%20Twitter%20analysis" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/&amp;t=Joining%20the%20Dots%20Twitter%20analysis" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Joining%20the%20Dots%20Twitter%20analysis&amp;body=lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/&amp;title=Joining%20the%20Dots%20Twitter%20analysis" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Joining%20the%20Dots%20Twitter%20analysis%20lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/&amp;title=Joining%20the%20Dots%20Twitter%20analysis" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="lazappi.id.au/authors/luke-zappia/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "lazappi" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="lazappi.id.au/post/2016-08-18-pyconau-2016/">PyConAU 2016</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/lazappi.id.au/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://lazappi.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/lazappi.id.au/js/academic.min.05ad38647aed3ac5a5800d9026541eee.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+
+    <a href="https://info.flagcounter.com/6RVN">
+        <img src="https://s01.flagcounter.com/count2/6RVN/bg_FFFFFF/txt_000000/border_CCCCCC/columns_6/maxflags_250/viewers_0/labels_1/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0", style="  display: block;margin-left: auto;margin-right: auto;width: 50%;">
+    </a>
+    <br/>
+
+    
+    <p class="powered-by">
+        <a href="lazappi.id.au/license/">LICENSE: CC-BY <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i> </a><br>
+    </p>
+    
+
+    <p class="powered-by">
+        © Luke Zappia, 2021
+    </p>
+    <p>
+        Made with <a href="https://github.com/lazappi" target="_blank" rel="noopener"><i class="fas fa-code-branch" style="color:#eb008d"></i></a>,
+        the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package,
+        and the <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+        <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+    </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

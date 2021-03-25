@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Music | lazappi</title>
+    <link>lazappi.id.au/tags/music/</link>
+      <atom:link href="lazappi.id.au/tags/music/index.xml" rel="self" type="application/rss+xml" />
+    <description>Music</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 11 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>Music</title>
+      <link>lazappi.id.au/tags/music/</link>
+    </image>
+    
+    <item>
+      <title>triple j&#39;s Requestival</title>
+      <link>lazappi.id.au/post/2020-07-11-requestival/</link>
+      <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2020-07-11-requestival/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs-2.5/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections-1.0/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections-1.0/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;intro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro&lt;/h1&gt;
+&lt;p&gt;From 25 to 31 May triple j ran an event they called the
+&lt;a href=&#34;https://www.abc.net.au/triplej/the-latest/what-is-requestival-and-how-can-you-get-involved/12254122&#34; title=&#34;What is requestival?&#34;&gt;“Requestival”&lt;/a&gt;. For anyone not from Australia, &lt;a href=&#34;https://www.abc.net.au/triplej/&#34; title=&#34;triple j website&#34;&gt;triple j&lt;/a&gt;
+is a national public radio station with a mandate to target a youth audience and
+promote alternative and Australian music. For many Australians, particularly
+those that grew up in regional areas, triple j is responsible for providing
+their first exposure to music outside the current top 50 or golden oldies. The
+idea behind the Requestival was fairly simple. To make up for the cancellation
+of many music festivals due to the coronavirus triple j would hold their own
+virtual festival with the twist being that every song they played would be
+requested by listeners. The second twist was that they would play any request,
+not just the kind of new alternative they usually play. And they did mean
+anything including Beethoven, TV show themes and Taylor Swift who all got some
+air time during the week.&lt;/p&gt;
+&lt;p&gt;I thought this would be a cool dataset to have a play around with. I’ll show
+some of the highlights here but have a look at the &lt;a href=&#34;https://jdblischak.github.io/workflowr/index.html&#34; title=&#34;workflowr website&#34;&gt;&lt;strong&gt;{workflowr}&lt;/strong&gt;&lt;/a&gt;
+&lt;a href=&#34;https://lazappi.github.io/requestival/&#34; title=&#34;Requesitval analysis website&#34;&gt;analysis website&lt;/a&gt; for more details or check out the code on
+&lt;a href=&#34;https://github.com/lazappi/requestival&#34; title=&#34;Requesitval analysis GitHub repository&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Getting the data&lt;/h1&gt;
+&lt;p&gt;triple j has a recently played page on their website that has a live stream of
+the songs they are playing. This page also has a search function that let’s you
+find which song was played at a particular time. I will note that there may be
+some errors in this list, there was at least one time I heard a song played
+but saw something else get added to the list. To get the raw data I simply
+searched for each day of the Requestival, clicked the “Show more” button until
+all the songs for that day were shown and then downloaded the HTML page. It’s
+probably possible to do this all programmatically but it was only a few pages
+so it didn’t seem worth the effort. Thankfully the HTML was fairly simple and
+neat so it was relatively easy to extract the information I wanted using
+&lt;a href=&#34;https://rvest.tidyverse.org/&#34; title=&#34;rvest website&#34;&gt;&lt;strong&gt;{rvest}&lt;/strong&gt;&lt;/a&gt;. What I ended up with was a &lt;code&gt;tibble&lt;/code&gt; with times, song name,
+artist and release and links to Spotify, YouTube and the triple j Unearthed
+website. There were 27 songs that didn’t have release information on the website
+for some reason. See the &lt;a href=&#34;https://lazappi.github.io/requestival/01-scraping.html&#34; title=&#34;Analysis website - scraping&#34;&gt;scraping page&lt;/a&gt; of the analysis website for
+more details of this part.&lt;/p&gt;
+&lt;p&gt;There was a bit more tidying I wanted to before any analysis. This was things
+like converting the file names into days, converting the time strings to
+&lt;code&gt;hms&lt;/code&gt; objects in the correct timezone and replacing Unicode characters. The
+Spotify and YouTube links included queries which it might be useful to have so
+I also extracted those into new columns and created a column to indicate if a
+song was from Unearthed. The final tidying step was to select songs played
+between 6 am and 9 pm as these were the official hours of the Requestival.
+See the details &lt;a href=&#34;https://lazappi.github.io/requestival/02-tidying.html&#34; title=&#34;Analysis website - tidying&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;play_times.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;After all this I ended up with a dataset with 1187 songs from 896 artists off
+1049 releases.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;augmentation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Augmentation&lt;/h1&gt;
+&lt;p&gt;There isn’t much analysis you can do on a simple list of songs so I wanted to
+augment the data in some way. I have seen some cool analysis using information
+from Spotify before so I thought that would be a good source to try. Despite the
+&lt;a href=&#34;https://www.rcharlie.com/spotifyr/&#34; title=&#34;spotifyr website&#34;&gt;&lt;strong&gt;{spotifyr}&lt;/strong&gt;&lt;/a&gt; package providing a nice interface to the Spotify
+API this wasn’t quite as easy as I had hoped. I initially wanted to use the
+queries I had extracted from the Spotify links but these weren’t in the format
+that &lt;strong&gt;{spotifyr}&lt;/strong&gt; needs so I had to construct them manually. I also ran into
+the problem that the combination of song, artist and release was both too
+specific and not specific enough. For some songs I got no results when I
+searched for all this information while for other songs I got many results.
+These were often duplicates due to releases with slight differences in
+different countries etc. but sometimes they were unrelated songs that just
+happened to have enough key words in common.&lt;/p&gt;
+&lt;p&gt;In the end I searched first for song, artist and release and took the first
+result if there was one, if not I searched for just song and artist. The only
+other constraint I had was that the album release date had to have a precision
+of “day” (an exact date, not just a month/year). I found that was able rule out
+some bad matches. In the end I was able to find matches for 994 songs but these
+aren’t perfect. There are probably some incorrect matches and there are a few I
+have seen where the song was correct but the best version wasn’t selected, for
+example the match for The Mamas &amp;amp; The Papas “California Dreamin’” had an album
+date from 2020 even though the album “If You Can Believe Your Eyes And Ears”
+was first released in 1966. This is the reality of working with real world data
+I guess and the majority of matches should be close enough to still be useful.
+See the &lt;a href=&#34;#augmentation&#34;&gt;augmentation page&lt;/a&gt; if you are interested in all the
+details.&lt;/p&gt;
+&lt;p&gt;Once I had the track ideas for these songs it was relatively simple to extract
+more information about them from Spotify including the album release date,
+song duration, whether it is marked as explicit and a Spotify “popularity”
+score. Spotify also has more musical information about each track. There are
+some basic things like whether the track is in a major key, the loudness and
+tempo but also complex scores between zero and one for “valence”, “energy”,
+“danceability”, “speechiness”, “acousticness” and “liveness”. See the
+&lt;a href=&#34;https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/&#34; title=&#34;Spotify audio features&#34;&gt;Spotify page&lt;/a&gt; for more details but basically these try to
+capture the general feel of each song.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Analysis&lt;/h1&gt;
+&lt;div id=&#34;exploration&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Exploration&lt;/h2&gt;
+&lt;p&gt;The first kind of analysis I wanted to do was some basic exploration of the
+final dataset. What I did was plot a histogram or barplot of each column and
+pick out the top and bottom five scoring songs. You can see all the details on
+the &lt;a href=&#34;https://lazappi.github.io/requestival/04-exploration.html&#34; title=&#34;Analysis website - exploration&#34;&gt;exploration page&lt;/a&gt; but I’ll just list a few highlights here.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There were 43 songs played more than once (some of these are probably errors)&lt;/li&gt;
+&lt;li&gt;The most played artists were BENEE, Childish Gambino, CHVRCHES, DMA’s and
+The Chats with five plays each. There were 209 artists with more than one
+play.&lt;/li&gt;
+&lt;li&gt;The most played release was “Live At The Wireless” with 32 plays. These are
+songs that triple j have recorded at festivals, concerts etc. The “Like A
+Version” segment from triple j also contributed nine plays.&lt;/li&gt;
+&lt;li&gt;312 songs (26%) of played songs are available on Unearthed.&lt;/li&gt;
+&lt;li&gt;Most of the songs are fairly recent but there are some older ones (and
+probably a few where the dates are wrong)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;album_date.png&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The longest song played was “Fools Gold” by The Stone Roses at almost 10
+minutes long (9:54) and the shortest was “Counting Worms” by “Knocked Loose”
+at just over a minute (1:12)&lt;/li&gt;
+&lt;li&gt;The most popular songs played (according to Spotify) were “goosebumps” and
+“HIGHEST IN THE ROOM” by Travis Scott and “WHATS POPPIN” by Jack Harlow&lt;/li&gt;
+&lt;li&gt;The loudest song was “Ask For The Anthem” by Ocean Grove and the quietest was
+“What’s Up” by 4 Non Blondes&lt;/li&gt;
+&lt;li&gt;The fastest song was “93 ’Til Infinity” by Souls of Mischief and the slowest
+was “Soon” by Angie McMahon&lt;/li&gt;
+&lt;li&gt;The song with highest “valence” was “September” by Earth, Wind &amp;amp; Fire and
+the lowest was “Raining Blood” by Slayer&lt;/li&gt;
+&lt;li&gt;The song with highest “energy” was “Raining Blood” by Slayer and the lowest
+was “In Disguise” by Ashe&lt;/li&gt;
+&lt;li&gt;The song with highest “danceability” was “Wash &amp;amp; Set” by Leikeli47 and the
+lowest was “I Still Dream About You” by The Smith Street Band&lt;/li&gt;
+&lt;li&gt;The song with highest “speechiness” was “RNP” by YBN Cordae and the
+lowest was “Strangers” by Tia Gostelow&lt;/li&gt;
+&lt;li&gt;The song with highest “acousticness” was “Punching In A Dream” by The Naked
+And Famous&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; and the
+lowest was “Go” by Pearl Jam&lt;/li&gt;
+&lt;li&gt;The song with highest “liveness” was “Formation” by Beyoncé&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; and the lowest was “Fit But
+You Know It” by The Streets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;embedding&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Embedding&lt;/h2&gt;
+&lt;p&gt;Now that I had a look at each variable individually I wanted to see what the
+dataset looked like as a whole. The first thing you always do with a new
+dataset is a PCA so for the songs with Spotify data I took the duration,
+loudness, tempo, valence, energy, danceability, speechiness, acousticness and
+liveness. The scatter plots don’t look great but the loadings are interesting.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;pca_loadings.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For example you can see that PC1 separates loudness and enery from acousticness
+and PC6 separates speeciness from valence and tempo.&lt;/p&gt;
+&lt;p&gt;I then did a t-SNE using these principal components. I had hoped that this
+information might be enough to see some clear separation between genres or
+styles but this isn’t really the case. There are few variable which are
+restricted to one part of the space, for example liveness:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;tsne_liveness.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;But most of the other variables just show a general trend like loudness.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;tsne_loudness.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&#34;https://lazappi.github.io/requestival/05-embedding.html&#34; title=&#34;Analysis website - embedding&#34;&gt;embedding page&lt;/a&gt; if you would like to see what all the
+other variables look like.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outro&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Outro&lt;/h1&gt;
+&lt;p&gt;This is really only an exploratory analysis and there are lots more things you
+could do: clustering to group songs, looking at correlations, text analysis etc.
+I had hoped to find some of the really unusal things that were played (like
+the Pokemon theme song) but I don’t think they are musically different enough
+for these characteristics to pull them out. In the end I would call this project
+a partial success, I didn’t find anything super interesting but I need learn
+some things and it was fun to play around with. The dataset is available on
+&lt;a href=&#34;https://github.com/lazappi/requestival&#34; title=&#34;Requesitval analysis GitHub repository&#34;&gt;GitHub&lt;/a&gt; and I would be interested to see if you can pull anything else
+out of it. Maybe I will return to it and do something more detailed in the
+future.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;This got matched to the “Stripped” version on Spotify&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;This got matched
+to the version from “Homecoming: The Live Album”&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

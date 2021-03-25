@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database | lazappi</title>
+    <link>lazappi.id.au/tags/database/</link>
+      <atom:link href="lazappi.id.au/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <description>database</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>database</title>
+      <link>lazappi.id.au/tags/database/</link>
+    </image>
+    
+    <item>
+      <title>Opportunities and challenges in long-read sequencing data analysis</title>
+      <link>lazappi.id.au/publication/2020-amarasinghe-long-read-tools/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2020-amarasinghe-long-read-tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools and techniques for single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/talk/2019-03-22-phd-completion/</link>
+      <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2019-03-22-phd-completion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools, simulations and trees for scRNA-seq</title>
+      <link>lazappi.id.au/talk/2018-09-27-icb-seminar-2018/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2018-09-27-icb-seminar-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exploring the single-cell RNA-seq analysis landscape with the scRNA-tools database</title>
+      <link>lazappi.id.au/publication/2018-zappia-scrnatools/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2018-zappia-scrnatools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulation and analysis tools for single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/talk/2017-11-01-gi2017/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2017-11-01-gi2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single cells, simulation and kidneys in a dish</title>
+      <link>lazappi.id.au/talk/2017-10-27-berkeley2017/</link>
+      <pubDate>Fri, 27 Oct 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2017-10-27-berkeley2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single-cells, simulation and kidneys in a dish</title>
+      <link>lazappi.id.au/talk/2017-07-17-wehi2017/</link>
+      <pubDate>Mon, 17 Jul 2017 10:45:00 +1000</pubDate>
+      <guid>lazappi.id.au/talk/2017-07-17-wehi2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scRNA-tools</title>
+      <link>lazappi.id.au/project/scrna-tools/</link>
+      <pubDate>Mon, 05 Jun 2017 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/scrna-tools/</guid>
+      <description>&lt;p&gt;The scRNA-tools database and website (&lt;a href=&#34;https://www.scRNA-tools.org&#34;&gt;https://www.scRNA-tools.org&lt;/a&gt;) is a
+catalogue of software tools for the analysis of single-cell RNA sequencing data.
+We record details about what the tools can be used as well as where they are
+available and any associated publications. This is designed to be an open
+resource and we welcome submissions and other contributions from the community.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

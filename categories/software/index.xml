@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software | lazappi</title>
+    <link>lazappi.id.au/categories/software/</link>
+      <atom:link href="lazappi.id.au/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <description>software</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sun, 12 Jul 2020 15:17:55 +0200</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>software</title>
+      <link>lazappi.id.au/categories/software/</link>
+    </image>
+    
+    <item>
+      <title>zellkonverter</title>
+      <link>lazappi.id.au/project/zellkonverter/</link>
+      <pubDate>Sun, 12 Jul 2020 15:17:55 +0200</pubDate>
+      <guid>lazappi.id.au/project/zellkonverter/</guid>
+      <description>&lt;p&gt;zellkonverter is a Bioconductor R package that provides methods to convert
+between Python 
+&lt;a href=&#34;https://anndata.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AnnData&lt;/a&gt;
+objects and 
+&lt;a href=&#34;https://bioconductor.org/packages/SingleCellExperiment/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SingleCellExperiment&lt;/a&gt;
+objects (&lt;a href=&#34;https://bioconductor.org/packages/zellkonveter/)&#34;&gt;https://bioconductor.org/packages/zellkonveter/)&lt;/a&gt;. These are primarily
+intended for use by downstream Bioconductor packages that wrap Python methods
+for single-cell data analysis. It also includes functions to read and write H5AD
+files used for saving AnnData objects to disk.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>clamour</title>
+      <link>lazappi.id.au/project/clamour/</link>
+      <pubDate>Mon, 08 Jul 2019 18:01:13 +0100</pubDate>
+      <guid>lazappi.id.au/project/clamour/</guid>
+      <description>&lt;p&gt;The clamour packages provides a template for setting up a website to display the
+results of analysis of Twitter hashtags, usually associated with an event such
+as an academic conference. More details can be found on the project website
+(&lt;a href=&#34;https://lazappi.github.io/clamour/index.html)&#34;&gt;https://lazappi.github.io/clamour/index.html)&lt;/a&gt;. There is also an example website
+showing what the results look like (&lt;a href=&#34;https://lazappi.github.io/clamour-example/&#34;&gt;https://lazappi.github.io/clamour-example/&lt;/a&gt;)
+or you can have a look at my personal Twitter stats site
+(&lt;a href=&#34;https://lazappi.github.io/twitter-stats/)&#34;&gt;https://lazappi.github.io/twitter-stats/)&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>clustree</title>
+      <link>lazappi.id.au/project/clustree/</link>
+      <pubDate>Tue, 27 Mar 2018 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/clustree/</guid>
+      <description>&lt;p&gt;Deciding what resolution to use can be a difficult question when approaching a 
+clustering analysis. One way to approach this problem is to look at how samples 
+move as the number of clusters increases. The clustree package is availavble 
+from CRAN (&lt;a href=&#34;https://cran.r-project.org/package=clustree&#34;&gt;https://cran.r-project.org/package=clustree&lt;/a&gt;) allows you to produce 
+clustering trees, a visualisation for interrogating clusterings as resolution 
+increases.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Splatter</title>
+      <link>lazappi.id.au/project/splatter/</link>
+      <pubDate>Thu, 06 Oct 2016 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/splatter/</guid>
+      <description>&lt;p&gt;Splatter is a Bioconductor R package for the simulation of single-cell RNA 
+sequencing count data (&lt;a href=&#34;https://bioconductor.org/packages/splatter/)&#34;&gt;https://bioconductor.org/packages/splatter/)&lt;/a&gt;. It
+provides a simple interface for creating complex simulations that are 
+reproducible and well-documented. Parameters can be estimated from real data and 
+functions are provided for comparing real and simulated datasets.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>prettytc</title>
+      <link>lazappi.id.au/project/prettytc/</link>
+      <pubDate>Wed, 30 Mar 2016 18:22:07 +0100</pubDate>
+      <guid>lazappi.id.au/project/prettytc/</guid>
+      <description>&lt;p&gt;TeXcount is excellent and by far the best way to produce wordcounts of LaTeX
+documents but I found the output became hard to read for large documents.&lt;/p&gt;
+&lt;p&gt;prettytc is a Python script that runs TeXcount and parses the output in a way
+that shows more of the document structure and provides totals at each level. It
+can be run from the command line and any options are passed to TeXcount.&lt;/p&gt;
+&lt;p&gt;Available from my GitHub &lt;a href=&#34;https://github.com/lazappi/prettytc&#34;&gt;https://github.com/lazappi/prettytc&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

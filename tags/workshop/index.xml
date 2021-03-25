@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workshop | lazappi</title>
+    <link>lazappi.id.au/tags/workshop/</link>
+      <atom:link href="lazappi.id.au/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
+    <description>workshop</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 03 Aug 2019 18:37:13 +0100</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>workshop</title>
+      <link>lazappi.id.au/tags/workshop/</link>
+    </image>
+    
+    <item>
+      <title>R Package Development Workshop</title>
+      <link>lazappi.id.au/project/r-pkg-dev/</link>
+      <pubDate>Sat, 03 Aug 2019 18:37:13 +0100</pubDate>
+      <guid>lazappi.id.au/project/r-pkg-dev/</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://combine.org.au/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;COMBINE&lt;/a&gt; is an Australian organisation for student in
+bioinformatics, computational biology and related fields. One way in which
+COMBINE aims to support the student community is by providing training. I was
+the lead author on the materials for this workshop which covers an introduction
+to developing an R package and were produced using
+
+&lt;a href=&#34;https://bookdown.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bookdown&lt;/a&gt;. The workshop was first run in Melbourne in
+September 2019 where I was the lead instructor.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Open science workshops</title>
+      <link>lazappi.id.au/post/2014-07-20-open-science-workshops/</link>
+      <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2014-07-20-open-science-workshops/</guid>
+      <description>&lt;p&gt;This Saturday I attended the first workshop run by
+
+&lt;a href=&#34;https://openscienceworkshops.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Open Science Workshops&lt;/a&gt; at the
+
+&lt;a href=&#34;http://inspire9.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Inspire9&lt;/a&gt; collaborative workspace. Open Source Workshops
+is a new initiative aiming to promote open source tools and techniques to the
+scientific community.&lt;/p&gt;
+&lt;p&gt;The workshop consisted of two main parts: an introduction to the basics of
+Github (creating repositories, commiting, forking, merging&amp;hellip;) and the
+SageMathCloud; and a serious of talks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;General discussion of how and why you should take an open approach to
+scientific research (Alex Ghitza, Pure Maths Lecturer,
+University of Melbourne).&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.authorea.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Authorea&lt;/a&gt; - An online platform for collaborative
+manuscript editing designed for digital publishing that can combines Latex,
+Markdown etc. with interactive visualisations, embedded IPython notebooks and
+built in citation management (Andrea Bedini, Maths and Stats, University of
+Melbourne).&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://scirate.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SciRate&lt;/a&gt; - A social media approach to rating and
+sharing the papers available in at arXiv.org (Jaiden Mispy).&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://cloud.sagemath.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SageMathCloud&lt;/a&gt; - Collaborative cloud platform
+set up with particular support for IPython and Latex as well as a terminal.
+Kind of like Google docs meets a VM.&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://nectar.org.au/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NeCTAR&lt;/a&gt; - Cloud facility available to Australian
+researchers. Also the Genomics Virtual Laboratory set up that allows quick
+launching of a VM with Galaxy and other bioinformatics tools as well as
+IPython and RStudio (Clare Sloggett, VLSCI).&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://software-carpentry.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Software Capentry&lt;/a&gt; - Bootcamps for training
+in scientific computing includiang Git (work tracking), UNIX (automation),
+Programming (modularisation) and SQL (structured data) (Scott Ritchie).&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://elifesciences.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eLIFE&lt;/a&gt; - A new open access life sciences journal
+in the UK that uses a consulative peer review process as well as their eLIFE
+Lens and oline system for viewing their papers or anything in PubMed via the
+
+&lt;a href=&#34;http://oa-sandbox.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OA Sandbox&lt;/a&gt; (Ian Mulvany).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A common theme running through the talks (apart from open access) was the need
+to move towards 21st century tools and processes, both for collaboration and
+publishing.&lt;/p&gt;
+&lt;p&gt;Overall it was a worthwhile experience and hopefully there will be more in the
+future, if you are interested in the details the
+
+&lt;a href=&#34;https://github.com/silky/osw-material/tree/master/workshop-melb-2014&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;talks&lt;/a&gt;
+and 
+&lt;a href=&#34;https://github.com/OpenScienceWorkshops/osw-material/wiki/Summary-of-the-July-2014-Melbourne-Open-Science-Workshop&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;agenda&lt;/a&gt;
+are available here on Github.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

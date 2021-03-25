@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>website | lazappi</title>
+    <link>lazappi.id.au/categories/website/</link>
+      <atom:link href="lazappi.id.au/categories/website/index.xml" rel="self" type="application/rss+xml" />
+    <description>website</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Wed, 03 Oct 2018 17:34:05 +0100</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>website</title>
+      <link>lazappi.id.au/categories/website/</link>
+    </image>
+    
+    <item>
+      <title>Twitter Stats</title>
+      <link>lazappi.id.au/project/twitter-stats/</link>
+      <pubDate>Wed, 03 Oct 2018 17:34:05 +0100</pubDate>
+      <guid>lazappi.id.au/project/twitter-stats/</guid>
+      <description>&lt;p&gt;Website displaying analysis of Twitter activity from various event hashtags,
+usually academic conferences
+(&lt;a href=&#34;https://lazappi.github.io/twitter-stats/index.html)&#34;&gt;https://lazappi.github.io/twitter-stats/index.html)&lt;/a&gt;. Includes information
+such as when people were tweeting, who there were connected to and the most
+common topics during the event.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>scRNA-tools</title>
+      <link>lazappi.id.au/project/scrna-tools/</link>
+      <pubDate>Mon, 05 Jun 2017 11:26:59 +0100</pubDate>
+      <guid>lazappi.id.au/project/scrna-tools/</guid>
+      <description>&lt;p&gt;The scRNA-tools database and website (&lt;a href=&#34;https://www.scRNA-tools.org&#34;&gt;https://www.scRNA-tools.org&lt;/a&gt;) is a
+catalogue of software tools for the analysis of single-cell RNA sequencing data.
+We record details about what the tools can be used as well as where they are
+available and any associated publications. This is designed to be an open
+resource and we welcome submissions and other contributions from the community.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

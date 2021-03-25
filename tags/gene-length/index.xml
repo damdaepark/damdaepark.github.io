@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gene length | lazappi</title>
+    <link>lazappi.id.au/tags/gene-length/</link>
+      <atom:link href="lazappi.id.au/tags/gene-length/index.xml" rel="self" type="application/rss+xml" />
+    <description>gene length</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>gene length</title>
+      <link>lazappi.id.au/tags/gene-length/</link>
+    </image>
+    
+    <item>
+      <title>Gene length and detection bias in single cell RNA sequencing protocols</title>
+      <link>lazappi.id.au/publication/2017-phipson-gene-length/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2017-phipson-gene-length/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

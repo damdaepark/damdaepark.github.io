@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SingleCellExperiment | lazappi</title>
+    <link>lazappi.id.au/tags/singlecellexperiment/</link>
+      <atom:link href="lazappi.id.au/tags/singlecellexperiment/index.xml" rel="self" type="application/rss+xml" />
+    <description>SingleCellExperiment</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>SingleCellExperiment</title>
+      <link>lazappi.id.au/tags/singlecellexperiment/</link>
+    </image>
+    
+    <item>
+      <title>Back to the SCE-verse!</title>
+      <link>lazappi.id.au/post/2020-05-12-back-to-the-sce-verse/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2020-05-12-back-to-the-sce-verse/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs-2.5/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections-1.0/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections-1.0/anchor-sections.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;A few weeks ago I did a short &lt;a href=&#34;../../post/2020-04-29-bioconductor-3-11-wrap-up&#34; title=&#34;Bioconductor 3.11 wrap up&#34;&gt;wrap up&lt;/a&gt; of the latest
+&lt;a href=&#34;https://bioconductor.org/news/bioc_3_11_release/&#34; title=&#34;Bioc 3.11 news&#34;&gt;Bioconductor 3.11 release&lt;/a&gt;. The &lt;a href=&#34;../../post/2018-05-04-bioconductor-3-7-wrap-up&#34; title=&#34;Bioconductor 3.7 wrap up&#34;&gt;last time I did that&lt;/a&gt;
+(for the 3.7 release in 2018) I &lt;a href=&#34;../../post/2018-05-20-exploring-the-sce-verse&#34; title=&#34;Exploring the SCE-verse&#34;&gt;followed it up with a post&lt;/a&gt; looking
+at packages which depend on the
+&lt;a href=&#34;https://bioconductor.org/packages/SingleCellExperiment/&#34; title=&#34;SingleCellExperiment package&#34;&gt;&lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;&lt;/a&gt; package. A lot has changed
+in the scRNA-seq world over the last two years and we have grown from around
+200 analysis tools to &lt;a href=&#34;https://www.scrna-tools.org&#34; title=&#34;scRNA-tools analysis page&#34;&gt;almost 650&lt;/a&gt;. Given that growth I thought it
+would be good to repeat that analysis and see what the SCE-verse looks like in
+2020.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;BiocPkgTools&amp;quot;)
+library(&amp;quot;tidygraph&amp;quot;)
+library(&amp;quot;ggraph&amp;quot;)
+library(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;getting-package-network&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Getting package network&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://bioconductor.org/packages/BiocPkgTools/&#34; title=&#34;BiocPkgTools&#34;&gt;&lt;strong&gt;{BiocPkgTools}&lt;/strong&gt;&lt;/a&gt; is now a fully-fledged Bioconductor package
+and has some new functionst that make it easy to get information about the
+packages connected to &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Get Bioconductor package information
+bioc_pkgs &amp;lt;- biocPkgList()
+# Get Bioconductor dependencies
+all_bioc_deps &amp;lt;- buildPkgDependencyDataFrame()
+# Select reverse dependencies for SingleCellExperiment
+bioc_revdeps  &amp;lt;- filter(all_bioc_deps, dependency == &amp;quot;SingleCellExperiment&amp;quot;)
+# Select dependencies of the reverse dependencies
+bioc_edges &amp;lt;- bioc_revdeps %&amp;gt;%
+    bind_rows(
+        filter(all_bioc_deps, Package %in% bioc_revdeps$Package)
+    )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The information from &lt;strong&gt;{BiocPkgTools}&lt;/strong&gt; includes CRAN packages that are
+dependencies of Bioconductor packages but doesn’t include any CRAN packages that
+depend on &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;. To get those we will use a tidier version
+of the function in the previous blog post. This function just uses &lt;strong&gt;{purr}&lt;/strong&gt;
+to loop over the different types of dependencies and calls the
+&lt;code&gt;tools::package_dependencies()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_cran_deps &amp;lt;- function(pkgs, db, reverse = FALSE,
+                          types = c(&amp;quot;Depends&amp;quot;, &amp;quot;Imports&amp;quot;, &amp;quot;Suggests&amp;quot;)) {
+
+    deps &amp;lt;- purrr::map_dfr(types, function(.type) {
+        deps_list &amp;lt;- tools::package_dependencies(
+            pkgs, db,
+            which   = .type,
+            reverse = reverse
+        )
+        tibble(Package = pkgs, dependency = deps_list, edgetype = .type)
+    }) %&amp;gt;%
+        unnest(dependency)
+
+    if (reverse) {
+        deps &amp;lt;- dplyr::select(
+                deps,
+                Package = dependency,
+                dependency = Package,
+                edgetype
+            )
+    }
+
+    return(deps)
+}
+
+db &amp;lt;- available.packages(repos = &amp;quot;http://cran.r-project.org&amp;quot;)
+cran_revdeps &amp;lt;- get_cran_deps(&amp;quot;SingleCellExperiment&amp;quot;, db, reverse = TRUE)
+cran_edges &amp;lt;- cran_revdeps %&amp;gt;%
+    bind_rows(
+        get_cran_deps(cran_revdeps$Package, db)
+    )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can combine the networks from Bioconductor and CRAN and create a graph
+structure.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;revdeps &amp;lt;- bioc_revdeps %&amp;gt;%
+    bind_rows(cran_revdeps) %&amp;gt;%
+    distinct() %&amp;gt;%
+    mutate(
+        Repo = if_else(Package %in% bioc_pkgs$Package, &amp;quot;Bioconductor&amp;quot;, &amp;quot;CRAN&amp;quot;)
+    )
+
+nodes &amp;lt;- revdeps %&amp;gt;%
+    select(Package, Repo) %&amp;gt;%
+    add_row(Package = &amp;quot;SingleCellExperiment&amp;quot;, Repo = &amp;quot;Bioconductor&amp;quot;)
+
+edges &amp;lt;- bioc_edges %&amp;gt;%
+    bind_rows(cran_edges) %&amp;gt;%
+    filter(dependency %in% c(&amp;quot;SingleCellExperiment&amp;quot;, revdeps$Package)) %&amp;gt;%
+    distinct()
+
+graph &amp;lt;- tbl_graph(nodes = nodes, edges = edges)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We now have a graph that contains &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt; and the
+77 packages that depend on it. We also have edges between the
+reverse dependencies but have removed edges to other packages.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-uses-singlecellexperiment&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What uses &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;?&lt;/h1&gt;
+&lt;div id=&#34;where-are-the-packages-from&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Where are the packages from?&lt;/h2&gt;
+&lt;p&gt;Before we look at the relationships between packages let’s look at the reverse
+dependencies themselves. We expect that most of the dependencies will be other
+Bioconductor packages but are there any in CRAN?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(revdeps, aes(x = Repo, fill = Repo)) +
+    geom_bar() +
+    scale_fill_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/repos-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There are only 2 packages
+from CRAN, which are the same two we saw last time. These are
+&lt;a href=&#34;https://CRAN.R-project.org/package=Seurat&#34; title=&#34;Seurat&#34;&gt;&lt;strong&gt;{Seurat}&lt;/strong&gt;&lt;/a&gt;, which contains the other major R object for scRNA-seq
+data and includes functions for converting from &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;
+objects, and &lt;a href=&#34;https://CRAN.R-project.org/package=Seurat&#34; title=&#34;clustree&#34;&gt;&lt;strong&gt;{clustree}&lt;/strong&gt;&lt;/a&gt;, my package for visualising clustering
+across resolutions which includes a &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt; interface.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-dependency-do-they-have&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What dependency do they have?&lt;/h2&gt;
+&lt;p&gt;What about the types of dependencies?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;edges %&amp;gt;%
+    filter(dependency == &amp;quot;SingleCellExperiment&amp;quot;) %&amp;gt;%
+    ggplot(aes(x = edgetype, fill = edgetype)) +
+    geom_bar() +
+    scale_fill_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/dep-types-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Most of the packages either “import” or “depend” on &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;.
+This is unsurprising given that is a core data structure. I suspect most of the
+“suggests” packages work with several data structures but we would have to
+check this and see.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-do-they-do&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What do they do?&lt;/h2&gt;
+&lt;p&gt;All packages in Bioconductor are annotated with “biocViews”. There are a set
+of labels designed to show what a package can be used for. They provide a
+convenient way to get a overview of what the packages in the SCE-verse do.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bioc_views &amp;lt;- bioc_pkgs %&amp;gt;%
+    filter(Package %in% revdeps$Package) %&amp;gt;%
+    select(biocViews) %&amp;gt;%
+    unnest(biocViews) %&amp;gt;%
+    mutate(biocViews = fct_lump_n(fct_infreq(biocViews), 30))
+
+ggplot(bioc_views, aes(x = fct_rev(biocViews))) +
+    geom_bar() +
+    coord_flip() +
+    ggtitle(&amp;quot;Most common biocViews&amp;quot;) +
+    ylab(&amp;quot;Number of packages&amp;quot;) +
+    theme_minimal() +
+    theme(axis.title.y = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/biocViews-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Many of the most common biocViews are fairly general terms but there is a set
+that stands out as being specific to scRNA-seq data including “SingleCell”,
+“GeneExpression”, “RNASeq” and “Transcriptomics”. Further down the list we see
+terms related to specific analysis tasks (“Clustering”, “Visualization”,
+“DifferentialExpression”, “DimensionReduction”, “Normalization” etc.). Many of
+these are similar to the categories we came up with to group tools on
+&lt;a href=&#34;https://www.scrna-tools.org&#34; title=&#34;scRNA-tools analysis page&#34;&gt;scRNA-tools&lt;/a&gt;. It would be interesting to look at the differences
+in ranking but I suspect there are enough differences in how the terms are used
+that it would be difficult to compare them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;relationships-between-packages&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Relationships between packages&lt;/h1&gt;
+&lt;p&gt;Now that we have a bit of an overview of what packages there are let’s see how
+they relate to each other. First let’s plot all the packages in our graph.
+Remember that everything here depends on &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt; and we have
+links between them but not dependencies to other packages.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = edgetype),
+                  arrow = arrow(length = unit(4, &amp;#39;mm&amp;#39;)),
+                  end_cap = circle(3, &amp;#39;mm&amp;#39;)) +
+    geom_node_point(aes(colour = Repo)) +
+    geom_node_text(aes(label = Package, colour = Repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/graph-all-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A lot of these packages have no other dependencies in this community except for
+&lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt;. While I’m sure that they are very useful they aren’t
+very interesting for this analysis so let’s remove them by excluding nodes with
+a single edge.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;graph_deg2 &amp;lt;- graph %&amp;gt;%
+    activate(nodes) %&amp;gt;%
+    mutate(Degree = igraph::degree(graph)) %&amp;gt;%
+    filter(Degree &amp;gt;= 2)
+
+ggraph(graph_deg2, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = edgetype),
+                  arrow = arrow(length = unit(4, &amp;#39;mm&amp;#39;)),
+                  end_cap = circle(3, &amp;#39;mm&amp;#39;)) +
+    geom_node_point(aes(colour = Repo)) +
+    geom_node_text(aes(label = Package, colour = Repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/graph-deg2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;That’s better but it’s still pretty crowded. Let’s see if we can pick out the
+most important nodes using a centrality measure.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;graph_central &amp;lt;- graph_deg2 %&amp;gt;%
+    activate(nodes) %&amp;gt;%
+    mutate(Centrality = centrality_authority()) %&amp;gt;%
+    filter(Centrality &amp;gt; 0.1)
+
+ggraph(graph_central, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = edgetype),
+                  arrow = arrow(length = unit(4, &amp;#39;mm&amp;#39;)),
+                  end_cap = circle(3, &amp;#39;mm&amp;#39;)) +
+    geom_node_point(aes(colour = Repo)) +
+    geom_node_text(aes(label = Package, colour = Repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/graph-central-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;No surprises there! This has picked out what are probably the most used and
+influential R packages for scRNA-seq analysis. The central Bioconductor packages
+of &lt;strong&gt;{SingleCellExperiement}&lt;/strong&gt; (object), &lt;strong&gt;{scater}&lt;/strong&gt; (quality control and
+visualisation) and &lt;strong&gt;{scran}&lt;/strong&gt; (normalisation and downstream analysis). They are
+joined by &lt;strong&gt;{Seurat}&lt;/strong&gt; which is perhaps the most complete R scRNA-seq analysis
+package but is hosted on CRAN and uses it’s own object. It’s centrality to this
+graph suggests that many Bioconductor packages provide some kind of support
+for &lt;strong&gt;{Seurat}&lt;/strong&gt; objects.&lt;/p&gt;
+&lt;p&gt;Let’s zoom out a little bit by relaxing the centrality threshold and see what
+else we find.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;graph_central &amp;lt;- graph_deg2 %&amp;gt;%
+    activate(nodes) %&amp;gt;%
+    mutate(Centrality = centrality_authority()) %&amp;gt;%
+    filter(Centrality &amp;gt; 0.05)
+
+ggraph(graph_central, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = edgetype),
+                  arrow = arrow(length = unit(4, &amp;quot;mm&amp;quot;)),
+                  end_cap = circle(3, &amp;quot;mm&amp;quot;)) +
+    geom_node_point(aes(colour = Repo)) +
+    geom_node_text(aes(label = Package, colour = Repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/graph-central2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This has added a few more central packages: &lt;strong&gt;{iSEE}&lt;/strong&gt; which is a Shiny app for
+interacting with &lt;strong&gt;{SingleCellExperiment}&lt;/strong&gt; objects, &lt;strong&gt;{MAST}&lt;/strong&gt; for differential
+expression testing, &lt;strong&gt;{zinbwave}&lt;/strong&gt; for dimensionality reduction and integration
+and &lt;strong&gt;{destiny}&lt;/strong&gt; for creating diffusion maps.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;It is great to see the expansion of the SCE-verse! The object has been well
+taken up by the community and I think there is now a better understanding of the
+value of using standard objects, both in increased interoperabilty between
+packages but all time and effort saved during development. I had hoped to see
+more connections between packages though. Apart from a few central packages
+there aren’t that many dependencies with the SCE-verse which suggests there
+could be a lot of duplicated functionality within packages. Now that we have a
+common object to work with perhaps the next step forward in the development of
+the ecosystem is to centralise and reuse common functions so that developers
+can focus on innovative new methods? I have been fairly selective in this
+analysis though so it is possible I have missed some of this which is happening
+already.&lt;/p&gt;
+&lt;p&gt;It would (still) be good with repeat this for other major object, perhaps I will
+get to that in a future post.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploring the SCE-verse</title>
+      <link>lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/</link>
+      <pubDate>Sat, 09 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/</guid>
+      <description>&lt;p&gt;Over the last few years the number of methods for analysing scRNA-seq has
+exploded and there is now well over 200 software tools available. Each of these
+tools need to make a choice about how they store and represent the data used
+during their analysis. One attempt to standardise the data structures that are
+used is the 
+&lt;a href=&#34;https://www.bioconductor.org/packages/SingleCellExperiment&#34; title=&#34;SingleCellExperiment&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SingleCellExperiment&lt;/a&gt; package created by
+Davide Risso and Aaron Lun, with help from Keegan Korthauer. This package became
+publicly available as part of the Bioconductor 3.6 release in October 2017.
+Since we have recently had another Bioconductor release I thought I would have a
+look at the community of tools that has been developed around
+SingleCellExperiment.&lt;/p&gt;
+&lt;h1 id=&#34;what-is-a-singlecellexperiment&#34;&gt;What is a SingleCellExperiment?&lt;/h1&gt;
+&lt;p&gt;Before we have a look at what packages use the SingleCellExperiment it&amp;rsquo;s
+probably useful to briefly discuss what it is. The SingleCellExperiment object
+is an extension of the older 
+&lt;a href=&#34;https://www.bioconductor.org/packages/SummarizedExperiment&#34; title=&#34;SummarizedExperiment&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SummarizedExperiment&lt;/a&gt;
+object. This is an S4 class  developed for use in Bioconductor packages with the
+main parts being a central set of matrix &amp;ldquo;assays&amp;rdquo; along with tables providing
+extra information about the rows and columns. There is also a metadata slot
+which is a list containing any  other information related to the experiment.&lt;/p&gt;
+&lt;!-- ![Diagram of a SummarizedExperiment object](/post/2018-05-20-exploring-the-sce-verse_files/summarized_experiment.svg) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/summarized_experiment_hu8c6c6c878cd5080fac87b03b735b1319_45618_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/summarized_experiment_hu8c6c6c878cd5080fac87b03b735b1319_45618_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;706&#34; height=&#34;602&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;One of the key benefits of using a structure like the SummarizedExperiment is
+that all the data related to an analysis is held in one spot. This makes it
+easier to pass things between functions or output results as well as reducing
+the possibilities for mismatches. The SingleCellExperiment adds some extra
+features that are useful for scRNA-seq analysis including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Slots for holding:
+&lt;ul&gt;
+&lt;li&gt;Dimenstionality reductions&lt;/li&gt;
+&lt;li&gt;Spike-in information&lt;/li&gt;
+&lt;li&gt;Size factors for normalisation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Convenient access for named assays - counts, normcounts, cpm etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The idea is then that the SingleCellExperiment can be used by a range of
+packages to store data during analysis and extended when required. Let&amp;rsquo;s have
+a look at what those packages are currently by seeing what depends on
+SingleCellExperiment.&lt;/p&gt;
+&lt;h1 id=&#34;getting-package-information&#34;&gt;Getting package information&lt;/h1&gt;
+&lt;p&gt;First let&amp;rsquo;s load the packages we need for this analysis.
+
+&lt;a href=&#34;https://github.com/seandavi/BiocPkgTools&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BiocPkgTools&lt;/a&gt; will need to be installed from GitHub but the rest
+are on CRAN.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;library(&amp;quot;BiocPkgTools&amp;quot;) # https://github.com/seandavi/BiocPkgTools
+library(&amp;quot;tidygraph&amp;quot;)
+library(&amp;quot;ggraph&amp;quot;)
+library(&amp;quot;tidyverse&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can use Sean Davis&#39; BiocPkgTools package to get information about
+Bioconductor packages, but then we need to do some filtering to get the
+information we want. It turns out I needed to do this multiple times so here is
+a function I wrote to make it a bit easier. It takes the database of information
+about all Bioconductor packages, the name of a package we are interested in and
+a flag indicating if we want normal or reverse dependencies.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;get_bioc_deps &amp;lt;- function(bpi, pkg, reverse) {
+    deps &amp;lt;- bpi %&amp;gt;%
+        filter(Package == pkg)
+
+    if (reverse) {
+        deps &amp;lt;- deps %&amp;gt;%
+            select(depends = dependsOnMe, imports = importsMe,
+                   suggests = suggestsMe)
+    } else {
+        deps &amp;lt;- deps %&amp;gt;%
+            select(depends = Depends, imports = Imports,
+                   suggests = Suggests)
+    }
+
+    deps &amp;lt;- deps %&amp;gt;%
+        gather(key = &amp;quot;type&amp;quot;, value = &amp;quot;package&amp;quot;) %&amp;gt;%
+        separate_rows() %&amp;gt;%
+        filter(!is.na(package))
+
+    if (reverse) {
+        deps &amp;lt;- deps %&amp;gt;%
+            mutate(package2 = pkg) %&amp;gt;%
+            rename(package1 = package)
+    } else {
+        deps &amp;lt;- deps %&amp;gt;%
+            mutate(package1 = pkg) %&amp;gt;%
+            rename(package2 = package)
+    }
+
+    deps &amp;lt;- deps %&amp;gt;% select(package1, uses = type, package2)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we use it to search for reverse dependencies of SingleCellExperiment we can
+see it returns a data frame with which Bioconductor packages use
+SingleCellExperiment and the relationship between them.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;bpi &amp;lt;- getBiocPkgList()
+bioc_revdeps &amp;lt;- get_bioc_deps(bpi, &amp;quot;SingleCellExperiment&amp;quot;, reverse = TRUE)
+head(bioc_revdeps)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can do a similar thing for CRAN packages with use of the
+&lt;code&gt;tools::package_dependencies&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;get_cran_deps &amp;lt;- function(pkg, db, reverse) {
+
+    types &amp;lt;- c(&amp;quot;Depends&amp;quot;, &amp;quot;Imports&amp;quot;, &amp;quot;Suggests&amp;quot;)
+
+    deps &amp;lt;- sapply(types, function(type) {
+        deps &amp;lt;- tools::package_dependencies(pkg, db, which = type,
+                                            reverse = reverse)
+        c(type = type, package = paste(deps[[1]], collapse = &amp;quot;, &amp;quot;))
+    })
+
+    deps &amp;lt;- deps %&amp;gt;%
+        t() %&amp;gt;%
+        as_data_frame() %&amp;gt;%
+        mutate(type = tolower(type)) %&amp;gt;%
+        filter(package != &amp;quot;&amp;quot;) %&amp;gt;%
+        separate_rows(package)
+
+    if (nrow(deps) == 0) {
+        return(tibble(package1 = character(), uses = character(),
+                      package2 = character()))
+    }
+
+    if (reverse) {
+        deps &amp;lt;- deps %&amp;gt;%
+            mutate(package2 = pkg) %&amp;gt;%
+            rename(package1 = package)
+    } else {
+        deps &amp;lt;- deps %&amp;gt;%
+            mutate(package1 = pkg) %&amp;gt;%
+            rename(package2 = package)
+    }
+
+    deps &amp;lt;- deps %&amp;gt;% select(package1, uses = type, package2)
+}
+db &amp;lt;- available.packages(repos = &amp;quot;http://cran.r-project.org&amp;quot;)
+cran_revdeps &amp;lt;- get_cran_deps(&amp;quot;SingleCellExperiment&amp;quot;, db, reverse = TRUE)
+head(cran_revdeps)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;what-uses-singlecellexperiment&#34;&gt;What uses SingleCellExperiment?&lt;/h1&gt;
+&lt;p&gt;We now have two tables showing us which Bioconductor and CRAN packages make use
+of SingleCellExperiment. Tables can be fairly boring to look at though so let&amp;rsquo;s
+use the relationships to construct a graph using 
+&lt;a href=&#34;https://cran.r-project.org/package=tidygraph&#34; title=&#34;tidygraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tidygraph&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;nodes &amp;lt;- bioc_revdeps %&amp;gt;%
+    bind_rows(cran_revdeps) %&amp;gt;%
+    select(-uses) %&amp;gt;%
+    gather(key = id, value = package) %&amp;gt;%
+    select(-id) %&amp;gt;%
+    distinct() %&amp;gt;%
+    mutate(repo = if_else(package %in% bpi$Package, &amp;quot;Bioconductor&amp;quot;, &amp;quot;CRAN&amp;quot;))
+edges &amp;lt;- bioc_revdeps %&amp;gt;%
+    bind_rows(cran_revdeps) %&amp;gt;%
+    rename(from = package1, to = package2)
+graph &amp;lt;- tbl_graph(nodes = nodes, edges = edges)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can now visualise the relationships using 
+&lt;a href=&#34;https://cran.r-project.org/package=ggraph&#34; title=&#34;ggraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ggraph&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;ggraph(graph, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = uses),
+                  arrow = arrow(length = unit(4, &#39;mm&#39;)),
+                  end_cap = circle(3, &#39;mm&#39;)) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-graph-1_hu21acfbc8160c2cec70c1df1e116e5709_194390_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-graph-1_hu21acfbc8160c2cec70c1df1e116e5709_194390_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1344&#34; height=&#34;960&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;This doesn&amp;rsquo;t tell us a lot we didn&amp;rsquo;t already know but it does allow us to see
+everything in one place. We can see that there are only a couple of CRAN
+packages, which is unsurprising given that SingleCellExperiment is part of
+Bioconductor, and that most packages either &amp;ldquo;import&amp;rdquo; or &amp;ldquo;depend&amp;rdquo; on
+SingleCellExperiment.&lt;/p&gt;
+&lt;p&gt;What about the relationships between the packages that depend on
+SingleCellExperiment? Are there communitites of related scRNA-seq analysis
+tools?&lt;/p&gt;
+&lt;h1 id=&#34;adding-an-extra-hop&#34;&gt;Adding an extra hop&lt;/h1&gt;
+&lt;p&gt;We can reuse the functions we wrote earlier to get the dependencies (and reverse
+dependencies) of our list of scRNA-seq packages. We will also do a little bit
+of extra processing to tidy up some of the results.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;more_deps &amp;lt;- map2(nodes$package, nodes$repo, function(x, y) {
+    if (y == &amp;quot;Bioconductor&amp;quot;) {
+        get_bioc_deps(bpi, x, FALSE)
+    } else {
+        get_cran_deps(x, db, FALSE)
+    }
+}) %&amp;gt;%
+    bind_rows() %&amp;gt;%
+    mutate(package2 = str_remove(package2, &amp;quot; ?\\(\\D+[0-9\\.]+\\)&amp;quot;)) %&amp;gt;%
+    filter(package2 != &amp;quot;R&amp;quot;)
+more_revdeps &amp;lt;- map2(nodes$package, nodes$repo, function(x, y) {
+    if (y == &amp;quot;Bioconductor&amp;quot;) {
+        get_bioc_deps(bpi, x, TRUE)
+    } else {
+        get_cran_deps(x, db, TRUE)
+    }
+}) %&amp;gt;% bind_rows()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let&amp;rsquo;s build another graph and plot what we get. As you can see it&amp;rsquo;s a bit
+crowded so I have left off the package labels.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;nodes &amp;lt;- more_deps %&amp;gt;%
+    bind_rows(more_revdeps) %&amp;gt;%
+    select(-uses) %&amp;gt;%
+    gather(key = id, value = package) %&amp;gt;%
+    select(-id) %&amp;gt;%
+    distinct() %&amp;gt;%
+    mutate(repo = if_else(package %in% bpi$Package, &amp;quot;Bioconductor&amp;quot;, &amp;quot;CRAN&amp;quot;))
+edges &amp;lt;- more_deps %&amp;gt;%
+    bind_rows(more_revdeps) %&amp;gt;%
+    rename(from = package1, to = package2) %&amp;gt;%
+    distinct()
+graph &amp;lt;- tbl_graph(nodes = nodes, edges = edges)
+ggraph(graph, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = uses),
+                  arrow = arrow(length = unit(4, &#39;mm&#39;)),
+                  end_cap = circle(3, &#39;mm&#39;)) +
+    geom_node_point(aes(colour = repo)) +
+    #geom_node_text(aes(label = package, colour = repo), repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-more-1_hufc9a98dcde95aff3afc946d2a128c5da_432023_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-more-1_hufc9a98dcde95aff3afc946d2a128c5da_432023_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1344&#34; height=&#34;960&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Our graph has a lot more information now, but is probably too complext to tell
+us anything useful. In particularly we can see there are a lot of nodes around
+the edges that have one package depending on them. Let&amp;rsquo;s get rid of those by
+removing sink node.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;graph &amp;lt;- tbl_graph(nodes = nodes, edges = edges) %&amp;gt;%
+    activate(nodes) %&amp;gt;%
+    filter(!node_is_sink())
+ggraph(graph, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = uses),
+                   arrow = arrow(length = unit(4, &#39;mm&#39;)),
+                   end_cap = circle(3, &#39;mm&#39;)) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo), size = 2,
+                   repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sinks-1_hu9d61cbc31c66c089f6cabd71056ba4cc_183760_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sinks-1_hu9d61cbc31c66c089f6cabd71056ba4cc_183760_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1344&#34; height=&#34;960&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;That&amp;rsquo;s much better! We can now see some of the structure between our packages.
+There are quite few packages that rely on SingleCellExperiment but nothing else.
+Removing source nodes as well will tidy this up a bit more.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;graph &amp;lt;- tbl_graph(nodes = nodes, edges = edges) %&amp;gt;%
+    activate(nodes) %&amp;gt;%
+    filter(!node_is_sink()) %&amp;gt;%
+    filter(!node_is_source())
+ggraph(graph, layout = &amp;quot;fr&amp;quot;) +
+    geom_edge_fan(aes(colour = uses),
+                   arrow = arrow(length = unit(4, &#39;mm&#39;)),
+                   end_cap = circle(3, &#39;mm&#39;)) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo),
+                   repel = TRUE) +
+    scale_color_brewer(palette = &amp;quot;Set1&amp;quot;) +
+    scale_edge_color_brewer(palette = &amp;quot;Dark2&amp;quot;) +
+    theme_graph()
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sources-1_hua60491a7d22887ad5be878e81283ecaa_157707_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sources-1_hua60491a7d22887ad5be878e81283ecaa_157707_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1344&#34; height=&#34;960&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Now we can see the core SingleCellExperiment package network. Apart from
+SingleCellExperiment itself there are three main packages: scater, scran and
+splatter. Scater and scran are two low-level scRNA-seq analysis package with
+scater providing functions for tasks such as visualisation and filtering and
+scran focusing more on normalisation and removal of batch effects. It is
+unsurprising that these packages show up as Aaron Lun is heavily involved in
+the development of both of them as well as SingleCellExperiment. Splatter is a
+bit of a different case as it suggests many packages that provide the core
+functions for it&amp;rsquo;s simulations but isn&amp;rsquo;t used by any other analysis packages.
+There are a few other influential packages on the periphery of this network,
+particularly monocle and Seurat.&lt;/p&gt;
+&lt;h1 id=&#34;what-do-these-packages-do&#34;&gt;What do these packages do?&lt;/h1&gt;
+&lt;p&gt;We have had a look at how packages that use SingleCellExperiment are related but
+what do they actually do? Bioconductor categorises packages using &amp;ldquo;biocViews&amp;rdquo;,
+tags that describe software in various ways. Let&amp;rsquo;s summarise those for the
+packages that use SingleCellExperiment.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r&#34;&gt;plot_data &amp;lt;- bpi %&amp;gt;%
+    filter(Package %in% bioc_revdeps$package1) %&amp;gt;%
+    select(Package, biocViews) %&amp;gt;%
+    separate_rows(biocViews) %&amp;gt;%
+    group_by(biocViews) %&amp;gt;%
+    summarise(count = n()) %&amp;gt;%
+    arrange(-count) %&amp;gt;%
+    mutate(prop = count / n()) %&amp;gt;%
+    mutate(biocViews = factor(biocViews, level = biocViews))
+ggplot(plot_data, aes(x = biocViews, y = prop)) +
+    geom_col() +
+    scale_y_continuous(labels = scales::percent) +
+    ggtitle(&amp;quot;biocViews for packages that use SingleCellExperiment&amp;quot;) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+          axis.title = element_blank(),
+          panel.grid = element_blank())
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/biocViews-1_hueeef87b9bb47c88170e8ad383ba2f652_35670_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/biocViews-1_hueeef87b9bb47c88170e8ad383ba2f652_35670_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1344&#34; height=&#34;960&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;Unsurprisingly the top few categories (&amp;ldquo;SingleCell&amp;rdquo;, &amp;ldquo;GeneExpression&amp;rdquo;,
+&amp;ldquo;RNASeq&amp;rdquo;, &amp;ldquo;Transcriptomics&amp;rdquo;, &amp;ldquo;Sequencing&amp;rdquo;) are related to scRNA-seq data in
+general, along with the &amp;ldquo;Software&amp;rdquo; tag. I actually find it a bit surprising
+that these aren&amp;rsquo;t more common with only &lt;!-- `r round(plot_data[plot_data$biocViews == &#34;SingleCell&#34;, &#34;prop&#34;] * 100)` --&gt; 66
+percent of packages labelled as &amp;ldquo;SingleCell&amp;rdquo;. After these we have some of the
+most common scRNA-seq analysis tasks, &amp;ldquo;Clustering&amp;rdquo;, &amp;ldquo;Visualization&amp;rdquo;,
+&amp;ldquo;DifferentialExpression&amp;rdquo; and &amp;ldquo;DimensionReduction&amp;rdquo;. This is similar to what we
+see in the scRNA-tools database, but obviously from a much smaller sample.&lt;/p&gt;
+&lt;p&gt;We can&amp;rsquo;t do the same thing for the CRAN packages, but as there are only a couple
+of these we can just describe them. Seurat is perhaps the most complete R
+scRNA-seq analysis covering most steps in a standard workflow. It&amp;rsquo;s connection
+to SingleCellExperiment is through functions that have recently been added
+to convert to/from it&amp;rsquo;s own object. Clustree is a package for visualising
+clustering results in general and suggests SingleCellExperiment to provide a
+convenience function for people working with scRNA-seq data.&lt;/p&gt;
+&lt;h1 id=&#34;where-to-from-here&#34;&gt;Where to from here?&lt;/h1&gt;
+&lt;p&gt;It&amp;rsquo;s only been about six months since SingleCellExperiment joined Bioconductor
+release but we are already seeing a community of packages growing up around it.
+Hopefully we see this continue and there is a new batch of packages using it in
+the next Bioconductor release. For anyone who is working on a scRNA-seq package
+I strongly encourage you to consider basing it around SingleCellExperiment. It
+can take some time to get your head around how it works but the infrastructure
+it provides will save you a lot of time in the long run. It also makes things a
+lot easier for your uses who won&amp;rsquo;t have to learn a new data structure to use
+your package and can make use of a range of packages without having to convert
+between objects. If you don&amp;rsquo;t want to be locked into the Bioconductor ecosystem
+think about using the 
+&lt;a href=&#34;https://cran.r-project.org/package=Seurat&#34; title=&#34;Seurat&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seurat&lt;/a&gt; object instead or if you work in Python
+consider the 
+&lt;a href=&#34;https://anndata.readthedocs.io/en/latest/&#34; title=&#34;anndata&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;anndata&lt;/a&gt; object. There is also the 
+&lt;a href=&#34;http://loompy.org/&#34; title=&#34;loom&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;loom&lt;/a&gt; format
+which has both R and Python interfaces. Whatever standard works for you everyone
+will be better off if the community can make use of a small number of data
+structure rather than each package using their own.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

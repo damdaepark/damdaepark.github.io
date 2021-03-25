@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>conference | lazappi</title>
+    <link>lazappi.id.au/tags/conference/</link>
+      <atom:link href="lazappi.id.au/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    <description>conference</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 18 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>conference</title>
+      <link>lazappi.id.au/tags/conference/</link>
+    </image>
+    
+    <item>
+      <title>Joining the Dots Twitter analysis</title>
+      <link>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</guid>
+      <description>&lt;p&gt;Today I attended the 
+&lt;a href=&#34;https://joiningthedots.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Joining the Dots&lt;/a&gt;
+visualisation symposium. You can see the slides for my talk about clustering
+trees 
+&lt;a href=&#34;https://speakerdeck.com/lazappi/building-a-clustering-tree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. It
+was a great event and hope we see more meetings like this in the future. Here
+is an analysis of the Twitter activity on the
+
+&lt;a href=&#34;https://twitter.com/search?q=%23jtdwehi&amp;amp;src=typd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;#jtdwehi&lt;/a&gt; hashtag, thanks to
+code from 
+&lt;a href=&#34;https://nsaunders.wordpress.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Neil Saunders&lt;/a&gt;. You can see it on
+
+&lt;a href=&#34;https://github.com/lazappi/jtdwehi-twitter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;An analysis of tweets from the Joining the Dots symposium. 1237 tweets were
+collected using the &lt;code&gt;rtweet&lt;/code&gt; R package:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;jtdwehi &amp;lt;- search_tweets(&amp;quot;#jtdwehi&amp;quot;, 10000)
+saveRDS(jtdwehi, &amp;quot;data/jtdwehi.Rds&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;search-all-the-hashtags&#34;&gt;Search all the hashtags!&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/hashtags-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;timeline&#34;&gt;Timeline&lt;/h1&gt;
+&lt;h2 id=&#34;tweets-by-day&#34;&gt;Tweets by day&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;tweets-by-day-and-time&#34;&gt;Tweets by day and time&lt;/h2&gt;
+&lt;p&gt;Filtered for dates July 21-26, Prague time.&lt;/p&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-hour-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;users&#34;&gt;Users&lt;/h1&gt;
+&lt;h2 id=&#34;top-tweeters&#34;&gt;Top tweeters&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-users-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-sources-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;networks&#34;&gt;Networks&lt;/h1&gt;
+&lt;h2 id=&#34;replies&#34;&gt;Replies&lt;/h2&gt;
+&lt;p&gt;The &amp;ldquo;replies network&amp;rdquo;, composed from users who reply directly to one another,
+coloured by page rank.&lt;/p&gt;
+&lt;p&gt;Better to view the original PNG file in the &lt;code&gt;data&lt;/code&gt; directory.&lt;/p&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_replies.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1024&#34; height=&#34;768&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;mentions&#34;&gt;Mentions&lt;/h2&gt;
+&lt;p&gt;The &amp;ldquo;mentions network&amp;rdquo;, where users mention other users in their tweets.
+Filtered for k-core &amp;gt;= 4 and coloured by modularity class.&lt;/p&gt;
+&lt;p&gt;Better to view the original PNG file in the &lt;code&gt;data&lt;/code&gt; directory.&lt;/p&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_mentions-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1024&#34; height=&#34;768&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;retweets&#34;&gt;Retweets&lt;/h1&gt;
+&lt;h2 id=&#34;retweet-proportion&#34;&gt;Retweet proportion&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-retweet-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;retweet-count&#34;&gt;Retweet count&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/retweet-count-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;top-retweets&#34;&gt;Top retweets&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
+   &lt;th style=&#34;text-align:right;&#34;&gt; retweet_count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Really valuable point from @KathyReid: sometimes #dataviz decisions affected by need to consider political priorities and buy-in #jtdwehi &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; @bestqualitycrab demoing dataviz: ask the tricky Q&#39;s not the obvious. Consider the felt not just the instrumental.… https://t.co/ca1zCn4oSO &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; More on the Transport Network Strategic Investment Tool (TraNSIT) here https://t.co/z5v827bfjd @Xavier_Ho #jtdwehi &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; To visualise data is to encode it; how can we decode it? So Isabelle created Tracey McTraceface https://t.co/4YoxS4T6OS #jtdwehi &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; oldmateo &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; :: &amp;quot;Research publishing methods stuck in the Stone Age&amp;quot; ::  Brendan Ansell on balancing completeness and salience i… https://t.co/7WVV2Ni31U &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; @bestqualitycrab leading a chorus of Slipping Away. Just your run of the mill dataviz conference. #JoiningTheDots… https://t.co/6oxUMXZfpm &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;favourites&#34;&gt;Favourites&lt;/h1&gt;
+&lt;h2 id=&#34;favourite-proportion&#34;&gt;Favourite proportion&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-favorite-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;favourite-count&#34;&gt;Favourite count&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/favorite-count-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;top-favourites&#34;&gt;Top favourites&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
+   &lt;th style=&#34;text-align:right;&#34;&gt; favorite_count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; WEHI_research &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Welcome to delegates attending today&#39;s symposium Joining the Dots: The Art and Science of Data Visualisation! #jtdwehi #dataviz &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; robbie_bonelli &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; So inspired by the talk given by @bestqualitycrab on the problem of #genderequality and how #dataviz can help us! Thanks Deb! #jtdwehi &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; KathyReid &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Building a clustering tree https://t.co/KDgdRfBejZ #jtdwehi &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;quotes&#34;&gt;Quotes&lt;/h1&gt;
+&lt;h2 id=&#34;quote-proportion&#34;&gt;Quote proportion&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-quote-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;quote-count&#34;&gt;Quote count&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/quotes-count-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;top-quotes&#34;&gt;Top quotes&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
+   &lt;th style=&#34;text-align:right;&#34;&gt; quote_count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Would love to see some taxonomic data plotted like this. #jtdwehi https://t.co/EbBL872fum &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; overlaying clusters: the datavis movie #jtdwehi https://t.co/KA5ovvvW6r &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; frostickle &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Where can people go from here, to take advantage of things they&#39;ve learnt at #jtdwehi? @ResPlat? @OKFNau?
+&lt;p&gt;#dataviz &lt;a href=&#34;https://t.co/TM6ngns9RS&#34;&gt;https://t.co/TM6ngns9RS&lt;/a&gt; &lt;/td&gt;&lt;/p&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; rowlandm &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; The money shot from @_lazappi_ ! #jtdwehi https://t.co/nqynLrC7Vg &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Slide here: https://t.co/o2E59HHoZE #jtdwehi https://t.co/L98WV1tXgu &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; karinv &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Thanks to @FCTweedie and @rubin_af for a great day of #dataviz! #jtdwehi https://t.co/Hti5FQtMGz &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; rowlandm &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; LImited funding ... sounds like research! #jtdwehi https://t.co/gZwllFhtRe &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Fascinating insights into the life sciences #jtdwehi https://t.co/LpRwfP00ns &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; karinv &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Adding the correct hashtag! (sorry folks) #jtdwehi https://t.co/PoGZe8k1k8 &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; robbie_bonelli &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Depressing and motivating! #jtdwehi https://t.co/YCGB1ibYkw &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;media&#34;&gt;Media&lt;/h1&gt;
+&lt;h2 id=&#34;media-count&#34;&gt;Media count&lt;/h2&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-media-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;top-media&#34;&gt;Top media&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
+   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
+   &lt;th style=&#34;text-align:right;&#34;&gt; favorite_count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; KathyReid &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; frostickle &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Now @Xavier_Ho from the @CSIROnews is talking about Visualising the Australian Transport Network
+&lt;p&gt;#jtdwehi #dataviz &lt;a href=&#34;https://t.co/DcvXYmD45F&#34;&gt;https://t.co/DcvXYmD45F&lt;/a&gt; &lt;/td&gt;&lt;/p&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Getting underway for #jtdwehi with acknowledgement of country from @WEHI_research&#39;s director https://t.co/oNcnu5wtd9 &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Patriarchy looks like this! What happens when we can describe the shape of injustice #jtdwehi https://t.co/8A7EhnFmt5 &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
+   &lt;td style=&#34;text-align:left;&#34;&gt; Best URL of the day goes to @Isa_Kiko&#39;s https://t.co/kapY0Aeacy  A great looking tool! #JoiningTheDots #jtdwehi https://t.co/gal2v1PUJY &lt;/td&gt;
+   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;most-liked-media-image&#34;&gt;Most liked media image&lt;/h3&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/most_liked_media.jpg) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1200&#34; height=&#34;900&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;tweet-text&#34;&gt;Tweet text&lt;/h1&gt;
+&lt;p&gt;The 100 words used 3 or more times.&lt;/p&gt;
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/count-words-1.png) --&gt;
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>PyConAU 2016</title>
+      <link>lazappi.id.au/post/2016-08-18-pyconau-2016/</link>
+      <pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/post/2016-08-18-pyconau-2016/</guid>
+      <description>&lt;p&gt;Over the weekend I attended 
+&lt;a href=&#34;https://2016.pycon-au.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PyCon Australia&lt;/a&gt;. This
+was my first time at a purely tech conference and I couldn&amp;rsquo;t help but compare
+it to my previous experiences at scientific conferences.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DISCLAIMER:&lt;/strong&gt; Like I said this was my first tech conference and my scientific
+conference experience is also fairly limited so some of the comments I make
+might be generalisations that don&amp;rsquo;t always apply.&lt;/p&gt;
+&lt;p&gt;PyCon started with miniconfs on Friday and continued coding sprints on Monday
+and Tuesday. I didn&amp;rsquo;t attend any of these so my experience was only of the main
+conference on Saturday and Sunday. Here are some of the highlights for me in
+terms of presentations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Andrew Lonsdale - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=PCZS9wqBUuE&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python for science, side projects and stuff!&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_for_science.jpg&#34; alt=&#34;Python for science, side projects and stuff!&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Alexander Hogue - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=MkSkqMvGBuo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Graphing when your Facebook friends are awake&lt;/a&gt; - Story of discovering a
+hidden Facebook API and using it to track when your friends are online.
+Thoroughly entertaining while still providing the technical details.&lt;/li&gt;
+&lt;li&gt;Rachel Bunder - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=cy5n6XAtA-w&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;I wish I learnt that earlier!&lt;/a&gt; - Description of some of the slightly more advanced features available in
+Python. Could be a great intro for someone new to Python.&lt;/li&gt;
+&lt;li&gt;Russell Keith-Magee - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=1sDyVJm3Ht0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python All the Things&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_all_the_things.jpg&#34; alt=&#34;Python All the Things&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Sebastian Vetter - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=bsJFMtQ5MZU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click: A Pleasure To Write, A Pleasure To Use&lt;/a&gt; - Click is an argument parsing
+library with additional features beyond argparse. Also apparently becoming the
+standard at Facebook (didn&amp;rsquo;t learn that at the conference, but it&amp;rsquo;s a fun
+fact).&lt;/li&gt;
+&lt;li&gt;Justin Warren - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=qjTc5q7MsMg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Predicting the TripleJ Hottest 100 With Python&lt;/a&gt; - Overview of predicting
+the Hottest 100 for the last few years, starting with the method used by the
+
+&lt;a href=&#34;http://warmest100.com.au/2013/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warmest 100&lt;/a&gt; and continuing on how
+to extract and process information from Instagram.&lt;/li&gt;
+&lt;li&gt;Jackson Fairchild - 
+&lt;a href=&#34;https://www.youtube.com/watch?v=Rdc06jpjVIY&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&lt;/a&gt;
+&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/tackling_burnout.jpg&#34; alt=&#34;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Full schedules for 
+&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/saturday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Saturday&lt;/a&gt; and 
+&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/sunday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sunday&lt;/a&gt;
+and links to videos are available on the PyCon website)&lt;/p&gt;
+&lt;p&gt;Overall I was really impressed by the quality of the talks. There were a couple
+that I thought could be improved a bit or where I wasn&amp;rsquo;t that interested in the
+content but there were no flat-out bad talks like you often see in the
+scientific context. It was clear that the presenters had put a lot of effort
+into planning what they were going to say and how to make that interesting and
+engaging for an audience that might be new to the topic. I don&amp;rsquo;t think I saw
+any slides that were walls of text or full of multiple plots. On the other had
+there was lots of code in slides, including live snippets. I&amp;rsquo;m not usually a
+fan of this but in the context it makes sense, particularly as you can assume
+that everyone has a basic grasp of Python. There were also lots of live demos,
+some of which were pretty impressive, and I don&amp;rsquo;t think I saw any fail.&lt;/p&gt;
+&lt;p&gt;What struck me as being the biggest differences at PyCon compared to a
+scientific conference was the sense of a community and awareness of wider
+social issues. There was a big effort to be inclusive to all genders,
+sexualities, ethnic groups etc. and several of the talks touched on ethical
+issues or the speaker&amp;rsquo;s own experience in the community. While I would hope
+that a scientific gathering wouldn&amp;rsquo;t be discriminatory I can&amp;rsquo;t see diversity
+being embraced in the same way, but hopefully that will continue to improve.
+There was a sense of everyone being in it together and it was common for
+speakers to praise work that they hadn&amp;rsquo;t been involved in, but thought was
+interesting or useful. I didn&amp;rsquo;t see anyone described using their titles and it
+seemed that someone who had learned Python in the last year was as valued as
+someone who had been a major contributor for the last 10 years (although there
+may had been power dynamics that I wasn&amp;rsquo;t aware of).&lt;/p&gt;
+&lt;p&gt;I think that a lot of the differences come from the work/volunteer divide.
+While PyCon was an opportunity to network or advertise your work the focus
+seemed to be on contributing to the community and the speakers were
+enthusiastic and keen to present. In contrast a scientific conference is a
+professional opportunity. As a scientist you are judged on your ability to get
+a talk which means more competition and sometimes speakers who aren&amp;rsquo;t
+interested in presenting. Every talk is a demonstration of your worth which
+makes it hard to present unfinished work and encourages people to try and fit
+to much in. It would be great for scientific conferences to spend more time
+discussing issues around thecommunities they represent but to do so they might
+have to sacrificeopportunities. For example it would be great to see a talk
+about mental health issues like Jackson Fairchild&amp;rsquo;s but that would mean taking
+away a spot from someone that might need it to progress their career.
+Personally I think we could maybe do with less talks from whichever well known
+person is doing the rounds in favour of some outside experts.&lt;/p&gt;
+&lt;p&gt;Overall I enjoyed my time at PyCon. It was a bit different to a scientific
+conference and I think there are probably things they can learn from each
+other. Congratulations to all the speakers and everyone involved in
+organising. Given that it is in Melbourne again I hope to be back next year.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

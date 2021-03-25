@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nicholas A Hamilton | lazappi</title>
+    <link>lazappi.id.au/authors/nicholas-a-hamilton/</link>
+      <atom:link href="lazappi.id.au/authors/nicholas-a-hamilton/index.xml" rel="self" type="application/rss+xml" />
+    <description>Nicholas A Hamilton</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>Nicholas A Hamilton</title>
+      <link>lazappi.id.au/authors/nicholas-a-hamilton/</link>
+    </image>
+    
+    <item>
+      <title>Nephron progenitor commitment is a stochastic process influenced by cell migration</title>
+      <link>lazappi.id.au/publication/2019-lawlor-nephron-commitment/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-lawlor-nephron-commitment/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PhD | lazappi</title>
+    <link>lazappi.id.au/tags/phd/</link>
+      <atom:link href="lazappi.id.au/tags/phd/index.xml" rel="self" type="application/rss+xml" />
+    <description>PhD</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>PhD</title>
+      <link>lazappi.id.au/tags/phd/</link>
+    </image>
+    
+    <item>
+      <title>Tools and techniques for single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/publication/2019-zappia-thesis/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-zappia-thesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools and techniques for single-cell RNA sequencing data</title>
+      <link>lazappi.id.au/talk/2019-03-22-phd-completion/</link>
+      <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2019-03-22-phd-completion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools, simulations and trees for scRNA-seq</title>
+      <link>lazappi.id.au/talk/2018-09-27-icb-seminar-2018/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/talk/2018-09-27-icb-seminar-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single-cells, simulation and kidneys in a dish</title>
+      <link>lazappi.id.au/talk/2017-07-17-wehi2017/</link>
+      <pubDate>Mon, 17 Jul 2017 10:45:00 +1000</pubDate>
+      <guid>lazappi.id.au/talk/2017-07-17-wehi2017/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

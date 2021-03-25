@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pei Xuan Er | lazappi</title>
+    <link>lazappi.id.au/authors/pei-xuan-er/</link>
+      <atom:link href="lazappi.id.au/authors/pei-xuan-er/index.xml" rel="self" type="application/rss+xml" />
+    <description>Pei Xuan Er</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>lazappi.id.au/img/icon.png</url>
+      <title>Pei Xuan Er</title>
+      <link>lazappi.id.au/authors/pei-xuan-er/</link>
+    </image>
+    
+    <item>
+      <title>Single-cell analysis reveals congruence between kidney organoids and human fetal kidney</title>
+      <link>lazappi.id.au/publication/2019-combes-kidney-organoids/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>lazappi.id.au/publication/2019-combes-kidney-organoids/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
