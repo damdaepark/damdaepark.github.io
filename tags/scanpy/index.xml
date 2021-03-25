@@ -1,37 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>scanpy | lazappi</title>
-    <link>lazappi.id.au/tags/scanpy/</link>
-      <atom:link href="lazappi.id.au/tags/scanpy/index.xml" rel="self" type="application/rss+xml" />
-    <description>scanpy</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 17 Apr 2020 13:31:20 +0200</lastBuildDate>
-    <image>
-      <url>lazappi.id.au/img/icon.png</url>
-      <title>scanpy</title>
-      <link>lazappi.id.au/tags/scanpy/</link>
-    </image>
-    
-    <item>
-      <title>Scanpy in R</title>
-      <link>lazappi.id.au/project/scanpy-in-r/</link>
-      <pubDate>Fri, 17 Apr 2020 13:31:20 +0200</pubDate>
-      <guid>lazappi.id.au/project/scanpy-in-r/</guid>
-      <description>&lt;p&gt;This tutorial covers how to set up a environment that lets you interact with
-
-&lt;a href=&#34;https://scanpy.readthedocs.io/en/stable/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scanpy&lt;/a&gt; from R. This includes
-converting Python 
-&lt;a href=&#34;https://anndata.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AnnData objects&lt;/a&gt;
-to R 
-&lt;a href=&#34;https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SingleCellExperiment&lt;/a&gt;
-and 
-&lt;a href=&#34;https://satijalab.org/seurat/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seurat&lt;/a&gt; objects as well as interacting with
-a Python environment directly in an 
-&lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>scanpy | lazappi</title><link>lazappi.id.au/tags/scanpy/</link><atom:link href="lazappi.id.au/tags/scanpy/index.xml" rel="self" type="application/rss+xml"/><description>scanpy</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 17 Apr 2020 13:31:20 +0200</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>scanpy</title><link>lazappi.id.au/tags/scanpy/</link></image><item><title>Scanpy in R</title><link>lazappi.id.au/project/scanpy-in-r/</link><pubDate>Fri, 17 Apr 2020 13:31:20 +0200</pubDate><guid>lazappi.id.au/project/scanpy-in-r/</guid><description>&lt;p>This tutorial covers how to set up a environment that lets you interact with
+&lt;a href="https://scanpy.readthedocs.io/en/stable/" target="_blank" rel="noopener">Scanpy&lt;/a> from R. This includes
+converting Python
+&lt;a href="https://anndata.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">AnnData objects&lt;/a>
+to R
+&lt;a href="https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html" target="_blank" rel="noopener">SingleCellExperiment&lt;/a>
+and
+&lt;a href="https://satijalab.org/seurat/" target="_blank" rel="noopener">Seurat&lt;/a> objects as well as interacting with
+a Python environment directly in an
+&lt;a href="https://rmarkdown.rstudio.com/" target="_blank" rel="noopener">R Markdown&lt;/a>
 document. It demonstrates some of the functions in Scanpy but doesn&amp;rsquo;t cover
-everything the package can do or how best to use Scanpy for your analysis.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+everything the package can do or how best to use Scanpy for your analysis.&lt;/p></description></item></channel></rss>

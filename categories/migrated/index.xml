@@ -1,1386 +1,889 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>migrated | lazappi</title>
-    <link>lazappi.id.au/categories/migrated/</link>
-      <atom:link href="lazappi.id.au/categories/migrated/index.xml" rel="self" type="application/rss+xml" />
-    <description>migrated</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 18 Aug 2017 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>lazappi.id.au/img/icon.png</url>
-      <title>migrated</title>
-      <link>lazappi.id.au/categories/migrated/</link>
-    </image>
-    
-    <item>
-      <title>Joining the Dots Twitter analysis</title>
-      <link>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</link>
-      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</guid>
-      <description>&lt;p&gt;Today I attended the 
-&lt;a href=&#34;https://joiningthedots.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Joining the Dots&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>migrated | lazappi</title><link>lazappi.id.au/categories/migrated/</link><atom:link href="lazappi.id.au/categories/migrated/index.xml" rel="self" type="application/rss+xml"/><description>migrated</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 18 Aug 2017 00:00:00 +0000</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>migrated</title><link>lazappi.id.au/categories/migrated/</link></image><item><title>Joining the Dots Twitter analysis</title><link>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</link><pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/</guid><description>&lt;p>Today I attended the
+&lt;a href="https://joiningthedots.github.io/" target="_blank" rel="noopener">Joining the Dots&lt;/a>
 visualisation symposium. You can see the slides for my talk about clustering
-trees 
-&lt;a href=&#34;https://speakerdeck.com/lazappi/building-a-clustering-tree&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. It
+trees
+&lt;a href="https://speakerdeck.com/lazappi/building-a-clustering-tree" target="_blank" rel="noopener">here&lt;/a>. It
 was a great event and hope we see more meetings like this in the future. Here
 is an analysis of the Twitter activity on the
-
-&lt;a href=&#34;https://twitter.com/search?q=%23jtdwehi&amp;amp;src=typd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;#jtdwehi&lt;/a&gt; hashtag, thanks to
-code from 
-&lt;a href=&#34;https://nsaunders.wordpress.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Neil Saunders&lt;/a&gt;. You can see it on
-
-&lt;a href=&#34;https://github.com/lazappi/jtdwehi-twitter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;An analysis of tweets from the Joining the Dots symposium. 1237 tweets were
-collected using the &lt;code&gt;rtweet&lt;/code&gt; R package:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;jtdwehi &amp;lt;- search_tweets(&amp;quot;#jtdwehi&amp;quot;, 10000)
+&lt;a href="https://twitter.com/search?q=%23jtdwehi&amp;amp;src=typd" target="_blank" rel="noopener">#jtdwehi&lt;/a> hashtag, thanks to
+code from
+&lt;a href="https://nsaunders.wordpress.com" target="_blank" rel="noopener">Neil Saunders&lt;/a>. You can see it on
+&lt;a href="https://github.com/lazappi/jtdwehi-twitter" target="_blank" rel="noopener">Github&lt;/a>.&lt;/p>
+&lt;h1 id="introduction">Introduction&lt;/h1>
+&lt;p>An analysis of tweets from the Joining the Dots symposium. 1237 tweets were
+collected using the &lt;code>rtweet&lt;/code> R package:&lt;/p>
+&lt;pre>&lt;code class="language-r">jtdwehi &amp;lt;- search_tweets(&amp;quot;#jtdwehi&amp;quot;, 10000)
 saveRDS(jtdwehi, &amp;quot;data/jtdwehi.Rds&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;search-all-the-hashtags&#34;&gt;Search all the hashtags!&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/hashtags-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h1 id=&#34;timeline&#34;&gt;Timeline&lt;/h1&gt;
-&lt;h2 id=&#34;tweets-by-day&#34;&gt;Tweets by day&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;tweets-by-day-and-time&#34;&gt;Tweets by day and time&lt;/h2&gt;
-&lt;p&gt;Filtered for dates July 21-26, Prague time.&lt;/p&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-hour-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h1 id=&#34;users&#34;&gt;Users&lt;/h1&gt;
-&lt;h2 id=&#34;top-tweeters&#34;&gt;Top tweeters&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-users-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-sources-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h1 id=&#34;networks&#34;&gt;Networks&lt;/h1&gt;
-&lt;h2 id=&#34;replies&#34;&gt;Replies&lt;/h2&gt;
-&lt;p&gt;The &amp;ldquo;replies network&amp;rdquo;, composed from users who reply directly to one another,
-coloured by page rank.&lt;/p&gt;
-&lt;p&gt;Better to view the original PNG file in the &lt;code&gt;data&lt;/code&gt; directory.&lt;/p&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_replies.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1024&#34; height=&#34;768&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;mentions&#34;&gt;Mentions&lt;/h2&gt;
-&lt;p&gt;The &amp;ldquo;mentions network&amp;rdquo;, where users mention other users in their tweets.
-Filtered for k-core &amp;gt;= 4 and coloured by modularity class.&lt;/p&gt;
-&lt;p&gt;Better to view the original PNG file in the &lt;code&gt;data&lt;/code&gt; directory.&lt;/p&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_mentions-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1024&#34; height=&#34;768&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h1 id=&#34;retweets&#34;&gt;Retweets&lt;/h1&gt;
-&lt;h2 id=&#34;retweet-proportion&#34;&gt;Retweet proportion&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-retweet-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;retweet-count&#34;&gt;Retweet count&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/retweet-count-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;top-retweets&#34;&gt;Top retweets&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
-   &lt;th style=&#34;text-align:right;&#34;&gt; retweet_count &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Really valuable point from @KathyReid: sometimes #dataviz decisions affected by need to consider political priorities and buy-in #jtdwehi &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; @bestqualitycrab demoing dataviz: ask the tricky Q&#39;s not the obvious. Consider the felt not just the instrumental.… https://t.co/ca1zCn4oSO &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 8 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; More on the Transport Network Strategic Investment Tool (TraNSIT) here https://t.co/z5v827bfjd @Xavier_Ho #jtdwehi &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 8 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; mikejonesmelb &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; To visualise data is to encode it; how can we decode it? So Isabelle created Tracey McTraceface https://t.co/4YoxS4T6OS #jtdwehi &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; oldmateo &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; :: &amp;quot;Research publishing methods stuck in the Stone Age&amp;quot; ::  Brendan Ansell on balancing completeness and salience i… https://t.co/7WVV2Ni31U &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; @bestqualitycrab leading a chorus of Slipping Away. Just your run of the mill dataviz conference. #JoiningTheDots… https://t.co/6oxUMXZfpm &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;favourites&#34;&gt;Favourites&lt;/h1&gt;
-&lt;h2 id=&#34;favourite-proportion&#34;&gt;Favourite proportion&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-favorite-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;favourite-count&#34;&gt;Favourite count&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/favorite-count-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;top-favourites&#34;&gt;Top favourites&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
-   &lt;th style=&#34;text-align:right;&#34;&gt; favorite_count &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 19 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; WEHI_research &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Welcome to delegates attending today&#39;s symposium Joining the Dots: The Art and Science of Data Visualisation! #jtdwehi #dataviz &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; robbie_bonelli &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; So inspired by the talk given by @bestqualitycrab on the problem of #genderequality and how #dataviz can help us! Thanks Deb! #jtdwehi &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; KathyReid &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Building a clustering tree https://t.co/KDgdRfBejZ #jtdwehi &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;quotes&#34;&gt;Quotes&lt;/h1&gt;
-&lt;h2 id=&#34;quote-proportion&#34;&gt;Quote proportion&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-quote-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;quote-count&#34;&gt;Quote count&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/quotes-count-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;top-quotes&#34;&gt;Top quotes&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
-   &lt;th style=&#34;text-align:right;&#34;&gt; quote_count &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Would love to see some taxonomic data plotted like this. #jtdwehi https://t.co/EbBL872fum &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 5 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; overlaying clusters: the datavis movie #jtdwehi https://t.co/KA5ovvvW6r &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 5 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; frostickle &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Where can people go from here, to take advantage of things they&#39;ve learnt at #jtdwehi? @ResPlat? @OKFNau?
-&lt;p&gt;#dataviz &lt;a href=&#34;https://t.co/TM6ngns9RS&#34;&gt;https://t.co/TM6ngns9RS&lt;/a&gt; &lt;/td&gt;&lt;/p&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; rowlandm &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; The money shot from @_lazappi_ ! #jtdwehi https://t.co/nqynLrC7Vg &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Slide here: https://t.co/o2E59HHoZE #jtdwehi https://t.co/L98WV1tXgu &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; karinv &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Thanks to @FCTweedie and @rubin_af for a great day of #dataviz! #jtdwehi https://t.co/Hti5FQtMGz &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 3 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; rowlandm &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; LImited funding ... sounds like research! #jtdwehi https://t.co/gZwllFhtRe &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; peterneish &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Fascinating insights into the life sciences #jtdwehi https://t.co/LpRwfP00ns &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; karinv &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Adding the correct hashtag! (sorry folks) #jtdwehi https://t.co/PoGZe8k1k8 &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; robbie_bonelli &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Depressing and motivating! #jtdwehi https://t.co/YCGB1ibYkw &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;media&#34;&gt;Media&lt;/h1&gt;
-&lt;h2 id=&#34;media-count&#34;&gt;Media count&lt;/h2&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-media-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;top-media&#34;&gt;Top media&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; screen_name &lt;/th&gt;
-   &lt;th style=&#34;text-align:left;&#34;&gt; text &lt;/th&gt;
-   &lt;th style=&#34;text-align:right;&#34;&gt; favorite_count &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Xavier_Ho &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 16 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 12 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; _lazappi_ &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; KathyReid &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; .@claresloggett&#39;s tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 11 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; frostickle &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Now @Xavier_Ho from the @CSIROnews is talking about Visualising the Australian Transport Network
-&lt;p&gt;#jtdwehi #dataviz &lt;a href=&#34;https://t.co/DcvXYmD45F&#34;&gt;https://t.co/DcvXYmD45F&lt;/a&gt; &lt;/td&gt;&lt;/p&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Getting underway for #jtdwehi with acknowledgement of country from @WEHI_research&#39;s director https://t.co/oNcnu5wtd9 &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 10 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; FCTweedie &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Patriarchy looks like this! What happens when we can describe the shape of injustice #jtdwehi https://t.co/8A7EhnFmt5 &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 9 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; gravitron &lt;/td&gt;
-   &lt;td style=&#34;text-align:left;&#34;&gt; Best URL of the day goes to @Isa_Kiko&#39;s https://t.co/kapY0Aeacy  A great looking tool! #JoiningTheDots #jtdwehi https://t.co/gal2v1PUJY &lt;/td&gt;
-   &lt;td style=&#34;text-align:right;&#34;&gt; 7 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;most-liked-media-image&#34;&gt;Most liked media image&lt;/h3&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/most_liked_media.jpg) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;1200&#34; height=&#34;900&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h1 id=&#34;tweet-text&#34;&gt;Tweet text&lt;/h1&gt;
-&lt;p&gt;The 100 words used 3 or more times.&lt;/p&gt;
-&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/count-words-1.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;672&#34; height=&#34;480&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-</description>
-    </item>
-    
-    <item>
-      <title>Building a clustering tree</title>
-      <link>lazappi.id.au/post/2017-07-19-building-a-clustering-tree/</link>
-      <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2017-07-19-building-a-clustering-tree/</guid>
-      <description>&lt;p&gt;For my PhD I am working on methods for analysing single-cell RNA-sequencing
+&lt;/code>&lt;/pre>
+&lt;h2 id="search-all-the-hashtags">Search all the hashtags!&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/hashtags-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/hashtags-1_hu8bd7b9d7c5b1f9a70c1600da3980f77f_44398_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h1 id="timeline">Timeline&lt;/h1>
+&lt;h2 id="tweets-by-day">Tweets by day&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-1_hu61c8d7d4f00d7d5d513bf29f260cbafa_19662_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="tweets-by-day-and-time">Tweets by day and time&lt;/h2>
+&lt;p>Filtered for dates July 21-26, Prague time.&lt;/p>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-by-day-hour-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-by-day-hour-1_hu30efeb8f88994c2ab9d4afec890de659_23132_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h1 id="users">Users&lt;/h1>
+&lt;h2 id="top-tweeters">Top tweeters&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-users-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-users-1_hu08b85d508b1569cd8a29d6b2bee6f569_54060_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="sources">Sources&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/tweets-top-sources-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/tweets-top-sources-1_hu5b4643ca43d5cbafa3f03593dae53660_29598_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h1 id="networks">Networks&lt;/h1>
+&lt;h2 id="replies">Replies&lt;/h2>
+&lt;p>The &amp;ldquo;replies network&amp;rdquo;, composed from users who reply directly to one another,
+coloured by page rank.&lt;/p>
+&lt;p>Better to view the original PNG file in the &lt;code>data&lt;/code> directory.&lt;/p>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_replies.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_replies_hu201542cdfdec487318445ffd94adf306_77376_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1024" height="768">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="mentions">Mentions&lt;/h2>
+&lt;p>The &amp;ldquo;mentions network&amp;rdquo;, where users mention other users in their tweets.
+Filtered for k-core &amp;gt;= 4 and coloured by modularity class.&lt;/p>
+&lt;p>Better to view the original PNG file in the &lt;code>data&lt;/code> directory.&lt;/p>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/jtdwehi_mentions-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/jtdwehi_mentions-1_hu34c1019dc80e7304fa55fc721f15d2df_276682_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1024" height="768">
+&lt;/a>
+&lt;/figure>
+&lt;h1 id="retweets">Retweets&lt;/h1>
+&lt;h2 id="retweet-proportion">Retweet proportion&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-retweet-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-retweet-1_hu3f617637702233114c16b266cb270a88_19947_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="retweet-count">Retweet count&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/retweet-count-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/retweet-count-1_hu2ddeb2e2ed8d9a6411f93d2fac47d8fd_21895_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="top-retweets">Top retweets&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left;"> screen_name &lt;/th>
+&lt;th style="text-align:left;"> text &lt;/th>
+&lt;th style="text-align:right;"> retweet_count &lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left;"> _lazappi_ &lt;/td>
+&lt;td style="text-align:left;"> Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td>
+&lt;td style="text-align:right;"> 12 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> _lazappi_ &lt;/td>
+&lt;td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td>
+&lt;td style="text-align:right;"> 9 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> mikejonesmelb &lt;/td>
+&lt;td style="text-align:left;"> Really valuable point from @KathyReid: sometimes #dataviz decisions affected by need to consider political priorities and buy-in #jtdwehi &lt;/td>
+&lt;td style="text-align:right;"> 9 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> gravitron &lt;/td>
+&lt;td style="text-align:left;"> @bestqualitycrab demoing dataviz: ask the tricky Q's not the obvious. Consider the felt not just the instrumental.… https://t.co/ca1zCn4oSO &lt;/td>
+&lt;td style="text-align:right;"> 8 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> mikejonesmelb &lt;/td>
+&lt;td style="text-align:left;"> More on the Transport Network Strategic Investment Tool (TraNSIT) here https://t.co/z5v827bfjd @Xavier_Ho #jtdwehi &lt;/td>
+&lt;td style="text-align:right;"> 8 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> mikejonesmelb &lt;/td>
+&lt;td style="text-align:left;"> To visualise data is to encode it; how can we decode it? So Isabelle created Tracey McTraceface https://t.co/4YoxS4T6OS #jtdwehi &lt;/td>
+&lt;td style="text-align:right;"> 7 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> oldmateo &lt;/td>
+&lt;td style="text-align:left;"> :: &amp;quot;Research publishing methods stuck in the Stone Age&amp;quot; :: Brendan Ansell on balancing completeness and salience i… https://t.co/7WVV2Ni31U &lt;/td>
+&lt;td style="text-align:right;"> 7 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> gravitron &lt;/td>
+&lt;td style="text-align:left;"> @bestqualitycrab leading a chorus of Slipping Away. Just your run of the mill dataviz conference. #JoiningTheDots… https://t.co/6oxUMXZfpm &lt;/td>
+&lt;td style="text-align:right;"> 7 &lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h1 id="favourites">Favourites&lt;/h1>
+&lt;h2 id="favourite-proportion">Favourite proportion&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-favorite-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-favorite-1_hu19788e47ae1f13dbbdb23fc3193c1b28_21096_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="favourite-count">Favourite count&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/favorite-count-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/favorite-count-1_hu6bbcdbd15117c90003e509907d1d2958_23563_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="top-favourites">Top favourites&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left;"> screen_name &lt;/th>
+&lt;th style="text-align:left;"> text &lt;/th>
+&lt;th style="text-align:right;"> favorite_count &lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left;"> _lazappi_ &lt;/td>
+&lt;td style="text-align:left;"> Slides from my #jtdwehi talk today about building a clustering tree https://t.co/lwTztVstOC &lt;/td>
+&lt;td style="text-align:right;"> 19 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> Xavier_Ho &lt;/td>
+&lt;td style="text-align:left;"> People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td>
+&lt;td style="text-align:right;"> 16 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> WEHI_research &lt;/td>
+&lt;td style="text-align:left;"> Welcome to delegates attending today's symposium Joining the Dots: The Art and Science of Data Visualisation! #jtdwehi #dataviz &lt;/td>
+&lt;td style="text-align:right;"> 16 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td>
+&lt;td style="text-align:right;"> 12 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> _lazappi_ &lt;/td>
+&lt;td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> robbie_bonelli &lt;/td>
+&lt;td style="text-align:left;"> So inspired by the talk given by @bestqualitycrab on the problem of #genderequality and how #dataviz can help us! Thanks Deb! #jtdwehi &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> KathyReid &lt;/td>
+&lt;td style="text-align:left;"> The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> peterneish &lt;/td>
+&lt;td style="text-align:left;"> Building a clustering tree https://t.co/KDgdRfBejZ #jtdwehi &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h1 id="quotes">Quotes&lt;/h1>
+&lt;h2 id="quote-proportion">Quote proportion&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/is-quote-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/is-quote-1_hu4479360ceadfa64f6ac7df436b7d4ca6_23130_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="quote-count">Quote count&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/quotes-count-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/quotes-count-1_hu20e43e23d238f022617b29dc58b98bcd_22401_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="top-quotes">Top quotes&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left;"> screen_name &lt;/th>
+&lt;th style="text-align:left;"> text &lt;/th>
+&lt;th style="text-align:right;"> quote_count &lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left;"> peterneish &lt;/td>
+&lt;td style="text-align:left;"> Would love to see some taxonomic data plotted like this. #jtdwehi https://t.co/EbBL872fum &lt;/td>
+&lt;td style="text-align:right;"> 5 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> Xavier_Ho &lt;/td>
+&lt;td style="text-align:left;"> overlaying clusters: the datavis movie #jtdwehi https://t.co/KA5ovvvW6r &lt;/td>
+&lt;td style="text-align:right;"> 5 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> frostickle &lt;/td>
+&lt;td style="text-align:left;"> Where can people go from here, to take advantage of things they've learnt at #jtdwehi? @ResPlat? @OKFNau?
+&lt;p>#dataviz &lt;a href="https://t.co/TM6ngns9RS">https://t.co/TM6ngns9RS&lt;/a> &lt;/td>&lt;/p>
+&lt;td style="text-align:right;"> 4 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> rowlandm &lt;/td>
+&lt;td style="text-align:left;"> The money shot from @_lazappi_ ! #jtdwehi https://t.co/nqynLrC7Vg &lt;/td>
+&lt;td style="text-align:right;"> 3 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> Xavier_Ho &lt;/td>
+&lt;td style="text-align:left;"> Slide here: https://t.co/o2E59HHoZE #jtdwehi https://t.co/L98WV1tXgu &lt;/td>
+&lt;td style="text-align:right;"> 3 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> karinv &lt;/td>
+&lt;td style="text-align:left;"> Thanks to @FCTweedie and @rubin_af for a great day of #dataviz! #jtdwehi https://t.co/Hti5FQtMGz &lt;/td>
+&lt;td style="text-align:right;"> 3 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> rowlandm &lt;/td>
+&lt;td style="text-align:left;"> LImited funding ... sounds like research! #jtdwehi https://t.co/gZwllFhtRe &lt;/td>
+&lt;td style="text-align:right;"> 2 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> peterneish &lt;/td>
+&lt;td style="text-align:left;"> Fascinating insights into the life sciences #jtdwehi https://t.co/LpRwfP00ns &lt;/td>
+&lt;td style="text-align:right;"> 2 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> karinv &lt;/td>
+&lt;td style="text-align:left;"> Adding the correct hashtag! (sorry folks) #jtdwehi https://t.co/PoGZe8k1k8 &lt;/td>
+&lt;td style="text-align:right;"> 2 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> robbie_bonelli &lt;/td>
+&lt;td style="text-align:left;"> Depressing and motivating! #jtdwehi https://t.co/YCGB1ibYkw &lt;/td>
+&lt;td style="text-align:right;"> 2 &lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h1 id="media">Media&lt;/h1>
+&lt;h2 id="media-count">Media count&lt;/h2>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/has-media-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/has-media-1_huef2d4c330d25097c01a3e990789b9fff_20776_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="top-media">Top media&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left;"> screen_name &lt;/th>
+&lt;th style="text-align:left;"> text &lt;/th>
+&lt;th style="text-align:right;"> favorite_count &lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left;"> Xavier_Ho &lt;/td>
+&lt;td style="text-align:left;"> People are flowing back in #jtdwehi https://t.co/t4aU8WXoX9 &lt;/td>
+&lt;td style="text-align:right;"> 16 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Visualising grant recipients: Davids most funded but Richards get more money #jtdwehi https://t.co/iPImbK4paf &lt;/td>
+&lt;td style="text-align:right;"> 12 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> _lazappi_ &lt;/td>
+&lt;td style="text-align:left;"> .@bestqualitycrab Visualising creative research (more creatively) #jtdwehi #sketchnotes https://t.co/DXhk1u22nf &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> KathyReid &lt;/td>
+&lt;td style="text-align:left;"> The incredible @bestqualitycrab keynoting #jtdwehi https://t.co/mLgKdVt4IX &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> .@claresloggett's tips on where to start with data viz in Python #jtdwehi https://t.co/jN626uOAqd &lt;/td>
+&lt;td style="text-align:right;"> 11 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Representing Greek films via olive trees (which are are actually Markov chains) #jtdwehi https://t.co/SB2CG4oH8D &lt;/td>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> frostickle &lt;/td>
+&lt;td style="text-align:left;"> Now @Xavier_Ho from the @CSIROnews is talking about Visualising the Australian Transport Network
+&lt;p>#jtdwehi #dataviz &lt;a href="https://t.co/DcvXYmD45F">https://t.co/DcvXYmD45F&lt;/a> &lt;/td>&lt;/p>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Getting underway for #jtdwehi with acknowledgement of country from @WEHI_research's director https://t.co/oNcnu5wtd9 &lt;/td>
+&lt;td style="text-align:right;"> 10 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> FCTweedie &lt;/td>
+&lt;td style="text-align:left;"> Patriarchy looks like this! What happens when we can describe the shape of injustice #jtdwehi https://t.co/8A7EhnFmt5 &lt;/td>
+&lt;td style="text-align:right;"> 9 &lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left;"> gravitron &lt;/td>
+&lt;td style="text-align:left;"> Best URL of the day goes to @Isa_Kiko's https://t.co/kapY0Aeacy A great looking tool! #JoiningTheDots #jtdwehi https://t.co/gal2v1PUJY &lt;/td>
+&lt;td style="text-align:right;"> 7 &lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="most-liked-media-image">Most liked media image&lt;/h3>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/most_liked_media.jpg) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/most_liked_media_huc84e63f6dc77192f086a5c0ce1be1001_225181_2000x2000_fit_q90_lanczos.jpg" class="lazyload" alt="" width="1200" height="900">
+&lt;/a>
+&lt;/figure>
+&lt;h1 id="tweet-text">Tweet text&lt;/h1>
+&lt;p>The 100 words used 3 or more times.&lt;/p>
+&lt;!-- ![](/post/2017-08-18-joining-the-dots-twitter-analysis_files/count-words-1.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2017-08-18-joining-the-dots-twitter-analysis/count-words-1_hu79701df4e0cf0157b47abfc1db94aeab_80170_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="672" height="480">
+&lt;/a>
+&lt;/figure></description></item><item><title>Building a clustering tree</title><link>lazappi.id.au/post/2017-07-19-building-a-clustering-tree/</link><pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2017-07-19-building-a-clustering-tree/</guid><description>&lt;p>For my PhD I am working on methods for analysing single-cell RNA-sequencing
 (scRNA-seq) data which measure the expression of genes in individual cells. One
 of the most common analyses done on this type of data is to cluster the cells,
-often in an attempt to find out what cell types are present in a sample.&lt;/p&gt;
-&lt;p&gt;In a recent seminar I showed some images of what I am calling a
+often in an attempt to find out what cell types are present in a sample.&lt;/p>
+&lt;p>In a recent seminar I showed some images of what I am calling a
 &amp;ldquo;clustering tree&amp;rdquo; (you can see the slides
-
-&lt;a href=&#34;https://speakerdeck.com/lazappi/wehi-bioinformatics-seminar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; if you are
+&lt;a href="https://speakerdeck.com/lazappi/wehi-bioinformatics-seminar" target="_blank" rel="noopener">here&lt;/a> if you are
 interested). This is a visualisation I came up with to show the relationship
 between clusterings as the number of clusters is increased. A few people asked
-how I had made it so here is a short example.&lt;/p&gt;
-&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
-&lt;p&gt;First we need to load the libraries we are going to use:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Simulation
+how I had made it so here is a short example.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>First we need to load the libraries we are going to use:&lt;/p>
+&lt;pre>&lt;code># Simulation
 library(splatter)
-
 # Clustering
 library(Seurat) # Installed from https://github.com/satijalab/seurat
-
 # Graphs
 library(igraph)
-
 # Plotting
 library(ggraph)
 library(viridis)
-
 # Data manipulation
 library(tidyverse)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For this example I am going to simulate some scRNA-seq data with eight different
+&lt;/code>&lt;/pre>
+&lt;p>For this example I am going to simulate some scRNA-seq data with eight different
 groups with different numbers of cells using
-
-&lt;a href=&#34;https://bioconductor.org/packages/splatter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;Splatter&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sim &amp;lt;- splatSimulateGroups(groupCells = c(100, 80, 60, 50, 30, 20, 20, 15),
-                           seed = 10, verbose = FALSE)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let&amp;rsquo;s take a quick look at this to see if it is anything like we would
-expect:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;plotTSNE(sim, colour_by = &amp;quot;Group&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;lazappi.id.au/post/2017-07-19-building-a-clustering-tree_files/sim-tSNE-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Here we can see the different groups, so there should be something for our
-clustering analysis to find.&lt;/p&gt;
-&lt;p&gt;The clustering pacakge we are going to use is
-
-&lt;a href=&#34;http://satijalab.org/seurat/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;Seurat&lt;/code&gt;&lt;/a&gt; which uses it&amp;rsquo;s own object to store the
-data. Here is a small function I have written to convert from the &lt;code&gt;SCESet&lt;/code&gt;
-object produced by &lt;code&gt;Splatter&lt;/code&gt; to the &lt;code&gt;Seurat&lt;/code&gt; object required by &lt;code&gt;Seurat&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SCESetToSeurat &amp;lt;- function(sce) {
-    if (!is(sce,&#39;SCESet&#39;)) {
-        stop(&amp;quot;sce must be an SCESet object&amp;quot;)
-    }
-
-    counts &amp;lt;- scater::counts(sce)
-
-    if (is.null(counts)) {
-        stop(&amp;quot;sce must contain counts to convert to Seurat&amp;quot;)
-    }
-
-    seurat &amp;lt;- new(&amp;quot;seurat&amp;quot;,
-                  raw.data = counts,
-                  is.expr = sce@lowerDetectionLimit,
-                  data.info = Biobase::pData(sce),
-                  cell.names = Biobase::sampleNames(sce))
-
-    return(seurat)
+&lt;a href="https://bioconductor.org/packages/splatter" target="_blank" rel="noopener">&lt;code>Splatter&lt;/code>&lt;/a>.&lt;/p>
+&lt;pre>&lt;code>sim &amp;lt;- splatSimulateGroups(groupCells = c(100, 80, 60, 50, 30, 20, 20, 15),
+seed = 10, verbose = FALSE)
+&lt;/code>&lt;/pre>
+&lt;p>Let&amp;rsquo;s take a quick look at this to see if it is anything like we would
+expect:&lt;/p>
+&lt;pre>&lt;code>plotTSNE(sim, colour_by = &amp;quot;Group&amp;quot;)
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="lazappi.id.au/post/2017-07-19-building-a-clustering-tree_files/sim-tSNE-1.png" alt="">&lt;/p>
+&lt;p>Here we can see the different groups, so there should be something for our
+clustering analysis to find.&lt;/p>
+&lt;p>The clustering pacakge we are going to use is
+&lt;a href="http://satijalab.org/seurat/" target="_blank" rel="noopener">&lt;code>Seurat&lt;/code>&lt;/a> which uses it&amp;rsquo;s own object to store the
+data. Here is a small function I have written to convert from the &lt;code>SCESet&lt;/code>
+object produced by &lt;code>Splatter&lt;/code> to the &lt;code>Seurat&lt;/code> object required by &lt;code>Seurat&lt;/code>.&lt;/p>
+&lt;pre>&lt;code>SCESetToSeurat &amp;lt;- function(sce) {
+if (!is(sce,'SCESet')) {
+stop(&amp;quot;sce must be an SCESet object&amp;quot;)
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now to convert the dataset.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;seurat &amp;lt;- SCESetToSeurat(sim)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
-&lt;p&gt;We now have a dataset in the format required by &lt;code&gt;Seurat&lt;/code&gt;. Before we do any
+counts &amp;lt;- scater::counts(sce)
+if (is.null(counts)) {
+stop(&amp;quot;sce must contain counts to convert to Seurat&amp;quot;)
+}
+seurat &amp;lt;- new(&amp;quot;seurat&amp;quot;,
+raw.data = counts,
+is.expr = sce@lowerDetectionLimit,
+data.info = Biobase::pData(sce),
+cell.names = Biobase::sampleNames(sce))
+return(seurat)
+}
+&lt;/code>&lt;/pre>
+&lt;p>Now to convert the dataset.&lt;/p>
+&lt;pre>&lt;code>seurat &amp;lt;- SCESetToSeurat(sim)
+&lt;/code>&lt;/pre>
+&lt;h2 id="clustering">Clustering&lt;/h2>
+&lt;p>We now have a dataset in the format required by &lt;code>Seurat&lt;/code>. Before we do any
 clustering we need to run through some setup steps. I&amp;rsquo;m not going to explain
-what they are doing here, if you want to now the details refer to the &lt;code&gt;Seurat&lt;/code&gt;
-
-&lt;a href=&#34;http://satijalab.org/seurat/pbmc-tutorial.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tutorials&lt;/a&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;seurat &amp;lt;- Setup(seurat, project = &amp;quot;Example&amp;quot;, meta.data = seurat@data.info)
+what they are doing here, if you want to now the details refer to the &lt;code>Seurat&lt;/code>
+&lt;a href="http://satijalab.org/seurat/pbmc-tutorial.html" target="_blank" rel="noopener">tutorials&lt;/a>.&lt;/p>
+&lt;pre>&lt;code>seurat &amp;lt;- Setup(seurat, project = &amp;quot;Example&amp;quot;, meta.data = seurat@data.info)
 seurat &amp;lt;- MeanVarPlot(seurat, fxn.x = expMean, fxn.y = logVarDivMean,
-                      x.low.cutoff = 0.1, x.high.cutoff = 3,
-                      y.cutoff = 0.5, do.contour = FALSE)
-
+x.low.cutoff = 0.1, x.high.cutoff = 3,
+y.cutoff = 0.5, do.contour = FALSE)
 seurat &amp;lt;- PCA(seurat, pc.genes = seurat@var.genes, do.print = FALSE)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we can do the clustering. The parameter we are interested in is the
-&lt;code&gt;resolution&lt;/code&gt; parameter which controls how many clusters &lt;code&gt;Seurat&lt;/code&gt; returns. I
-start by setting &lt;code&gt;resolution = 0&lt;/code&gt;. This will create a cluster containing all
-cells that will serve as the root of our tree. We also ask &lt;code&gt;Seurat&lt;/code&gt; to store
+&lt;/code>&lt;/pre>
+&lt;p>Now we can do the clustering. The parameter we are interested in is the
+&lt;code>resolution&lt;/code> parameter which controls how many clusters &lt;code>Seurat&lt;/code> returns. I
+start by setting &lt;code>resolution = 0&lt;/code>. This will create a cluster containing all
+cells that will serve as the root of our tree. We also ask &lt;code>Seurat&lt;/code> to store
 some of the intermediate calculations so we don&amp;rsquo;t have to do them again when we
-cluster with different resolutions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;seurat &amp;lt;- FindClusters(seurat, pc.use = 1:20, resolution = 0, algorithm = 3,
-                       print.output = FALSE, save.SNN = TRUE)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can now loop over a range of resolutions that we are interested in. I have
+cluster with different resolutions:&lt;/p>
+&lt;pre>&lt;code>seurat &amp;lt;- FindClusters(seurat, pc.use = 1:20, resolution = 0, algorithm = 3,
+print.output = FALSE, save.SNN = TRUE)
+&lt;/code>&lt;/pre>
+&lt;p>We can now loop over a range of resolutions that we are interested in. I have
 only tried a few values here but if this was a real dataset you might want to
-try some more.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;for (res in c(0.3, 0.6, 0.9, 1.2)) {
-   seurat &amp;lt;- FindClusters(seurat, resolution = res, algorithm = 3,
-                          print.output = FALSE)
+try some more.&lt;/p>
+&lt;pre>&lt;code>for (res in c(0.3, 0.6, 0.9, 1.2)) {
+seurat &amp;lt;- FindClusters(seurat, resolution = res, algorithm = 3,
+print.output = FALSE)
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;get-results&#34;&gt;Get results&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Seurat&lt;/code&gt; stores the cluster labels in the &lt;code&gt;data.info&lt;/code&gt; slot in columns starting
-with &lt;code&gt;res.&lt;/code&gt;. This is the only part we are interested in so let&amp;rsquo;s extract just
-those columns.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;clusterings &amp;lt;- seurat@data.info %&amp;gt;% select(contains(&amp;quot;res.&amp;quot;))
-
+&lt;/code>&lt;/pre>
+&lt;h2 id="get-results">Get results&lt;/h2>
+&lt;p>&lt;code>Seurat&lt;/code> stores the cluster labels in the &lt;code>data.info&lt;/code> slot in columns starting
+with &lt;code>res.&lt;/code>. This is the only part we are interested in so let&amp;rsquo;s extract just
+those columns.&lt;/p>
+&lt;pre>&lt;code>clusterings &amp;lt;- seurat@data.info %&amp;gt;% select(contains(&amp;quot;res.&amp;quot;))
 head(clusterings)
-
-##       res.0 res.0.3 res.0.6 res.0.9 res.1.2
-## Cell1     0       1       0       0       0
-## Cell2     0       1       0       0       0
-## Cell3     0       1       0       0       0
-## Cell4     0       1       0       0       0
-## Cell5     0       1       0       0       0
-## Cell6     0       1       0       0       0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We now know which cluster each cell was assigned to at each resolution but to
+## res.0 res.0.3 res.0.6 res.0.9 res.1.2
+## Cell1 0 1 0 0 0
+## Cell2 0 1 0 0 0
+## Cell3 0 1 0 0 0
+## Cell4 0 1 0 0 0
+## Cell5 0 1 0 0 0
+## Cell6 0 1 0 0 0
+&lt;/code>&lt;/pre>
+&lt;p>We now know which cluster each cell was assigned to at each resolution but to
 build the tree we need some more information. This next function looks at two
 neighbouring resolutions and works out how many cells moved from a cluster in
 the lower resolution to each cluster in the higher resolution. These transitions
-are going to form the edges of our tree.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;getEdges &amp;lt;- function(clusterings) {
-
-    # Loop over the different resolutions
-    transitions &amp;lt;- lapply(1:(ncol(clusterings) - 1), function(i) {
-
-        # Extract two neighbouring clusterings
-        from.res &amp;lt;- sort(colnames(clusterings))[i]
-        to.res &amp;lt;- sort(colnames(clusterings))[i + 1]
-
-        # Get the cluster names
-        from.clusters &amp;lt;- sort(unique(clusterings[, from.res]))
-        to.clusters &amp;lt;- sort(unique(clusterings[, to.res]))
-
-        # Get all possible combinations
-        trans.df &amp;lt;- expand.grid(FromClust = from.clusters,
-                                ToClust = to.clusters)
-
-        # Loop over the possible transitions
-        trans &amp;lt;- apply(trans.df, 1, function(x) {
-            from.clust &amp;lt;- x[1]
-            to.clust &amp;lt;- x[2]
-
-            # Find the cells from those clusters
-            is.from &amp;lt;- clusterings[, from.res] == from.clust
-            is.to &amp;lt;- clusterings[, to.res] == to.clust
-
-            # Count them up
-            trans.count &amp;lt;- sum(is.from &amp;amp; is.to)
-
-            # Get the sizes of the two clusters
-            from.size &amp;lt;- sum(is.from)
-            to.size &amp;lt;- sum(is.to)
-
-            # Get the proportions of cells moving along this edge
-            trans.prop.from &amp;lt;- trans.count / from.size
-            trans.prop.to &amp;lt;- trans.count / to.size
-
-            return(c(trans.count, trans.prop.from, trans.prop.to))
-        })
-
-        # Tidy up the results
-        trans.df$FromRes &amp;lt;- as.numeric(gsub(&amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;, from.res))
-        trans.df$ToRes &amp;lt;- as.numeric(gsub(&amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;, to.res))
-        trans.df$TransCount &amp;lt;- trans[1, ]
-        trans.df$TransPropFrom &amp;lt;- trans[2, ]
-        trans.df$TransPropTo &amp;lt;- trans[3, ]
-
-        return(trans.df)
-    })
-
-    # Bind the results from the different resolutions together
-    transitions &amp;lt;- do.call(&amp;quot;rbind&amp;quot;, transitions)
-
-    # Tidy everything up
-    levs &amp;lt;- sort(as.numeric(levels(transitions$ToClust)))
-    transitions &amp;lt;- transitions %&amp;gt;%
-        mutate(FromClust = factor(FromClust,
-                                  levels = levs))  %&amp;gt;%
-        mutate(ToClust = factor(ToClust, levels = levs))
-
-    return(transitions)
+are going to form the edges of our tree.&lt;/p>
+&lt;pre>&lt;code>getEdges &amp;lt;- function(clusterings) {
+# Loop over the different resolutions
+transitions &amp;lt;- lapply(1:(ncol(clusterings) - 1), function(i) {
+# Extract two neighbouring clusterings
+from.res &amp;lt;- sort(colnames(clusterings))[i]
+to.res &amp;lt;- sort(colnames(clusterings))[i + 1]
+# Get the cluster names
+from.clusters &amp;lt;- sort(unique(clusterings[, from.res]))
+to.clusters &amp;lt;- sort(unique(clusterings[, to.res]))
+# Get all possible combinations
+trans.df &amp;lt;- expand.grid(FromClust = from.clusters,
+ToClust = to.clusters)
+# Loop over the possible transitions
+trans &amp;lt;- apply(trans.df, 1, function(x) {
+from.clust &amp;lt;- x[1]
+to.clust &amp;lt;- x[2]
+# Find the cells from those clusters
+is.from &amp;lt;- clusterings[, from.res] == from.clust
+is.to &amp;lt;- clusterings[, to.res] == to.clust
+# Count them up
+trans.count &amp;lt;- sum(is.from &amp;amp; is.to)
+# Get the sizes of the two clusters
+from.size &amp;lt;- sum(is.from)
+to.size &amp;lt;- sum(is.to)
+# Get the proportions of cells moving along this edge
+trans.prop.from &amp;lt;- trans.count / from.size
+trans.prop.to &amp;lt;- trans.count / to.size
+return(c(trans.count, trans.prop.from, trans.prop.to))
+})
+# Tidy up the results
+trans.df$FromRes &amp;lt;- as.numeric(gsub(&amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;, from.res))
+trans.df$ToRes &amp;lt;- as.numeric(gsub(&amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;, to.res))
+trans.df$TransCount &amp;lt;- trans[1, ]
+trans.df$TransPropFrom &amp;lt;- trans[2, ]
+trans.df$TransPropTo &amp;lt;- trans[3, ]
+return(trans.df)
+})
+# Bind the results from the different resolutions together
+transitions &amp;lt;- do.call(&amp;quot;rbind&amp;quot;, transitions)
+# Tidy everything up
+levs &amp;lt;- sort(as.numeric(levels(transitions$ToClust)))
+transitions &amp;lt;- transitions %&amp;gt;%
+mutate(FromClust = factor(FromClust,
+levels = levs)) %&amp;gt;%
+mutate(ToClust = factor(ToClust, levels = levs))
+return(transitions)
 }
-
 edges &amp;lt;- getEdges(clusterings)
 head(edges)
-
-##   FromClust ToClust FromRes ToRes TransCount TransPropFrom TransPropTo
-## 1         0       0     0.0   0.3        135     0.3600000           1
-## 2         0       1     0.0   0.3        100     0.2666667           1
-## 3         0       2     0.0   0.3         60     0.1600000           1
-## 4         0       3     0.0   0.3         50     0.1333333           1
-## 5         0       4     0.0   0.3         30     0.0800000           1
-## 6         0       0     0.3   0.6          0     0.0000000           0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Some of these columns are pretty obvious but the last three could do with an
-explanation. &lt;code&gt;TransCount&lt;/code&gt; is the number of cells that move along this edge.
-&lt;code&gt;TransPropFrom&lt;/code&gt; is the proportion of the cells in the lower resolution cluster
-that have made this transition and &lt;code&gt;TransPropTo&lt;/code&gt; is the proportion of cells in
-the higher resolution cluster that came from this edge.&lt;/p&gt;
-&lt;p&gt;Getting the information about the nodes of the tree is easier as these just
+## FromClust ToClust FromRes ToRes TransCount TransPropFrom TransPropTo
+## 1 0 0 0.0 0.3 135 0.3600000 1
+## 2 0 1 0.0 0.3 100 0.2666667 1
+## 3 0 2 0.0 0.3 60 0.1600000 1
+## 4 0 3 0.0 0.3 50 0.1333333 1
+## 5 0 4 0.0 0.3 30 0.0800000 1
+## 6 0 0 0.3 0.6 0 0.0000000 0
+&lt;/code>&lt;/pre>
+&lt;p>Some of these columns are pretty obvious but the last three could do with an
+explanation. &lt;code>TransCount&lt;/code> is the number of cells that move along this edge.
+&lt;code>TransPropFrom&lt;/code> is the proportion of the cells in the lower resolution cluster
+that have made this transition and &lt;code>TransPropTo&lt;/code> is the proportion of cells in
+the higher resolution cluster that came from this edge.&lt;/p>
+&lt;p>Getting the information about the nodes of the tree is easier as these just
 represent the clusters. This function summarises the cluster information and
-converts it to long format.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;getNodes &amp;lt;- function(clusterings) {
-    nodes &amp;lt;- clusterings %&amp;gt;%
-        gather(key = Res, value = Cluster) %&amp;gt;%
-        group_by(Res, Cluster) %&amp;gt;%
-        summarise(Size = n()) %&amp;gt;%
-        ungroup() %&amp;gt;%
-        mutate(Res = stringr::str_replace(Res, &amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;)) %&amp;gt;%
-        mutate(Res = as.numeric(Res), Cluster = as.numeric(Cluster)) %&amp;gt;%
-        mutate(Node = paste0(&amp;quot;R&amp;quot;, Res, &amp;quot;C&amp;quot;, Cluster)) %&amp;gt;%
-        select(Node, everything())
+converts it to long format.&lt;/p>
+&lt;pre>&lt;code>getNodes &amp;lt;- function(clusterings) {
+nodes &amp;lt;- clusterings %&amp;gt;%
+gather(key = Res, value = Cluster) %&amp;gt;%
+group_by(Res, Cluster) %&amp;gt;%
+summarise(Size = n()) %&amp;gt;%
+ungroup() %&amp;gt;%
+mutate(Res = stringr::str_replace(Res, &amp;quot;res.&amp;quot;, &amp;quot;&amp;quot;)) %&amp;gt;%
+mutate(Res = as.numeric(Res), Cluster = as.numeric(Cluster)) %&amp;gt;%
+mutate(Node = paste0(&amp;quot;R&amp;quot;, Res, &amp;quot;C&amp;quot;, Cluster)) %&amp;gt;%
+select(Node, everything())
 }
-
 nodes &amp;lt;- getNodes(clusterings)
 head(nodes)
-
 ## # A tibble: 6 x 4
-##     Node   Res Cluster  Size
-##    &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
-## 1   R0C0   0.0       0   375
-## 2 R0.3C0   0.3       0   135
-## 3 R0.3C1   0.3       1   100
-## 4 R0.3C2   0.3       2    60
-## 5 R0.3C3   0.3       3    50
-## 6 R0.3C4   0.3       4    30
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Each node needs a unique ID which I have made by combining the resolution and
-cluster number. We also record the number of cells in each cluster.&lt;/p&gt;
-&lt;p&gt;Now we can build the graph we will use as the starting point for our plot. Some
+## Node Res Cluster Size
+## &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+## 1 R0C0 0.0 0 375
+## 2 R0.3C0 0.3 0 135
+## 3 R0.3C1 0.3 1 100
+## 4 R0.3C2 0.3 2 60
+## 5 R0.3C3 0.3 3 50
+## 6 R0.3C4 0.3 4 30
+&lt;/code>&lt;/pre>
+&lt;p>Each node needs a unique ID which I have made by combining the resolution and
+cluster number. We also record the number of cells in each cluster.&lt;/p>
+&lt;p>Now we can build the graph we will use as the starting point for our plot. Some
 of the possible edges between clusters will have no cells travelling along them
 so we filter them out. We also remove edges that correspond to a small
-proportion (&amp;lt; 2%) of cells in the higher resolution cluster.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;graph &amp;lt;- edges %&amp;gt;%
-    # Remove edges without any cell...
-    filter(TransCount &amp;gt; 0) %&amp;gt;%
-    # ...or making up only a small proportion of the new cluster
-    filter(TransPropTo &amp;gt; 0.02) %&amp;gt;%
-    # Rename the nodes
-    mutate(FromNode = paste0(&amp;quot;R&amp;quot;, FromRes, &amp;quot;C&amp;quot;, FromClust)) %&amp;gt;%
-    mutate(ToNode = paste0(&amp;quot;R&amp;quot;, ToRes, &amp;quot;C&amp;quot;, ToClust)) %&amp;gt;%
-    # Reorder columns
-    select(FromNode, ToNode, everything()) %&amp;gt;%
-    # Build a graph using igraph
-    graph_from_data_frame(vertices = nodes)
-
+proportion (&amp;lt; 2%) of cells in the higher resolution cluster.&lt;/p>
+&lt;pre>&lt;code>graph &amp;lt;- edges %&amp;gt;%
+# Remove edges without any cell...
+filter(TransCount &amp;gt; 0) %&amp;gt;%
+# ...or making up only a small proportion of the new cluster
+filter(TransPropTo &amp;gt; 0.02) %&amp;gt;%
+# Rename the nodes
+mutate(FromNode = paste0(&amp;quot;R&amp;quot;, FromRes, &amp;quot;C&amp;quot;, FromClust)) %&amp;gt;%
+mutate(ToNode = paste0(&amp;quot;R&amp;quot;, ToRes, &amp;quot;C&amp;quot;, ToClust)) %&amp;gt;%
+# Reorder columns
+select(FromNode, ToNode, everything()) %&amp;gt;%
+# Build a graph using igraph
+graph_from_data_frame(vertices = nodes)
 print(graph)
-
 ## IGRAPH b1b93c3 DN-- 23 23 --
 ## + attr: name (v/c), Res (v/n), Cluster (v/n), Size (v/n),
 ## | FromClust (e/c), ToClust (e/c), FromRes (e/n), ToRes (e/n),
 ## | TransCount (e/n), TransPropFrom (e/n), TransPropTo (e/n)
 ## + edges from b1b93c3 (vertex names):
-##  [1] R0C0  -&amp;gt;R0.3C0 R0C0  -&amp;gt;R0.3C1 R0C0  -&amp;gt;R0.3C2 R0C0  -&amp;gt;R0.3C3
-##  [5] R0C0  -&amp;gt;R0.3C4 R0.3C1-&amp;gt;R0.6C0 R0.3C0-&amp;gt;R0.6C1 R0.3C4-&amp;gt;R0.6C1
-##  [9] R0.3C0-&amp;gt;R0.6C2 R0.3C2-&amp;gt;R0.6C3 R0.3C3-&amp;gt;R0.6C4 R0.6C0-&amp;gt;R0.9C0
+## [1] R0C0 -&amp;gt;R0.3C0 R0C0 -&amp;gt;R0.3C1 R0C0 -&amp;gt;R0.3C2 R0C0 -&amp;gt;R0.3C3
+## [5] R0C0 -&amp;gt;R0.3C4 R0.3C1-&amp;gt;R0.6C0 R0.3C0-&amp;gt;R0.6C1 R0.3C4-&amp;gt;R0.6C1
+## [9] R0.3C0-&amp;gt;R0.6C2 R0.3C2-&amp;gt;R0.6C3 R0.3C3-&amp;gt;R0.6C4 R0.6C0-&amp;gt;R0.9C0
 ## [13] R0.6C2-&amp;gt;R0.9C1 R0.6C3-&amp;gt;R0.9C2 R0.6C1-&amp;gt;R0.9C3 R0.6C4-&amp;gt;R0.9C4
 ## [17] R0.6C1-&amp;gt;R0.9C5 R0.9C0-&amp;gt;R1.2C0 R0.9C1-&amp;gt;R1.2C1 R0.9C2-&amp;gt;R1.2C2
 ## [21] R0.9C3-&amp;gt;R1.2C3 R0.9C4-&amp;gt;R1.2C4 R0.9C5-&amp;gt;R1.2C5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;plot-the-tree&#34;&gt;Plot the tree&lt;/h2&gt;
-&lt;p&gt;The last step is to pass our graph to the
-
-&lt;a href=&#34;https://github.com/thomasp85/ggraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;ggraph&lt;/code&gt;&lt;/a&gt; library for plotting.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Plot our graph using the `tree` layout
+&lt;/code>&lt;/pre>
+&lt;h2 id="plot-the-tree">Plot the tree&lt;/h2>
+&lt;p>The last step is to pass our graph to the
+&lt;a href="https://github.com/thomasp85/ggraph" target="_blank" rel="noopener">&lt;code>ggraph&lt;/code>&lt;/a> library for plotting.&lt;/p>
+&lt;pre>&lt;code># Plot our graph using the `tree` layout
 ggraph(graph, layout = &amp;quot;tree&amp;quot;) +
-    # Plot the edges, colour is the number of cells and transparency is the
-    # proportion contribution to the new cluster
-    geom_edge_link(arrow = arrow(length = unit(1, &#39;mm&#39;)),
-                   end_cap = circle(3.5, &amp;quot;mm&amp;quot;), edge_width = 1,
-                   aes(colour = log(TransCount), alpha = TransPropTo)) +
-    # Plot the nodes, size is the number of cells
-    geom_node_point(aes(colour = factor(Res),
-                        size = Size)) +
-    geom_node_text(aes(label = Cluster), size = 3) +
-    # Adjust the scales
-    scale_size(range = c(4, 15)) +
-    scale_edge_colour_gradientn(colours = viridis(100)) +
-    # Add legend labels
-    guides(size = guide_legend(title = &amp;quot;Cluster Size&amp;quot;, title.position = &amp;quot;top&amp;quot;),
-           colour = guide_legend(title = &amp;quot;Clustering Resolution&amp;quot;,
-                                 title.position = &amp;quot;top&amp;quot;),
-           edge_colour = guide_edge_colorbar(title = &amp;quot;Cell Count (log)&amp;quot;,
-                                             title.position = &amp;quot;top&amp;quot;),
-           edge_alpha = guide_legend(title = &amp;quot;Cluster Prop&amp;quot;,
-                                     title.position = &amp;quot;top&amp;quot;, nrow = 2)) +
-    # Remove the axes as they don&#39;t really mean anything
-    theme_void() +
-    theme(legend.position = &amp;quot;bottom&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;lazappi.id.au/post/2017-07-19-building-a-clustering-tree_files/plot-tree-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;And here is the result! We can see that see that &lt;code&gt;Seurat&lt;/code&gt; finds three of the
+# Plot the edges, colour is the number of cells and transparency is the
+# proportion contribution to the new cluster
+geom_edge_link(arrow = arrow(length = unit(1, 'mm')),
+end_cap = circle(3.5, &amp;quot;mm&amp;quot;), edge_width = 1,
+aes(colour = log(TransCount), alpha = TransPropTo)) +
+# Plot the nodes, size is the number of cells
+geom_node_point(aes(colour = factor(Res),
+size = Size)) +
+geom_node_text(aes(label = Cluster), size = 3) +
+# Adjust the scales
+scale_size(range = c(4, 15)) +
+scale_edge_colour_gradientn(colours = viridis(100)) +
+# Add legend labels
+guides(size = guide_legend(title = &amp;quot;Cluster Size&amp;quot;, title.position = &amp;quot;top&amp;quot;),
+colour = guide_legend(title = &amp;quot;Clustering Resolution&amp;quot;,
+title.position = &amp;quot;top&amp;quot;),
+edge_colour = guide_edge_colorbar(title = &amp;quot;Cell Count (log)&amp;quot;,
+title.position = &amp;quot;top&amp;quot;),
+edge_alpha = guide_legend(title = &amp;quot;Cluster Prop&amp;quot;,
+title.position = &amp;quot;top&amp;quot;, nrow = 2)) +
+# Remove the axes as they don't really mean anything
+theme_void() +
+theme(legend.position = &amp;quot;bottom&amp;quot;)
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="lazappi.id.au/post/2017-07-19-building-a-clustering-tree_files/plot-tree-1.png" alt="">&lt;/p>
+&lt;p>And here is the result! We can see that see that &lt;code>Seurat&lt;/code> finds three of the
 clusters easily and that these don&amp;rsquo;t change as the resolution increases. A
 fourth group contains most of the cells and is sub-divided as we increase
 resolution. Interestingly at the lowest resolution there is a small cluster
-which is then absorbed into one of the other branches.&lt;/p&gt;
-&lt;p&gt;This tree is cleaner and has less branches than what we would be likely to see
+which is then absorbed into one of the other branches.&lt;/p>
+&lt;p>This tree is cleaner and has less branches than what we would be likely to see
 with a real dataset but the process to create it would be the same. I have used
-&lt;code&gt;Seurat&lt;/code&gt; as the clustering method in this example but it should be easy to adapt
+&lt;code>Seurat&lt;/code> as the clustering method in this example but it should be easy to adapt
 the process to any other method that allows you to adjust the number of
 clusters. I have found this visualisation useful in my analysis particularly for
 looking at which clusters are very distinct and the relationships between
-different clusters and clusterings.&lt;/p&gt;
-&lt;p&gt;Good luck creating your own clustering trees!&lt;/p&gt;
-&lt;h3 id=&#34;session-information&#34;&gt;Session information&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;devtools::session_info()
-
+different clusters and clusterings.&lt;/p>
+&lt;p>Good luck creating your own clustering trees!&lt;/p>
+&lt;h3 id="session-information">Session information&lt;/h3>
+&lt;pre>&lt;code>devtools::session_info()
 ## Session info -------------------------------------------------------------
-
-##  setting  value
-##  version  R version 3.4.1 (2017-06-30)
-##  system   x86_64, darwin15.6.0
-##  ui       RStudio (1.0.143)
-##  language (EN)
-##  collate  en_AU.UTF-8
-##  tz       Australia/Melbourne
-##  date     2017-07-19
-
+## setting value
+## version R version 3.4.1 (2017-06-30)
+## system x86_64, darwin15.6.0
+## ui RStudio (1.0.143)
+## language (EN)
+## collate en_AU.UTF-8
+## tz Australia/Melbourne
+## date 2017-07-19
 ## Packages -----------------------------------------------------------------
-
-##  package        * version  date       source
-##  AnnotationDbi    1.38.1   2017-06-01 Bioconductor
-##  ape              4.1      2017-02-14 cran (@4.1)
-##  assertthat       0.2.0    2017-04-11 CRAN (R 3.4.0)
-##  backports        1.1.0    2017-05-22 CRAN (R 3.4.0)
-##  base           * 3.4.1    2017-07-07 local
-##  beeswarm         0.2.3    2016-04-25 CRAN (R 3.4.0)
-##  bindr            0.1      2016-11-13 CRAN (R 3.4.0)
-##  bindrcpp       * 0.2      2017-06-17 CRAN (R 3.4.0)
-##  Biobase        * 2.36.2   2017-05-04 Bioconductor
-##  BiocGenerics   * 0.22.0   2017-04-25 Bioconductor
-##  BiocParallel     1.10.1   2017-05-03 Bioconductor
-##  biomaRt          2.32.1   2017-06-09 Bioconductor
-##  bit              1.1-12   2014-04-09 CRAN (R 3.4.0)
-##  bit64            0.9-7    2017-05-08 CRAN (R 3.4.0)
-##  bitops           1.0-6    2013-08-17 CRAN (R 3.4.0)
-##  blob             1.1.0    2017-06-17 CRAN (R 3.4.0)
-##  broom            0.4.2    2017-02-13 CRAN (R 3.4.0)
-##  car              2.1-5    2017-07-04 cran (@2.1-5)
-##  caret            6.0-76   2017-04-18 cran (@6.0-76)
-##  caTools          1.17.1   2014-09-10 cran (@1.17.1)
-##  cellranger       1.1.0    2016-07-27 CRAN (R 3.4.0)
-##  checkmate        1.8.3    2017-07-03 CRAN (R 3.4.1)
-##  class            7.3-14   2015-08-30 CRAN (R 3.4.1)
-##  cluster          2.0.6    2017-03-10 CRAN (R 3.4.1)
-##  codetools        0.2-15   2016-10-05 CRAN (R 3.4.1)
-##  colorspace       1.3-2    2016-12-14 CRAN (R 3.4.0)
-##  compiler         3.4.1    2017-07-07 local
-##  cowplot        * 0.7.0    2016-10-28 cran (@0.7.0)
-##  data.table       1.10.4   2017-02-01 CRAN (R 3.4.0)
-##  datasets       * 3.4.1    2017-07-07 local
-##  DBI              0.7      2017-06-18 CRAN (R 3.4.0)
-##  DEoptimR         1.0-8    2016-11-19 cran (@1.0-8)
-##  devtools         1.13.2   2017-06-02 CRAN (R 3.4.0)
-##  digest           0.6.12   2017-01-27 CRAN (R 3.4.0)
-##  diptest          0.75-7   2016-12-05 cran (@0.75-7)
-##  dplyr          * 0.7.1    2017-06-22 CRAN (R 3.4.1)
-##  edgeR            3.18.1   2017-05-06 Bioconductor
-##  evaluate         0.10.1   2017-06-24 CRAN (R 3.4.1)
-##  fastICA          1.2-1    2017-06-12 cran (@1.2-1)
-##  flexmix          2.3-14   2017-04-28 cran (@2.3-14)
-##  FNN              1.1      2013-07-31 cran (@1.1)
-##  forcats          0.2.0    2017-01-23 CRAN (R 3.4.0)
-##  foreach          1.4.3    2015-10-13 cran (@1.4.3)
-##  foreign          0.8-69   2017-06-22 CRAN (R 3.4.1)
-##  fpc              2.1-10   2015-08-14 cran (@2.1-10)
-##  gdata            2.18.0   2017-06-06 cran (@2.18.0)
-##  ggbeeswarm       0.5.3    2016-12-01 CRAN (R 3.4.0)
-##  ggforce          0.1.1    2016-11-28 CRAN (R 3.4.0)
-##  ggplot2        * 2.2.1    2016-12-30 CRAN (R 3.4.0)
-##  ggraph         * 1.0.0    2017-02-24 CRAN (R 3.4.0)
-##  ggrepel          0.6.5    2016-11-24 CRAN (R 3.4.0)
-##  glue             1.1.1    2017-06-21 CRAN (R 3.4.1)
-##  gplots           3.0.1    2016-03-30 cran (@3.0.1)
-##  graphics       * 3.4.1    2017-07-07 local
-##  grDevices      * 3.4.1    2017-07-07 local
-##  grid             3.4.1    2017-07-07 local
-##  gridExtra        2.2.1    2016-02-29 CRAN (R 3.4.0)
-##  gtable           0.2.0    2016-02-26 CRAN (R 3.4.0)
-##  gtools           3.5.0    2015-05-29 cran (@3.5.0)
-##  haven            1.1.0    2017-07-09 CRAN (R 3.4.1)
-##  hms              0.3      2016-11-22 CRAN (R 3.4.0)
-##  htmltools        0.3.6    2017-04-28 CRAN (R 3.4.0)
-##  httpuv           1.3.5    2017-07-04 CRAN (R 3.4.1)
-##  httr             1.2.1    2016-07-03 CRAN (R 3.4.0)
-##  igraph         * 1.1.1    2017-07-16 CRAN (R 3.4.1)
-##  IRanges          2.10.2   2017-05-25 Bioconductor
-##  irlba            2.2.1    2017-05-17 cran (@2.2.1)
-##  iterators        1.0.8    2015-10-13 cran (@1.0.8)
-##  jsonlite         1.5      2017-06-01 CRAN (R 3.4.0)
-##  kernlab          0.9-25   2016-10-03 cran (@0.9-25)
-##  KernSmooth       2.23-15  2015-06-29 CRAN (R 3.4.1)
-##  knitr            1.16     2017-05-18 CRAN (R 3.4.1)
-##  labeling         0.3      2014-08-23 CRAN (R 3.4.0)
-##  lars             1.2      2013-04-24 cran (@1.2)
-##  lattice          0.20-35  2017-03-25 CRAN (R 3.4.1)
-##  lazyeval         0.2.0    2016-06-12 CRAN (R 3.4.0)
-##  limma            3.32.3   2017-07-16 Bioconductor
-##  lme4             1.1-13   2017-04-19 cran (@1.1-13)
-##  locfit           1.5-9.1  2013-04-20 CRAN (R 3.4.0)
-##  lubridate        1.6.0    2016-09-13 CRAN (R 3.4.0)
-##  magrittr         1.5      2014-11-22 CRAN (R 3.4.0)
-##  MASS             7.3-47   2017-02-26 CRAN (R 3.4.1)
-##  Matrix           1.2-10   2017-05-03 CRAN (R 3.4.1)
-##  MatrixModels     0.4-1    2015-08-22 cran (@0.4-1)
-##  matrixStats      0.52.2   2017-04-14 CRAN (R 3.4.0)
-##  mclust           5.3      2017-05-21 cran (@5.3)
-##  memoise          1.1.0    2017-04-21 CRAN (R 3.4.0)
-##  methods        * 3.4.1    2017-07-07 local
-##  mgcv             1.8-17   2017-02-08 CRAN (R 3.4.1)
-##  mime             0.5      2016-07-07 CRAN (R 3.4.0)
-##  minqa            1.2.4    2014-10-09 cran (@1.2.4)
-##  mixtools         1.1.0    2017-03-10 cran (@1.1.0)
-##  mnormt           1.5-5    2016-10-15 CRAN (R 3.4.0)
-##  ModelMetrics     1.1.0    2016-08-26 cran (@1.1.0)
-##  modelr           0.1.0    2016-08-31 CRAN (R 3.4.0)
-##  modeltools       0.2-21   2013-09-02 cran (@0.2-21)
-##  munsell          0.4.3    2016-02-13 CRAN (R 3.4.0)
-##  mvtnorm          1.0-6    2017-03-02 cran (@1.0-6)
-##  nlme             3.1-131  2017-02-06 CRAN (R 3.4.1)
-##  nloptr           1.0.4    2014-08-04 cran (@1.0.4)
-##  nnet             7.3-12   2016-02-02 CRAN (R 3.4.1)
-##  numDeriv         2016.8-1 2016-08-27 cran (@2016.8-)
-##  parallel       * 3.4.1    2017-07-07 local
-##  pbapply          1.3-3    2017-07-04 cran (@1.3-3)
-##  pbkrtest         0.4-7    2017-03-15 cran (@0.4-7)
-##  pkgconfig        2.0.1    2017-03-21 CRAN (R 3.4.0)
-##  plyr             1.8.4    2016-06-08 CRAN (R 3.4.0)
-##  prabclus         2.2-6    2015-01-14 cran (@2.2-6)
-##  psych            1.7.5    2017-05-03 CRAN (R 3.4.1)
-##  purrr          * 0.2.2.2  2017-05-11 CRAN (R 3.4.0)
-##  quantreg         5.33     2017-04-18 cran (@5.33)
-##  R6               2.2.2    2017-06-17 CRAN (R 3.4.0)
-##  ranger           0.8.0    2017-06-20 cran (@0.8.0)
-##  RColorBrewer     1.1-2    2014-12-07 CRAN (R 3.4.0)
-##  Rcpp             0.12.12  2017-07-15 CRAN (R 3.4.1)
-##  RCurl            1.95-4.8 2016-03-01 CRAN (R 3.4.0)
-##  readr          * 1.1.1    2017-05-16 CRAN (R 3.4.0)
-##  readxl           1.0.0    2017-04-18 CRAN (R 3.4.0)
-##  reshape2         1.4.2    2016-10-22 CRAN (R 3.4.0)
-##  rhdf5            2.20.0   2017-04-25 Bioconductor
-##  rjson            0.2.15   2014-11-03 CRAN (R 3.4.0)
-##  rlang            0.1.1    2017-05-18 CRAN (R 3.4.0)
-##  rmarkdown        1.6      2017-06-15 CRAN (R 3.4.1)
-##  robustbase       0.92-7   2016-12-09 cran (@0.92-7)
-##  ROCR             1.0-7    2015-03-26 cran (@1.0-7)
-##  rprojroot        1.2      2017-01-16 CRAN (R 3.4.0)
-##  RSQLite          2.0      2017-06-19 CRAN (R 3.4.1)
-##  Rtsne            0.13     2017-04-14 cran (@0.13)
-##  rvest            0.3.2    2016-06-17 CRAN (R 3.4.0)
-##  S4Vectors        0.14.3   2017-06-03 Bioconductor
-##  scales           0.4.1    2016-11-09 CRAN (R 3.4.0)
-##  scater         * 1.4.0    2017-04-25 Bioconductor
-##  segmented        0.5-2.1  2017-06-14 cran (@0.5-2.1)
-##  Seurat         * 1.4.0.16 2017-07-19 Github (satijalab/seurat@3bd092a)
-##  shiny            1.0.3    2017-04-26 CRAN (R 3.4.0)
-##  shinydashboard   0.6.1    2017-06-14 CRAN (R 3.4.0)
-##  sn               1.5-0    2017-02-10 cran (@1.5-0)
-##  SparseM          1.77     2017-04-23 cran (@1.77)
-##  splatter       * 1.0.3    2017-05-27 Bioconductor
-##  splines          3.4.1    2017-07-07 local
-##  stats          * 3.4.1    2017-07-07 local
-##  stats4           3.4.1    2017-07-07 local
-##  stringi          1.1.5    2017-04-07 CRAN (R 3.4.0)
-##  stringr          1.2.0    2017-02-18 CRAN (R 3.4.0)
-##  survival         2.41-3   2017-04-04 CRAN (R 3.4.1)
-##  tclust           1.2-7    2017-06-30 cran (@1.2-7)
-##  tibble         * 1.3.3    2017-05-28 CRAN (R 3.4.0)
-##  tidyr          * 0.6.3    2017-05-15 CRAN (R 3.4.0)
-##  tidyverse      * 1.1.1    2017-01-27 CRAN (R 3.4.0)
-##  tools            3.4.1    2017-07-07 local
-##  trimcluster      0.1-2    2012-10-29 cran (@0.1-2)
-##  tsne             0.1-3    2016-07-15 cran (@0.1-3)
-##  tweenr           0.1.5    2016-10-10 CRAN (R 3.4.0)
-##  tximport         1.4.0    2017-04-25 Bioconductor
-##  udunits2         0.13     2016-11-17 CRAN (R 3.4.0)
-##  units            0.4-5    2017-06-15 CRAN (R 3.4.0)
-##  utils          * 3.4.1    2017-07-07 local
-##  VGAM             1.0-3    2017-01-11 cran (@1.0-3)
-##  vipor            0.4.5    2017-03-22 CRAN (R 3.4.0)
-##  viridis        * 0.4.0    2017-03-27 CRAN (R 3.4.0)
-##  viridisLite    * 0.2.0    2017-03-24 CRAN (R 3.4.0)
-##  withr            1.0.2    2016-06-20 CRAN (R 3.4.0)
-##  XML              3.98-1.9 2017-06-19 CRAN (R 3.4.1)
-##  xml2             1.1.1    2017-01-24 CRAN (R 3.4.0)
-##  xtable           1.8-2    2016-02-05 CRAN (R 3.4.0)
-##  yaml             2.1.14   2016-11-12 CRAN (R 3.4.0)
-##  zlibbioc         1.22.0   2017-04-25 Bioconductor
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>PyConAU 2016</title>
-      <link>lazappi.id.au/post/2016-08-18-pyconau-2016/</link>
-      <pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2016-08-18-pyconau-2016/</guid>
-      <description>&lt;p&gt;Over the weekend I attended 
-&lt;a href=&#34;https://2016.pycon-au.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PyCon Australia&lt;/a&gt;. This
+## package * version date source
+## AnnotationDbi 1.38.1 2017-06-01 Bioconductor
+## ape 4.1 2017-02-14 cran (@4.1)
+## assertthat 0.2.0 2017-04-11 CRAN (R 3.4.0)
+## backports 1.1.0 2017-05-22 CRAN (R 3.4.0)
+## base * 3.4.1 2017-07-07 local
+## beeswarm 0.2.3 2016-04-25 CRAN (R 3.4.0)
+## bindr 0.1 2016-11-13 CRAN (R 3.4.0)
+## bindrcpp * 0.2 2017-06-17 CRAN (R 3.4.0)
+## Biobase * 2.36.2 2017-05-04 Bioconductor
+## BiocGenerics * 0.22.0 2017-04-25 Bioconductor
+## BiocParallel 1.10.1 2017-05-03 Bioconductor
+## biomaRt 2.32.1 2017-06-09 Bioconductor
+## bit 1.1-12 2014-04-09 CRAN (R 3.4.0)
+## bit64 0.9-7 2017-05-08 CRAN (R 3.4.0)
+## bitops 1.0-6 2013-08-17 CRAN (R 3.4.0)
+## blob 1.1.0 2017-06-17 CRAN (R 3.4.0)
+## broom 0.4.2 2017-02-13 CRAN (R 3.4.0)
+## car 2.1-5 2017-07-04 cran (@2.1-5)
+## caret 6.0-76 2017-04-18 cran (@6.0-76)
+## caTools 1.17.1 2014-09-10 cran (@1.17.1)
+## cellranger 1.1.0 2016-07-27 CRAN (R 3.4.0)
+## checkmate 1.8.3 2017-07-03 CRAN (R 3.4.1)
+## class 7.3-14 2015-08-30 CRAN (R 3.4.1)
+## cluster 2.0.6 2017-03-10 CRAN (R 3.4.1)
+## codetools 0.2-15 2016-10-05 CRAN (R 3.4.1)
+## colorspace 1.3-2 2016-12-14 CRAN (R 3.4.0)
+## compiler 3.4.1 2017-07-07 local
+## cowplot * 0.7.0 2016-10-28 cran (@0.7.0)
+## data.table 1.10.4 2017-02-01 CRAN (R 3.4.0)
+## datasets * 3.4.1 2017-07-07 local
+## DBI 0.7 2017-06-18 CRAN (R 3.4.0)
+## DEoptimR 1.0-8 2016-11-19 cran (@1.0-8)
+## devtools 1.13.2 2017-06-02 CRAN (R 3.4.0)
+## digest 0.6.12 2017-01-27 CRAN (R 3.4.0)
+## diptest 0.75-7 2016-12-05 cran (@0.75-7)
+## dplyr * 0.7.1 2017-06-22 CRAN (R 3.4.1)
+## edgeR 3.18.1 2017-05-06 Bioconductor
+## evaluate 0.10.1 2017-06-24 CRAN (R 3.4.1)
+## fastICA 1.2-1 2017-06-12 cran (@1.2-1)
+## flexmix 2.3-14 2017-04-28 cran (@2.3-14)
+## FNN 1.1 2013-07-31 cran (@1.1)
+## forcats 0.2.0 2017-01-23 CRAN (R 3.4.0)
+## foreach 1.4.3 2015-10-13 cran (@1.4.3)
+## foreign 0.8-69 2017-06-22 CRAN (R 3.4.1)
+## fpc 2.1-10 2015-08-14 cran (@2.1-10)
+## gdata 2.18.0 2017-06-06 cran (@2.18.0)
+## ggbeeswarm 0.5.3 2016-12-01 CRAN (R 3.4.0)
+## ggforce 0.1.1 2016-11-28 CRAN (R 3.4.0)
+## ggplot2 * 2.2.1 2016-12-30 CRAN (R 3.4.0)
+## ggraph * 1.0.0 2017-02-24 CRAN (R 3.4.0)
+## ggrepel 0.6.5 2016-11-24 CRAN (R 3.4.0)
+## glue 1.1.1 2017-06-21 CRAN (R 3.4.1)
+## gplots 3.0.1 2016-03-30 cran (@3.0.1)
+## graphics * 3.4.1 2017-07-07 local
+## grDevices * 3.4.1 2017-07-07 local
+## grid 3.4.1 2017-07-07 local
+## gridExtra 2.2.1 2016-02-29 CRAN (R 3.4.0)
+## gtable 0.2.0 2016-02-26 CRAN (R 3.4.0)
+## gtools 3.5.0 2015-05-29 cran (@3.5.0)
+## haven 1.1.0 2017-07-09 CRAN (R 3.4.1)
+## hms 0.3 2016-11-22 CRAN (R 3.4.0)
+## htmltools 0.3.6 2017-04-28 CRAN (R 3.4.0)
+## httpuv 1.3.5 2017-07-04 CRAN (R 3.4.1)
+## httr 1.2.1 2016-07-03 CRAN (R 3.4.0)
+## igraph * 1.1.1 2017-07-16 CRAN (R 3.4.1)
+## IRanges 2.10.2 2017-05-25 Bioconductor
+## irlba 2.2.1 2017-05-17 cran (@2.2.1)
+## iterators 1.0.8 2015-10-13 cran (@1.0.8)
+## jsonlite 1.5 2017-06-01 CRAN (R 3.4.0)
+## kernlab 0.9-25 2016-10-03 cran (@0.9-25)
+## KernSmooth 2.23-15 2015-06-29 CRAN (R 3.4.1)
+## knitr 1.16 2017-05-18 CRAN (R 3.4.1)
+## labeling 0.3 2014-08-23 CRAN (R 3.4.0)
+## lars 1.2 2013-04-24 cran (@1.2)
+## lattice 0.20-35 2017-03-25 CRAN (R 3.4.1)
+## lazyeval 0.2.0 2016-06-12 CRAN (R 3.4.0)
+## limma 3.32.3 2017-07-16 Bioconductor
+## lme4 1.1-13 2017-04-19 cran (@1.1-13)
+## locfit 1.5-9.1 2013-04-20 CRAN (R 3.4.0)
+## lubridate 1.6.0 2016-09-13 CRAN (R 3.4.0)
+## magrittr 1.5 2014-11-22 CRAN (R 3.4.0)
+## MASS 7.3-47 2017-02-26 CRAN (R 3.4.1)
+## Matrix 1.2-10 2017-05-03 CRAN (R 3.4.1)
+## MatrixModels 0.4-1 2015-08-22 cran (@0.4-1)
+## matrixStats 0.52.2 2017-04-14 CRAN (R 3.4.0)
+## mclust 5.3 2017-05-21 cran (@5.3)
+## memoise 1.1.0 2017-04-21 CRAN (R 3.4.0)
+## methods * 3.4.1 2017-07-07 local
+## mgcv 1.8-17 2017-02-08 CRAN (R 3.4.1)
+## mime 0.5 2016-07-07 CRAN (R 3.4.0)
+## minqa 1.2.4 2014-10-09 cran (@1.2.4)
+## mixtools 1.1.0 2017-03-10 cran (@1.1.0)
+## mnormt 1.5-5 2016-10-15 CRAN (R 3.4.0)
+## ModelMetrics 1.1.0 2016-08-26 cran (@1.1.0)
+## modelr 0.1.0 2016-08-31 CRAN (R 3.4.0)
+## modeltools 0.2-21 2013-09-02 cran (@0.2-21)
+## munsell 0.4.3 2016-02-13 CRAN (R 3.4.0)
+## mvtnorm 1.0-6 2017-03-02 cran (@1.0-6)
+## nlme 3.1-131 2017-02-06 CRAN (R 3.4.1)
+## nloptr 1.0.4 2014-08-04 cran (@1.0.4)
+## nnet 7.3-12 2016-02-02 CRAN (R 3.4.1)
+## numDeriv 2016.8-1 2016-08-27 cran (@2016.8-)
+## parallel * 3.4.1 2017-07-07 local
+## pbapply 1.3-3 2017-07-04 cran (@1.3-3)
+## pbkrtest 0.4-7 2017-03-15 cran (@0.4-7)
+## pkgconfig 2.0.1 2017-03-21 CRAN (R 3.4.0)
+## plyr 1.8.4 2016-06-08 CRAN (R 3.4.0)
+## prabclus 2.2-6 2015-01-14 cran (@2.2-6)
+## psych 1.7.5 2017-05-03 CRAN (R 3.4.1)
+## purrr * 0.2.2.2 2017-05-11 CRAN (R 3.4.0)
+## quantreg 5.33 2017-04-18 cran (@5.33)
+## R6 2.2.2 2017-06-17 CRAN (R 3.4.0)
+## ranger 0.8.0 2017-06-20 cran (@0.8.0)
+## RColorBrewer 1.1-2 2014-12-07 CRAN (R 3.4.0)
+## Rcpp 0.12.12 2017-07-15 CRAN (R 3.4.1)
+## RCurl 1.95-4.8 2016-03-01 CRAN (R 3.4.0)
+## readr * 1.1.1 2017-05-16 CRAN (R 3.4.0)
+## readxl 1.0.0 2017-04-18 CRAN (R 3.4.0)
+## reshape2 1.4.2 2016-10-22 CRAN (R 3.4.0)
+## rhdf5 2.20.0 2017-04-25 Bioconductor
+## rjson 0.2.15 2014-11-03 CRAN (R 3.4.0)
+## rlang 0.1.1 2017-05-18 CRAN (R 3.4.0)
+## rmarkdown 1.6 2017-06-15 CRAN (R 3.4.1)
+## robustbase 0.92-7 2016-12-09 cran (@0.92-7)
+## ROCR 1.0-7 2015-03-26 cran (@1.0-7)
+## rprojroot 1.2 2017-01-16 CRAN (R 3.4.0)
+## RSQLite 2.0 2017-06-19 CRAN (R 3.4.1)
+## Rtsne 0.13 2017-04-14 cran (@0.13)
+## rvest 0.3.2 2016-06-17 CRAN (R 3.4.0)
+## S4Vectors 0.14.3 2017-06-03 Bioconductor
+## scales 0.4.1 2016-11-09 CRAN (R 3.4.0)
+## scater * 1.4.0 2017-04-25 Bioconductor
+## segmented 0.5-2.1 2017-06-14 cran (@0.5-2.1)
+## Seurat * 1.4.0.16 2017-07-19 Github (satijalab/seurat@3bd092a)
+## shiny 1.0.3 2017-04-26 CRAN (R 3.4.0)
+## shinydashboard 0.6.1 2017-06-14 CRAN (R 3.4.0)
+## sn 1.5-0 2017-02-10 cran (@1.5-0)
+## SparseM 1.77 2017-04-23 cran (@1.77)
+## splatter * 1.0.3 2017-05-27 Bioconductor
+## splines 3.4.1 2017-07-07 local
+## stats * 3.4.1 2017-07-07 local
+## stats4 3.4.1 2017-07-07 local
+## stringi 1.1.5 2017-04-07 CRAN (R 3.4.0)
+## stringr 1.2.0 2017-02-18 CRAN (R 3.4.0)
+## survival 2.41-3 2017-04-04 CRAN (R 3.4.1)
+## tclust 1.2-7 2017-06-30 cran (@1.2-7)
+## tibble * 1.3.3 2017-05-28 CRAN (R 3.4.0)
+## tidyr * 0.6.3 2017-05-15 CRAN (R 3.4.0)
+## tidyverse * 1.1.1 2017-01-27 CRAN (R 3.4.0)
+## tools 3.4.1 2017-07-07 local
+## trimcluster 0.1-2 2012-10-29 cran (@0.1-2)
+## tsne 0.1-3 2016-07-15 cran (@0.1-3)
+## tweenr 0.1.5 2016-10-10 CRAN (R 3.4.0)
+## tximport 1.4.0 2017-04-25 Bioconductor
+## udunits2 0.13 2016-11-17 CRAN (R 3.4.0)
+## units 0.4-5 2017-06-15 CRAN (R 3.4.0)
+## utils * 3.4.1 2017-07-07 local
+## VGAM 1.0-3 2017-01-11 cran (@1.0-3)
+## vipor 0.4.5 2017-03-22 CRAN (R 3.4.0)
+## viridis * 0.4.0 2017-03-27 CRAN (R 3.4.0)
+## viridisLite * 0.2.0 2017-03-24 CRAN (R 3.4.0)
+## withr 1.0.2 2016-06-20 CRAN (R 3.4.0)
+## XML 3.98-1.9 2017-06-19 CRAN (R 3.4.1)
+## xml2 1.1.1 2017-01-24 CRAN (R 3.4.0)
+## xtable 1.8-2 2016-02-05 CRAN (R 3.4.0)
+## yaml 2.1.14 2016-11-12 CRAN (R 3.4.0)
+## zlibbioc 1.22.0 2017-04-25 Bioconductor
+&lt;/code>&lt;/pre></description></item><item><title>PyConAU 2016</title><link>lazappi.id.au/post/2016-08-18-pyconau-2016/</link><pubDate>Thu, 18 Aug 2016 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2016-08-18-pyconau-2016/</guid><description>&lt;p>Over the weekend I attended
+&lt;a href="https://2016.pycon-au.org/" target="_blank" rel="noopener">PyCon Australia&lt;/a>. This
 was my first time at a purely tech conference and I couldn&amp;rsquo;t help but compare
-it to my previous experiences at scientific conferences.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;DISCLAIMER:&lt;/strong&gt; Like I said this was my first tech conference and my scientific
+it to my previous experiences at scientific conferences.&lt;/p>
+&lt;p>&lt;strong>DISCLAIMER:&lt;/strong> Like I said this was my first tech conference and my scientific
 conference experience is also fairly limited so some of the comments I make
-might be generalisations that don&amp;rsquo;t always apply.&lt;/p&gt;
-&lt;p&gt;PyCon started with miniconfs on Friday and continued coding sprints on Monday
+might be generalisations that don&amp;rsquo;t always apply.&lt;/p>
+&lt;p>PyCon started with miniconfs on Friday and continued coding sprints on Monday
 and Tuesday. I didn&amp;rsquo;t attend any of these so my experience was only of the main
 conference on Saturday and Sunday. Here are some of the highlights for me in
-terms of presentations:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Andrew Lonsdale - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=PCZS9wqBUuE&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python for science, side projects and stuff!&lt;/a&gt;
-&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_for_science.jpg&#34; alt=&#34;Python for science, side projects and stuff!&#34;&gt;&lt;/li&gt;
-&lt;li&gt;Alexander Hogue - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=MkSkqMvGBuo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Graphing when your Facebook friends are awake&lt;/a&gt; - Story of discovering a
+terms of presentations:&lt;/p>
+&lt;ul>
+&lt;li>Andrew Lonsdale -
+&lt;a href="https://www.youtube.com/watch?v=PCZS9wqBUuE" target="_blank" rel="noopener">Python for science, side projects and stuff!&lt;/a>
+&lt;img src="lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_for_science.jpg" alt="Python for science, side projects and stuff!">&lt;/li>
+&lt;li>Alexander Hogue -
+&lt;a href="https://www.youtube.com/watch?v=MkSkqMvGBuo" target="_blank" rel="noopener">Graphing when your Facebook friends are awake&lt;/a> - Story of discovering a
 hidden Facebook API and using it to track when your friends are online.
-Thoroughly entertaining while still providing the technical details.&lt;/li&gt;
-&lt;li&gt;Rachel Bunder - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=cy5n6XAtA-w&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;I wish I learnt that earlier!&lt;/a&gt; - Description of some of the slightly more advanced features available in
-Python. Could be a great intro for someone new to Python.&lt;/li&gt;
-&lt;li&gt;Russell Keith-Magee - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=1sDyVJm3Ht0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python All the Things&lt;/a&gt;
-&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_all_the_things.jpg&#34; alt=&#34;Python All the Things&#34;&gt;&lt;/li&gt;
-&lt;li&gt;Sebastian Vetter - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=bsJFMtQ5MZU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Click: A Pleasure To Write, A Pleasure To Use&lt;/a&gt; - Click is an argument parsing
+Thoroughly entertaining while still providing the technical details.&lt;/li>
+&lt;li>Rachel Bunder -
+&lt;a href="https://www.youtube.com/watch?v=cy5n6XAtA-w" target="_blank" rel="noopener">I wish I learnt that earlier!&lt;/a> - Description of some of the slightly more advanced features available in
+Python. Could be a great intro for someone new to Python.&lt;/li>
+&lt;li>Russell Keith-Magee -
+&lt;a href="https://www.youtube.com/watch?v=1sDyVJm3Ht0" target="_blank" rel="noopener">Python All the Things&lt;/a>
+&lt;img src="lazappi.id.au/post/2016-08-18-pyconau-2016_files/python_all_the_things.jpg" alt="Python All the Things">&lt;/li>
+&lt;li>Sebastian Vetter -
+&lt;a href="https://www.youtube.com/watch?v=bsJFMtQ5MZU" target="_blank" rel="noopener">Click: A Pleasure To Write, A Pleasure To Use&lt;/a> - Click is an argument parsing
 library with additional features beyond argparse. Also apparently becoming the
 standard at Facebook (didn&amp;rsquo;t learn that at the conference, but it&amp;rsquo;s a fun
-fact).&lt;/li&gt;
-&lt;li&gt;Justin Warren - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=qjTc5q7MsMg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Predicting the TripleJ Hottest 100 With Python&lt;/a&gt; - Overview of predicting
+fact).&lt;/li>
+&lt;li>Justin Warren -
+&lt;a href="https://www.youtube.com/watch?v=qjTc5q7MsMg" target="_blank" rel="noopener">Predicting the TripleJ Hottest 100 With Python&lt;/a> - Overview of predicting
 the Hottest 100 for the last few years, starting with the method used by the
-
-&lt;a href=&#34;http://warmest100.com.au/2013/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Warmest 100&lt;/a&gt; and continuing on how
-to extract and process information from Instagram.&lt;/li&gt;
-&lt;li&gt;Jackson Fairchild - 
-&lt;a href=&#34;https://www.youtube.com/watch?v=Rdc06jpjVIY&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&lt;/a&gt;
-&lt;img src=&#34;lazappi.id.au/post/2016-08-18-pyconau-2016_files/tackling_burnout.jpg&#34; alt=&#34;Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&#34;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;(Full schedules for 
-&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/saturday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Saturday&lt;/a&gt; and 
-&lt;a href=&#34;https://2016.pycon-au.org/programme/schedule/sunday?_code=301&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sunday&lt;/a&gt;
-and links to videos are available on the PyCon website)&lt;/p&gt;
-&lt;p&gt;Overall I was really impressed by the quality of the talks. There were a couple
+&lt;a href="http://warmest100.com.au/2013/index.html" target="_blank" rel="noopener">Warmest 100&lt;/a> and continuing on how
+to extract and process information from Instagram.&lt;/li>
+&lt;li>Jackson Fairchild -
+&lt;a href="https://www.youtube.com/watch?v=Rdc06jpjVIY" target="_blank" rel="noopener">Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care&lt;/a>
+&lt;img src="lazappi.id.au/post/2016-08-18-pyconau-2016_files/tackling_burnout.jpg" alt="Hitting the Wall and How to Get Up Again - Tackling Burnout and Strategies for Self Care">&lt;/li>
+&lt;/ul>
+&lt;p>(Full schedules for
+&lt;a href="https://2016.pycon-au.org/programme/schedule/saturday?_code=301" target="_blank" rel="noopener">Saturday&lt;/a> and
+&lt;a href="https://2016.pycon-au.org/programme/schedule/sunday?_code=301" target="_blank" rel="noopener">Sunday&lt;/a>
+and links to videos are available on the PyCon website)&lt;/p>
+&lt;p>Overall I was really impressed by the quality of the talks. There were a couple
 that I thought could be improved a bit or where I wasn&amp;rsquo;t that interested in the
 content but there were no flat-out bad talks like you often see in the
 scientific context. It was clear that the presenters had put a lot of effort
@@ -1390,8 +893,8 @@ any slides that were walls of text or full of multiple plots. On the other had
 there was lots of code in slides, including live snippets. I&amp;rsquo;m not usually a
 fan of this but in the context it makes sense, particularly as you can assume
 that everyone has a basic grasp of Python. There were also lots of live demos,
-some of which were pretty impressive, and I don&amp;rsquo;t think I saw any fail.&lt;/p&gt;
-&lt;p&gt;What struck me as being the biggest differences at PyCon compared to a
+some of which were pretty impressive, and I don&amp;rsquo;t think I saw any fail.&lt;/p>
+&lt;p>What struck me as being the biggest differences at PyCon compared to a
 scientific conference was the sense of a community and awareness of wider
 social issues. There was a big effort to be inclusive to all genders,
 sexualities, ethnic groups etc. and several of the talks touched on ethical
@@ -1403,8 +906,8 @@ speakers to praise work that they hadn&amp;rsquo;t been involved in, but thought
 interesting or useful. I didn&amp;rsquo;t see anyone described using their titles and it
 seemed that someone who had learned Python in the last year was as valued as
 someone who had been a major contributor for the last 10 years (although there
-may had been power dynamics that I wasn&amp;rsquo;t aware of).&lt;/p&gt;
-&lt;p&gt;I think that a lot of the differences come from the work/volunteer divide.
+may had been power dynamics that I wasn&amp;rsquo;t aware of).&lt;/p>
+&lt;p>I think that a lot of the differences come from the work/volunteer divide.
 While PyCon was an opportunity to network or advertise your work the focus
 seemed to be on contributing to the community and the speakers were
 enthusiastic and keen to present. In contrast a scientific conference is a
@@ -1418,26 +921,17 @@ have to sacrificeopportunities. For example it would be great to see a talk
 about mental health issues like Jackson Fairchild&amp;rsquo;s but that would mean taking
 away a spot from someone that might need it to progress their career.
 Personally I think we could maybe do with less talks from whichever well known
-person is doing the rounds in favour of some outside experts.&lt;/p&gt;
-&lt;p&gt;Overall I enjoyed my time at PyCon. It was a bit different to a scientific
+person is doing the rounds in favour of some outside experts.&lt;/p>
+&lt;p>Overall I enjoyed my time at PyCon. It was a bit different to a scientific
 conference and I think there are probably things they can learn from each
 other. Congratulations to all the speakers and everyone involved in
-organising. Given that it is in Melbourne again I hope to be back next year.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Gantt charts in R</title>
-      <link>lazappi.id.au/post/2016-06-13-gantt-charts-in-r/</link>
-      <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2016-06-13-gantt-charts-in-r/</guid>
-      <description>&lt;p&gt;Gantt charts are a project management tool designed to visualise the tasks in a
+organising. Given that it is in Melbourne again I hope to be back next year.&lt;/p></description></item><item><title>Gantt charts in R</title><link>lazappi.id.au/post/2016-06-13-gantt-charts-in-r/</link><pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2016-06-13-gantt-charts-in-r/</guid><description>&lt;p>Gantt charts are a project management tool designed to visualise the tasks in a
 project, how long they will take and what order they must be completed. If you
 haven&amp;rsquo;t seen one before essentially they look like a modified horizontal bar
 chart. Along the horizontal axis is time with tasks along the vertical. Each
 task consists of a bar where the ends are the start and end times. Often there
-are also arrows indicating dependencies and a line showing the current date.&lt;/p&gt;
-&lt;p&gt;As part of the proposal for my PhD project I wanted to include a Gantt chart,
+are also arrows indicating dependencies and a line showing the current date.&lt;/p>
+&lt;p>As part of the proposal for my PhD project I wanted to include a Gantt chart,
 both as a way of showing what I planned to do and as a way of keeping track of
 my progress. I expected there to be a simple template for Excel or Google Sheets
 but there wasn&amp;rsquo;t much and they didn&amp;rsquo;t quite fit what I wanted. Looking elsewhere
@@ -1445,112 +939,91 @@ didn&amp;rsquo;t turn up much either. What I wanted was a tool where I could ent
 and dates in text format and produce a relatively attractive chart that I could
 easily update. In the end I turned to faithful old R, which had the added
 advantage that I could easily incorporate the chart into
-
-&lt;a href=&#34;http://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown&lt;/a&gt; documents.&lt;/p&gt;
-&lt;p&gt;There are a couple of packages that can make Gantt charts in R including
-
-&lt;a href=&#34;https://cran.r-project.org/web/packages/plotrix/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;plotrix&lt;/a&gt; and
-
-&lt;a href=&#34;https://cran.r-project.org/web/packages/plan/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;plan&lt;/a&gt; but in the end
-I went with 
-&lt;a href=&#34;https://rich-iannone.github.io/DiagrammeR/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DiagrammeR&lt;/a&gt;. The Gantt
+&lt;a href="http://rmarkdown.rstudio.com/" target="_blank" rel="noopener">R Markdown&lt;/a> documents.&lt;/p>
+&lt;p>There are a couple of packages that can make Gantt charts in R including
+&lt;a href="https://cran.r-project.org/web/packages/plotrix/index.html" target="_blank" rel="noopener">plotrix&lt;/a> and
+&lt;a href="https://cran.r-project.org/web/packages/plan/index.html" target="_blank" rel="noopener">plan&lt;/a> but in the end
+I went with
+&lt;a href="https://rich-iannone.github.io/DiagrammeR/" target="_blank" rel="noopener">DiagrammeR&lt;/a>. The Gantt
 functionality of DiagrammeR depends on
-
-&lt;a href=&#34;https://knsv.github.io/mermaid/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mermaid&lt;/a&gt; which has a simple, almost
-markdown-like syntax.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gantt
-dateFormat  YYYY-MM-DD
+&lt;a href="https://knsv.github.io/mermaid/" target="_blank" rel="noopener">Mermaid&lt;/a> which has a simple, almost
+markdown-like syntax.&lt;/p>
+&lt;pre>&lt;code>gantt
+dateFormat YYYY-MM-DD
 title My Gantt chart
-
 section First section
-Task 1            :done,    des1, 2014-01-06, 2014-01-08
-Task 2            :active,  des2, 2014-01-09, 3d
-Task 3            :         des3, after des2, 5d
-Task 4            :         des4, after des3, 5d
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Basically each task is written as:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Task name         :status, label, start_date, end_date
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Where the start and end dates can also include durations or references to other
-tasks.&lt;/p&gt;
-&lt;p&gt;While this format is easy to use I prefer to use a standard delimited format
+Task 1 :done, des1, 2014-01-06, 2014-01-08
+Task 2 :active, des2, 2014-01-09, 3d
+Task 3 : des3, after des2, 5d
+Task 4 : des4, after des3, 5d
+&lt;/code>&lt;/pre>
+&lt;p>Basically each task is written as:&lt;/p>
+&lt;pre>&lt;code>Task name :status, label, start_date, end_date
+&lt;/code>&lt;/pre>
+&lt;p>Where the start and end dates can also include durations or references to other
+tasks.&lt;/p>
+&lt;p>While this format is easy to use I prefer to use a standard delimited format
 which is easier to edit and read into R. To this end I created some functions
-which will take a CSV or XLSX file and produce a Gantt chart.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;library(&amp;quot;magrittr&amp;quot;)
-
+which will take a CSV or XLSX file and produce a Gantt chart.&lt;/p>
+&lt;pre>&lt;code class="language-{r}">library(&amp;quot;magrittr&amp;quot;)
 # Take a data.frame containing tasks and build a Mermaid string
 tasks2string &amp;lt;- function(tasks) {
-
-    tasks.list &amp;lt;- split(tasks,
-                        factor(tasks$Section, levels = unique(tasks$Section)))
-
-    strings &amp;lt;- sapply(names(tasks.list),
-                      function(section) {
-                          tasks.list[[section]] %&amp;gt;%
-                              dplyr::select(-Section) %&amp;gt;%
-                              tidyr::unite(Part1, Task, Priority,
-                                           sep = &amp;quot;: &amp;quot;) %&amp;gt;%
-                              tidyr::unite(String, Part1, Status, Name, Start,
-                                           End, sep = &amp;quot;, &amp;quot;) %&amp;gt;%
-                              magrittr::use_series(&amp;quot;String&amp;quot;) %&amp;gt;%
-                              paste(collapse = &amp;quot;\n&amp;quot;) %&amp;gt;%
-                              gsub(&amp;quot; ,&amp;quot;, &amp;quot;&amp;quot;, .) # Remove empty columns
-                          }
-                      )
-
-    string &amp;lt;- &amp;quot;&amp;quot;
-
-    for(section in names(strings)) {
-        string &amp;lt;- paste0(string, &amp;quot;\n&amp;quot;,
-                         &amp;quot;section &amp;quot;, section, &amp;quot;\n&amp;quot;,
-                         strings[section],
-                         &amp;quot;\n&amp;quot;)
-    }
-
-    return(string)
+tasks.list &amp;lt;- split(tasks,
+factor(tasks$Section, levels = unique(tasks$Section)))
+strings &amp;lt;- sapply(names(tasks.list),
+function(section) {
+tasks.list[[section]] %&amp;gt;%
+dplyr::select(-Section) %&amp;gt;%
+tidyr::unite(Part1, Task, Priority,
+sep = &amp;quot;: &amp;quot;) %&amp;gt;%
+tidyr::unite(String, Part1, Status, Name, Start,
+End, sep = &amp;quot;, &amp;quot;) %&amp;gt;%
+magrittr::use_series(&amp;quot;String&amp;quot;) %&amp;gt;%
+paste(collapse = &amp;quot;\n&amp;quot;) %&amp;gt;%
+gsub(&amp;quot; ,&amp;quot;, &amp;quot;&amp;quot;, .) # Remove empty columns
 }
-
+)
+string &amp;lt;- &amp;quot;&amp;quot;
+for(section in names(strings)) {
+string &amp;lt;- paste0(string, &amp;quot;\n&amp;quot;,
+&amp;quot;section &amp;quot;, section, &amp;quot;\n&amp;quot;,
+strings[section],
+&amp;quot;\n&amp;quot;)
+}
+return(string)
+}
 # Produce a Gantt chart from data.frame of tasks
 # Adds the Mermaid header to the tasks string
 buildGantt &amp;lt;- function(tasks) {
-
-    gantt.string &amp;lt;- paste0(&amp;quot;gantt&amp;quot;, &amp;quot;\n&amp;quot;,
-                           &amp;quot;dateformat YYYY-MM-DD&amp;quot;, &amp;quot;\n&amp;quot;,
-                           &amp;quot;title My Gantt Chart&amp;quot;,
-                           &amp;quot;\n&amp;quot;)
-
-    gantt.string &amp;lt;- paste0(gantt.string, tasks2string(tasks))
-
-    gantt &amp;lt;- DiagrammeR::mermaid(gantt.string)
-
-    gantt$x$config = list(ganttConfig = list(
-        # Make sure the axis labels are formatted correctly
-        axisFormatter = list(list(
-            &amp;quot;%m-%y&amp;quot;, # New data format
-            htmlwidgets::JS(&#39;function(d){ return d}&#39;) # Select dates to format
-        ))
-    ))
-
-    return(gantt)
+gantt.string &amp;lt;- paste0(&amp;quot;gantt&amp;quot;, &amp;quot;\n&amp;quot;,
+&amp;quot;dateformat YYYY-MM-DD&amp;quot;, &amp;quot;\n&amp;quot;,
+&amp;quot;title My Gantt Chart&amp;quot;,
+&amp;quot;\n&amp;quot;)
+gantt.string &amp;lt;- paste0(gantt.string, tasks2string(tasks))
+gantt &amp;lt;- DiagrammeR::mermaid(gantt.string)
+gantt$x$config = list(ganttConfig = list(
+# Make sure the axis labels are formatted correctly
+axisFormatter = list(list(
+&amp;quot;%m-%y&amp;quot;, # New data format
+htmlwidgets::JS('function(d){ return d}') # Select dates to format
+))
+))
+return(gantt)
 }
-
 # Read a file and return a Gantt chart
 buildGanttFromFile &amp;lt;- function(tasks.file, format = c(&amp;quot;csv&amp;quot;, &amp;quot;xlsx&amp;quot;)) {
-
-    format &amp;lt;- match.arg(format)
-
-    switch(format,
-           csv = {
-               tasks &amp;lt;- read.csv(tasks.file, stringsAsFactors = FALSE)
-           },
-           xlsx = {
-               tasks &amp;lt;- gdata::read.xls(tasks.file)
-           })
-
-    return(buildGantt(tasks))
+format &amp;lt;- match.arg(format)
+switch(format,
+csv = {
+tasks &amp;lt;- read.csv(tasks.file, stringsAsFactors = FALSE)
+},
+xlsx = {
+tasks &amp;lt;- gdata::read.xls(tasks.file)
+})
+return(buildGantt(tasks))
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I can now construct my tasks by editing a CSV file and produce a Gantt chart
+&lt;/code>&lt;/pre>
+&lt;p>I can now construct my tasks by editing a CSV file and produce a Gantt chart
 directly from that by calling a single function. You may wonder why I have
 included XLSX as an input option? Surely using Excel is against the principles
 of data science? Firstly I&amp;rsquo;m not that opposed to Excel (when it is used
@@ -1561,218 +1034,165 @@ There are often situations where you have a hard end deadline (such as a PhD
 committee meeting) and you need to work backwards from that. By using Excel I
 can use simple formulas to calculate the dates which are then passed to R. I
 could do this programmatically in R (and I might at some stage) but Excel was a
-quicker solution that let me get on to writing.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Bioconductor 3.3 packages</title>
-      <link>lazappi.id.au/post/2016-05-03-bioconductor-3-3-packages/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2016-05-03-bioconductor-3-3-packages/</guid>
-      <description>&lt;p&gt;Bioconductor 3.3 has just been released. You can find the complete list of new
+quicker solution that let me get on to writing.&lt;/p></description></item><item><title>Bioconductor 3.3 packages</title><link>lazappi.id.au/post/2016-05-03-bioconductor-3-3-packages/</link><pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2016-05-03-bioconductor-3-3-packages/</guid><description>&lt;p>Bioconductor 3.3 has just been released. You can find the complete list of new
 packages (and changes to existing packages)
-
-&lt;a href=&#34;https://bioconductor.org/news/bioc_3_3_release/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; but here are a few I
+&lt;a href="https://bioconductor.org/news/bioc_3_3_release/" target="_blank" rel="noopener">here&lt;/a> but here are a few I
 thought might be interesting based on the description. I might have more to say
-once I&amp;rsquo;ve had time to try a few out.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;debrowser&lt;/strong&gt; – Interactive plots and tables for differential expression&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;DEFormats&lt;/strong&gt; – convert between differential expression formats&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;EBSEA&lt;/strong&gt; – exon based differential expression&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;EmpiricalBrownsMethod&lt;/strong&gt; – combining dependent p-values&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Linnorm&lt;/strong&gt; – normalisation for parametric tests, simulation of RNA-seq data&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;multiClust&lt;/strong&gt; – feature selection and clustering analysis for transcriptomic
-data&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;RGraph2js&lt;/strong&gt; – interactive network visualisations with D3&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;tximport&lt;/strong&gt; – import and summarise transcript-level estimates&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;single-cell&#34;&gt;Single-cell&lt;/h2&gt;
-&lt;p&gt;These packages are specific to single-cell RNA-seq analysis. A couple of them I
-am already familiar with, particularly &lt;strong&gt;scater&lt;/strong&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;cellity&lt;/strong&gt; - identifying low-quality cells&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;celTree&lt;/strong&gt; - model the relationship between individual cells over time or
-space.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;scater&lt;/strong&gt; - tools for analysis of single-cell RNA-seq data (particularly QC)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;scde&lt;/strong&gt; - single-cell differential expression&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;scran&lt;/strong&gt; - normalisation, cell-cycle assignment, gene detection&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Extracting alignment statistics using Python</title>
-      <link>lazappi.id.au/post/2016-03-30-extracting-alignment-statistics-using-python/</link>
-      <pubDate>Wed, 30 Mar 2016 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2016-03-30-extracting-alignment-statistics-using-python/</guid>
-      <description>&lt;p&gt;Recently 
-&lt;a href=&#34;http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0888-1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this paper&lt;/a&gt;
+once I&amp;rsquo;ve had time to try a few out.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>debrowser&lt;/strong> – Interactive plots and tables for differential expression&lt;/li>
+&lt;li>&lt;strong>DEFormats&lt;/strong> – convert between differential expression formats&lt;/li>
+&lt;li>&lt;strong>EBSEA&lt;/strong> – exon based differential expression&lt;/li>
+&lt;li>&lt;strong>EmpiricalBrownsMethod&lt;/strong> – combining dependent p-values&lt;/li>
+&lt;li>&lt;strong>Linnorm&lt;/strong> – normalisation for parametric tests, simulation of RNA-seq data&lt;/li>
+&lt;li>&lt;strong>multiClust&lt;/strong> – feature selection and clustering analysis for transcriptomic
+data&lt;/li>
+&lt;li>&lt;strong>RGraph2js&lt;/strong> – interactive network visualisations with D3&lt;/li>
+&lt;li>&lt;strong>tximport&lt;/strong> – import and summarise transcript-level estimates&lt;/li>
+&lt;/ul>
+&lt;h2 id="single-cell">Single-cell&lt;/h2>
+&lt;p>These packages are specific to single-cell RNA-seq analysis. A couple of them I
+am already familiar with, particularly &lt;strong>scater&lt;/strong>.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>cellity&lt;/strong> - identifying low-quality cells&lt;/li>
+&lt;li>&lt;strong>celTree&lt;/strong> - model the relationship between individual cells over time or
+space.&lt;/li>
+&lt;li>&lt;strong>scater&lt;/strong> - tools for analysis of single-cell RNA-seq data (particularly QC)&lt;/li>
+&lt;li>&lt;strong>scde&lt;/strong> - single-cell differential expression&lt;/li>
+&lt;li>&lt;strong>scran&lt;/strong> - normalisation, cell-cycle assignment, gene detection&lt;/li>
+&lt;/ul></description></item><item><title>Extracting alignment statistics using Python</title><link>lazappi.id.au/post/2016-03-30-extracting-alignment-statistics-using-python/</link><pubDate>Wed, 30 Mar 2016 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2016-03-30-extracting-alignment-statistics-using-python/</guid><description>&lt;p>Recently
+&lt;a href="http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0888-1" target="_blank" rel="noopener">this paper&lt;/a>
 by Ilicic et al. suggested a method for assessing the quality of individual
 cells in a single-cell RNA-seq experiment. The basic idea is to extract various
 biological and technical features from each the reads for each cell, then use
 PCA with outlier detection or a SVM to classify cells as &amp;ldquo;high&amp;rdquo; or &amp;ldquo;low&amp;rdquo;
-quality. There are two pieces of software associated with the paper: &lt;code&gt;cellity&lt;/code&gt;,
-an R package that performs the classification and &lt;code&gt;Celloline&lt;/code&gt;, a Python script
+quality. There are two pieces of software associated with the paper: &lt;code>cellity&lt;/code>,
+an R package that performs the classification and &lt;code>Celloline&lt;/code>, a Python script
 that performs alignment, summarisation and extraction of alignment statistics
 such as the number of reads aligned to exons, introns, intergenic regions etc.
-I was interested in using &lt;code&gt;cellity&lt;/code&gt; but I didn&amp;rsquo;t want to change my whole
-workflow to use the &lt;code&gt;Celloline&lt;/code&gt; pipeline, so instead I decided to take the part
+I was interested in using &lt;code>cellity&lt;/code> but I didn&amp;rsquo;t want to change my whole
+workflow to use the &lt;code>Celloline&lt;/code> pipeline, so instead I decided to take the part
 responsible for extracting alignment statistics (available
-
-&lt;a href=&#34;https://github.com/Teichlab/celloline/blob/master/lib/stats.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;) and
-convert it to a stand-alone Python script.&lt;/p&gt;
-&lt;p&gt;The core processing remains the same (except I have removed read counting which
-I do with &lt;code&gt;featureCounts&lt;/code&gt;), but I have added a few features:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Multiple files - paths to multiple alignment files can now be provided as
-arguments on the command line.&lt;/li&gt;
-&lt;li&gt;BAM files - the script can now handle BAM files as well as SAM using
-
-&lt;a href=&#34;https://github.com/pysam-developers/pysam&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pysam&lt;/a&gt;. It will work if the BAM
-is unsorted, but the output can be slightly different.&lt;/li&gt;
-&lt;li&gt;Index - reading the GTF annotation file can take a significant amount of
+&lt;a href="https://github.com/Teichlab/celloline/blob/master/lib/stats.py" target="_blank" rel="noopener">here&lt;/a>) and
+convert it to a stand-alone Python script.&lt;/p>
+&lt;p>The core processing remains the same (except I have removed read counting which
+I do with &lt;code>featureCounts&lt;/code>), but I have added a few features:&lt;/p>
+&lt;ol>
+&lt;li>Multiple files - paths to multiple alignment files can now be provided as
+arguments on the command line.&lt;/li>
+&lt;li>BAM files - the script can now handle BAM files as well as SAM using
+&lt;a href="https://github.com/pysam-developers/pysam" target="_blank" rel="noopener">pysam&lt;/a>. It will work if the BAM
+is unsorted, but the output can be slightly different.&lt;/li>
+&lt;li>Index - reading the GTF annotation file can take a significant amount of
 time, particularly for a single-cell experiment where there are a large
 number of files with relatively few reads. To limit this overhead the object
-holding the annotation can be pickled to disk for future use.&lt;/li&gt;
-&lt;li&gt;Parallel - multiple files can now be processed in parallel using
-
-&lt;a href=&#34;https://pythonhosted.org/joblib/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;joblib&lt;/a&gt;. This is fairly crude but it is a
-significant improvment, particularly when combined with a pickled index.&lt;/li&gt;
-&lt;li&gt;Argument handling - now performed by
-
-&lt;a href=&#34;https://docs.python.org/3/library/argparse.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;argparse&lt;/a&gt;, complete with
-handy help message.&lt;/li&gt;
-&lt;li&gt;Logging - progress and error messages.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Putting it all together I can now extract alignment statistics from multiple BAM
-files in parallel with a single command:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;alignStats -o stats.csv -g annotation.gtf -i annotation.index -t bam -p 10 *.bam
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The script is available on
-
-&lt;a href=&#34;https://github.com/lazappi/binf-scripts/blob/master/alignStats.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>My Markdown thesis</title>
-      <link>lazappi.id.au/post/2015-09-13-my-markdown-thesis/</link>
-      <pubDate>Sun, 13 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2015-09-13-my-markdown-thesis/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s come to the stage in my Master&amp;rsquo;s where I have to start thinking about
+holding the annotation can be pickled to disk for future use.&lt;/li>
+&lt;li>Parallel - multiple files can now be processed in parallel using
+&lt;a href="https://pythonhosted.org/joblib/" target="_blank" rel="noopener">joblib&lt;/a>. This is fairly crude but it is a
+significant improvment, particularly when combined with a pickled index.&lt;/li>
+&lt;li>Argument handling - now performed by
+&lt;a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">argparse&lt;/a>, complete with
+handy help message.&lt;/li>
+&lt;li>Logging - progress and error messages.&lt;/li>
+&lt;/ol>
+&lt;p>Putting it all together I can now extract alignment statistics from multiple BAM
+files in parallel with a single command:&lt;/p>
+&lt;pre>&lt;code>alignStats -o stats.csv -g annotation.gtf -i annotation.index -t bam -p 10 *.bam
+&lt;/code>&lt;/pre>
+&lt;p>The script is available on
+&lt;a href="https://github.com/lazappi/binf-scripts/blob/master/alignStats.py" target="_blank" rel="noopener">Github&lt;/a>.&lt;/p></description></item><item><title>My Markdown thesis</title><link>lazappi.id.au/post/2015-09-13-my-markdown-thesis/</link><pubDate>Sun, 13 Sep 2015 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2015-09-13-my-markdown-thesis/</guid><description>&lt;p>It&amp;rsquo;s come to the stage in my Master&amp;rsquo;s where I have to start thinking about
 writing my thesis. Apart from all the analysis I have to do before I can do
 that there is also the question of what I am going to use to construct the
-document itself.&lt;/p&gt;
-&lt;p&gt;For the last year or so I have been writing using Markdown which is converted
-to Tex using 
-&lt;a href=&#34;pandoc.org&#34;&gt;Pandoc&lt;/a&gt; then used to produce a PDF. I have found
+document itself.&lt;/p>
+&lt;p>For the last year or so I have been writing using Markdown which is converted
+to Tex using
+&lt;a href="pandoc.org">Pandoc&lt;/a> then used to produce a PDF. I have found
 this a really good way to work combining the speed and clarity of Markdown
 with the ability to include LaTeX directly when I need extra flexibility. I
-have been using the 
-&lt;a href=&#34;https://sbrosinski.github.io/uberdoc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Uberdoc&lt;/a&gt; tool to
+have been using the
+&lt;a href="https://sbrosinski.github.io/uberdoc/" target="_blank" rel="noopener">Uberdoc&lt;/a> tool to
 set up projects and combine multiple Markdown files but unfortunately it&amp;rsquo;s not
-quite flexible enough for a complex document like a thesis.&lt;/p&gt;
-&lt;p&gt;I wanted to be able to be able to incorporate my Tex, particularly so I could
-use John Papandriopoulos&#39; 
-&lt;a href=&#34;http://jpap.org/projects.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;thesis template&lt;/a&gt;.
+quite flexible enough for a complex document like a thesis.&lt;/p>
+&lt;p>I wanted to be able to be able to incorporate my Tex, particularly so I could
+use John Papandriopoulos'
+&lt;a href="http://jpap.org/projects.html" target="_blank" rel="noopener">thesis template&lt;/a>.
 Ideally I wanted to build my own tool (probably in Python or Perl) that would
 manage projects, including git commits, as well as produce statistics but time
-doesn&amp;rsquo;t permit so I have ended up with a Make based solution.&lt;/p&gt;
-&lt;p&gt;The setup allows me to be flexible with how I set up my directory as the whole
+doesn&amp;rsquo;t permit so I have ended up with a Make based solution.&lt;/p>
+&lt;p>The setup allows me to be flexible with how I set up my directory as the whole
 project is searched for Markdown files which are converted to LaTeX in a build
 directory. The directory structure is flattened at this stage which means I
 don&amp;rsquo;t have to write the full path when including files. Figures are treated
 similarly and there are folders for additional LaTeX files (such as styles and
 templates) and bibliography files. I also have a core Tex file which is used to
 tie everything together. The PDF is constructed using
-
-&lt;a href=&#34;https://www.ctan.org/pkg/latexmk/?lang=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;latexmk&lt;/a&gt; and I can use
-
-&lt;a href=&#34;http://app.uio.no/ifi/texcount/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;texcount&lt;/a&gt; for keeping track of my word count.
-So when I run &lt;code&gt;make&lt;/code&gt; for the first time the following steps occur:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The build directory is created with the necessary subdirectories.&lt;/li&gt;
-&lt;li&gt;The project directory is searched for Markdown files which are converted
-to TeX files in the build directory.&lt;/li&gt;
-&lt;li&gt;TeX files are copied from the template directory to the build directory.&lt;/li&gt;
-&lt;li&gt;All files are copied from the style directory to a style subdirectory
-inside the build directory.&lt;/li&gt;
-&lt;li&gt;All files are copied from the bibliography directory to a bibliography
-subdirectory inside the build directory.&lt;/li&gt;
-&lt;li&gt;The figures directory is searched for image files which are copied to a
-figures subdirectory inside the build directory.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;latexmk&lt;/code&gt; is used to build the output file in the build directory.&lt;/li&gt;
-&lt;li&gt;The output PDF is copied to the main directory.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;It&amp;rsquo;s not perfect, for example there is a bug that means &lt;code&gt;make&lt;/code&gt; needs to be run
+&lt;a href="https://www.ctan.org/pkg/latexmk/?lang=en" target="_blank" rel="noopener">latexmk&lt;/a> and I can use
+&lt;a href="http://app.uio.no/ifi/texcount/" target="_blank" rel="noopener">texcount&lt;/a> for keeping track of my word count.
+So when I run &lt;code>make&lt;/code> for the first time the following steps occur:&lt;/p>
+&lt;ol>
+&lt;li>The build directory is created with the necessary subdirectories.&lt;/li>
+&lt;li>The project directory is searched for Markdown files which are converted
+to TeX files in the build directory.&lt;/li>
+&lt;li>TeX files are copied from the template directory to the build directory.&lt;/li>
+&lt;li>All files are copied from the style directory to a style subdirectory
+inside the build directory.&lt;/li>
+&lt;li>All files are copied from the bibliography directory to a bibliography
+subdirectory inside the build directory.&lt;/li>
+&lt;li>The figures directory is searched for image files which are copied to a
+figures subdirectory inside the build directory.&lt;/li>
+&lt;li>&lt;code>latexmk&lt;/code> is used to build the output file in the build directory.&lt;/li>
+&lt;li>The output PDF is copied to the main directory.&lt;/li>
+&lt;/ol>
+&lt;p>It&amp;rsquo;s not perfect, for example there is a bug that means &lt;code>make&lt;/code> needs to be run
 more than once when you add a new file which isn&amp;rsquo;t ideal, but it mostly does
 what I want and hopefully it will get me through. If you want to check it out
-the code is available on 
-&lt;a href=&#34;https://github.com/lazappi/thesis-template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Open science workshops</title>
-      <link>lazappi.id.au/post/2014-07-20-open-science-workshops/</link>
-      <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2014-07-20-open-science-workshops/</guid>
-      <description>&lt;p&gt;This Saturday I attended the first workshop run by
-
-&lt;a href=&#34;https://openscienceworkshops.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Open Science Workshops&lt;/a&gt; at the
-
-&lt;a href=&#34;http://inspire9.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Inspire9&lt;/a&gt; collaborative workspace. Open Source Workshops
+the code is available on
+&lt;a href="https://github.com/lazappi/thesis-template" target="_blank" rel="noopener">Github&lt;/a>.&lt;/p></description></item><item><title>Open science workshops</title><link>lazappi.id.au/post/2014-07-20-open-science-workshops/</link><pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2014-07-20-open-science-workshops/</guid><description>&lt;p>This Saturday I attended the first workshop run by
+&lt;a href="https://openscienceworkshops.github.io/" target="_blank" rel="noopener">Open Science Workshops&lt;/a> at the
+&lt;a href="http://inspire9.com/" target="_blank" rel="noopener">Inspire9&lt;/a> collaborative workspace. Open Source Workshops
 is a new initiative aiming to promote open source tools and techniques to the
-scientific community.&lt;/p&gt;
-&lt;p&gt;The workshop consisted of two main parts: an introduction to the basics of
+scientific community.&lt;/p>
+&lt;p>The workshop consisted of two main parts: an introduction to the basics of
 Github (creating repositories, commiting, forking, merging&amp;hellip;) and the
-SageMathCloud; and a serious of talks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;General discussion of how and why you should take an open approach to
+SageMathCloud; and a serious of talks:&lt;/p>
+&lt;ul>
+&lt;li>General discussion of how and why you should take an open approach to
 scientific research (Alex Ghitza, Pure Maths Lecturer,
-University of Melbourne).&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://www.authorea.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Authorea&lt;/a&gt; - An online platform for collaborative
+University of Melbourne).&lt;/li>
+&lt;li>
+&lt;a href="https://www.authorea.com/" target="_blank" rel="noopener">Authorea&lt;/a> - An online platform for collaborative
 manuscript editing designed for digital publishing that can combines Latex,
 Markdown etc. with interactive visualisations, embedded IPython notebooks and
 built in citation management (Andrea Bedini, Maths and Stats, University of
-Melbourne).&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://scirate.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SciRate&lt;/a&gt; - A social media approach to rating and
-sharing the papers available in at arXiv.org (Jaiden Mispy).&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://cloud.sagemath.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SageMathCloud&lt;/a&gt; - Collaborative cloud platform
+Melbourne).&lt;/li>
+&lt;li>
+&lt;a href="https://scirate.com/" target="_blank" rel="noopener">SciRate&lt;/a> - A social media approach to rating and
+sharing the papers available in at arXiv.org (Jaiden Mispy).&lt;/li>
+&lt;li>
+&lt;a href="https://cloud.sagemath.com/" target="_blank" rel="noopener">SageMathCloud&lt;/a> - Collaborative cloud platform
 set up with particular support for IPython and Latex as well as a terminal.
-Kind of like Google docs meets a VM.&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://nectar.org.au/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NeCTAR&lt;/a&gt; - Cloud facility available to Australian
+Kind of like Google docs meets a VM.&lt;/li>
+&lt;li>
+&lt;a href="https://nectar.org.au/" target="_blank" rel="noopener">NeCTAR&lt;/a> - Cloud facility available to Australian
 researchers. Also the Genomics Virtual Laboratory set up that allows quick
 launching of a VM with Galaxy and other bioinformatics tools as well as
-IPython and RStudio (Clare Sloggett, VLSCI).&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;http://software-carpentry.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Software Capentry&lt;/a&gt; - Bootcamps for training
+IPython and RStudio (Clare Sloggett, VLSCI).&lt;/li>
+&lt;li>
+&lt;a href="http://software-carpentry.org/" target="_blank" rel="noopener">Software Capentry&lt;/a> - Bootcamps for training
 in scientific computing includiang Git (work tracking), UNIX (automation),
-Programming (modularisation) and SQL (structured data) (Scott Ritchie).&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;http://elifesciences.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;eLIFE&lt;/a&gt; - A new open access life sciences journal
+Programming (modularisation) and SQL (structured data) (Scott Ritchie).&lt;/li>
+&lt;li>
+&lt;a href="http://elifesciences.org/" target="_blank" rel="noopener">eLIFE&lt;/a> - A new open access life sciences journal
 in the UK that uses a consulative peer review process as well as their eLIFE
 Lens and oline system for viewing their papers or anything in PubMed via the
-
-&lt;a href=&#34;http://oa-sandbox.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OA Sandbox&lt;/a&gt; (Ian Mulvany).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A common theme running through the talks (apart from open access) was the need
+&lt;a href="http://oa-sandbox.org/" target="_blank" rel="noopener">OA Sandbox&lt;/a> (Ian Mulvany).&lt;/li>
+&lt;/ul>
+&lt;p>A common theme running through the talks (apart from open access) was the need
 to move towards 21st century tools and processes, both for collaboration and
-publishing.&lt;/p&gt;
-&lt;p&gt;Overall it was a worthwhile experience and hopefully there will be more in the
+publishing.&lt;/p>
+&lt;p>Overall it was a worthwhile experience and hopefully there will be more in the
 future, if you are interested in the details the
-
-&lt;a href=&#34;https://github.com/silky/osw-material/tree/master/workshop-melb-2014&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;talks&lt;/a&gt;
-and 
-&lt;a href=&#34;https://github.com/OpenScienceWorkshops/osw-material/wiki/Summary-of-the-July-2014-Melbourne-Open-Science-Workshop&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;agenda&lt;/a&gt;
-are available here on Github.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;a href="https://github.com/silky/osw-material/tree/master/workshop-melb-2014" target="_blank" rel="noopener">talks&lt;/a>
+and
+&lt;a href="https://github.com/OpenScienceWorkshops/osw-material/wiki/Summary-of-the-July-2014-Melbourne-Open-Science-Workshop" target="_blank" rel="noopener">agenda&lt;/a>
+are available here on Github.&lt;/p></description></item></channel></rss>

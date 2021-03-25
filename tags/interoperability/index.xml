@@ -1,62 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>interoperability | lazappi</title>
-    <link>lazappi.id.au/tags/interoperability/</link>
-      <atom:link href="lazappi.id.au/tags/interoperability/index.xml" rel="self" type="application/rss+xml" />
-    <description>interoperability</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 18 Dec 2020 14:00:00 +0100</lastBuildDate>
-    <image>
-      <url>lazappi.id.au/img/icon.png</url>
-      <title>interoperability</title>
-      <link>lazappi.id.au/tags/interoperability/</link>
-    </image>
-    
-    <item>
-      <title>Interoperability between Bioconductor and Python for scRNA-seq analysis</title>
-      <link>lazappi.id.au/talk/2020-12-18-eurobioc2020/</link>
-      <pubDate>Fri, 18 Dec 2020 14:00:00 +0100</pubDate>
-      <guid>lazappi.id.au/talk/2020-12-18-eurobioc2020/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>zellkonverter</title>
-      <link>lazappi.id.au/project/zellkonverter/</link>
-      <pubDate>Sun, 12 Jul 2020 15:17:55 +0200</pubDate>
-      <guid>lazappi.id.au/project/zellkonverter/</guid>
-      <description>&lt;p&gt;zellkonverter is a Bioconductor R package that provides methods to convert
-between Python 
-&lt;a href=&#34;https://anndata.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AnnData&lt;/a&gt;
-objects and 
-&lt;a href=&#34;https://bioconductor.org/packages/SingleCellExperiment/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SingleCellExperiment&lt;/a&gt;
-objects (&lt;a href=&#34;https://bioconductor.org/packages/zellkonveter/)&#34;&gt;https://bioconductor.org/packages/zellkonveter/)&lt;/a&gt;. These are primarily
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>interoperability | lazappi</title><link>lazappi.id.au/tags/interoperability/</link><atom:link href="lazappi.id.au/tags/interoperability/index.xml" rel="self" type="application/rss+xml"/><description>interoperability</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Fri, 18 Dec 2020 14:00:00 +0100</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>interoperability</title><link>lazappi.id.au/tags/interoperability/</link></image><item><title>Interoperability between Bioconductor and Python for scRNA-seq analysis</title><link>lazappi.id.au/talk/2020-12-18-eurobioc2020/</link><pubDate>Fri, 18 Dec 2020 14:00:00 +0100</pubDate><guid>lazappi.id.au/talk/2020-12-18-eurobioc2020/</guid><description/></item><item><title>zellkonverter</title><link>lazappi.id.au/project/zellkonverter/</link><pubDate>Sun, 12 Jul 2020 15:17:55 +0200</pubDate><guid>lazappi.id.au/project/zellkonverter/</guid><description>&lt;p>zellkonverter is a Bioconductor R package that provides methods to convert
+between Python
+&lt;a href="https://anndata.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">AnnData&lt;/a>
+objects and
+&lt;a href="https://bioconductor.org/packages/SingleCellExperiment/" target="_blank" rel="noopener">SingleCellExperiment&lt;/a>
+objects (&lt;a href="https://bioconductor.org/packages/zellkonveter/)">https://bioconductor.org/packages/zellkonveter/)&lt;/a>. These are primarily
 intended for use by downstream Bioconductor packages that wrap Python methods
 for single-cell data analysis. It also includes functions to read and write H5AD
-files used for saving AnnData objects to disk.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Scanpy in R</title>
-      <link>lazappi.id.au/project/scanpy-in-r/</link>
-      <pubDate>Fri, 17 Apr 2020 13:31:20 +0200</pubDate>
-      <guid>lazappi.id.au/project/scanpy-in-r/</guid>
-      <description>&lt;p&gt;This tutorial covers how to set up a environment that lets you interact with
-
-&lt;a href=&#34;https://scanpy.readthedocs.io/en/stable/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scanpy&lt;/a&gt; from R. This includes
-converting Python 
-&lt;a href=&#34;https://anndata.readthedocs.io/en/latest/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AnnData objects&lt;/a&gt;
-to R 
-&lt;a href=&#34;https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SingleCellExperiment&lt;/a&gt;
-and 
-&lt;a href=&#34;https://satijalab.org/seurat/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seurat&lt;/a&gt; objects as well as interacting with
-a Python environment directly in an 
-&lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown&lt;/a&gt;
+files used for saving AnnData objects to disk.&lt;/p></description></item><item><title>Scanpy in R</title><link>lazappi.id.au/project/scanpy-in-r/</link><pubDate>Fri, 17 Apr 2020 13:31:20 +0200</pubDate><guid>lazappi.id.au/project/scanpy-in-r/</guid><description>&lt;p>This tutorial covers how to set up a environment that lets you interact with
+&lt;a href="https://scanpy.readthedocs.io/en/stable/" target="_blank" rel="noopener">Scanpy&lt;/a> from R. This includes
+converting Python
+&lt;a href="https://anndata.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">AnnData objects&lt;/a>
+to R
+&lt;a href="https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html" target="_blank" rel="noopener">SingleCellExperiment&lt;/a>
+and
+&lt;a href="https://satijalab.org/seurat/" target="_blank" rel="noopener">Seurat&lt;/a> objects as well as interacting with
+a Python environment directly in an
+&lt;a href="https://rmarkdown.rstudio.com/" target="_blank" rel="noopener">R Markdown&lt;/a>
 document. It demonstrates some of the functions in Scanpy but doesn&amp;rsquo;t cover
-everything the package can do or how best to use Scanpy for your analysis.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+everything the package can do or how best to use Scanpy for your analysis.&lt;/p></description></item></channel></rss>

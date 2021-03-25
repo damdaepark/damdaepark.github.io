@@ -1,53 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>elo | lazappi</title>
-    <link>lazappi.id.au/tags/elo/</link>
-      <atom:link href="lazappi.id.au/tags/elo/index.xml" rel="self" type="application/rss+xml" />
-    <description>elo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>lazappi.id.au/img/icon.png</url>
-      <title>elo</title>
-      <link>lazappi.id.au/tags/elo/</link>
-    </image>
-    
-    <item>
-      <title>My AFL-Elo model</title>
-      <link>lazappi.id.au/post/2018-04-21-my-afl-elo-model/</link>
-      <pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/post/2018-04-21-my-afl-elo-model/</guid>
-      <description>&lt;!-- ```{r knitr, include = FALSE}
-knitr::opts_chunk$set(autodep        = TRUE,
-                      cache          = FALSE,
-                      cache.comments = TRUE,
-                      echo           = FALSE,
-                      error          = FALSE,
-                      fig.align      = &#34;center&#34;,
-                      fig.width      = 10,
-                      fig.height     = 8,
-                      message        = FALSE,
-                      warning        = FALSE)
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>elo | lazappi</title><link>lazappi.id.au/tags/elo/</link><atom:link href="lazappi.id.au/tags/elo/index.xml" rel="self" type="application/rss+xml"/><description>elo</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sat, 21 Apr 2018 00:00:00 +0000</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>elo</title><link>lazappi.id.au/tags/elo/</link></image><item><title>My AFL-Elo model</title><link>lazappi.id.au/post/2018-04-21-my-afl-elo-model/</link><pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2018-04-21-my-afl-elo-model/</guid><description>&lt;!-- ```{r knitr, include = FALSE}
+knitr::opts_chunk$set(autodep = TRUE,
+cache = FALSE,
+cache.comments = TRUE,
+echo = FALSE,
+error = FALSE,
+fig.align = "center",
+fig.width = 10,
+fig.height = 8,
+message = FALSE,
+warning = FALSE)
 ```
-
 ```{r libraries}
-library(&#34;knitr&#34;)
-library(&#34;here&#34;)
-library(&#34;formattable&#34;)
-library(&#34;tidyverse&#34;)
-``` --&gt;
-&lt;p&gt;Over the last few years I have followed a lot of the work done by
-
-&lt;a href=&#34;http://fivethirtyeight.com/&#34; title=&#34;FiveThirtyEight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FiveThiryEight&lt;/a&gt;, particularly their attempts to model and
+library("knitr")
+library("here")
+library("formattable")
+library("tidyverse")
+``` -->
+&lt;p>Over the last few years I have followed a lot of the work done by
+&lt;a href="http://fivethirtyeight.com/" title="FiveThirtyEight" target="_blank" rel="noopener">FiveThiryEight&lt;/a>, particularly their attempts to model and
 predict sport. More recently I have discovered there is a community of people
-trying to do similar things for the AFL, including 
-&lt;a href=&#34;https://thearcfooty.com/&#34; title=&#34;The Arc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Arc&lt;/a&gt;,
-
-&lt;a href=&#34;https://squiggle.com.au/&#34; title=&#34;Squiggle&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Squiggle&lt;/a&gt;, 
-&lt;a href=&#34;http://www.matterofstats.com/&#34; title=&#34;Matter of Stats&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Matter of Stats&lt;/a&gt; and 
-&lt;a href=&#34;http://www.hpnfooty.com/&#34; title=&#34;Hurling People Now&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hurling People Now&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Many of these modelling projects are based around the 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Elo_rating_system&#34; title=&#34;Elo system&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Elo system&lt;/a&gt;. If you
+trying to do similar things for the AFL, including
+&lt;a href="https://thearcfooty.com/" title="The Arc" target="_blank" rel="noopener">The Arc&lt;/a>,
+&lt;a href="https://squiggle.com.au/" title="Squiggle" target="_blank" rel="noopener">Squiggle&lt;/a>,
+&lt;a href="http://www.matterofstats.com/" title="Matter of Stats" target="_blank" rel="noopener">Matter of Stats&lt;/a> and
+&lt;a href="http://www.hpnfooty.com/" title="Hurling People Now" target="_blank" rel="noopener">Hurling People Now&lt;/a>.&lt;/p>
+&lt;p>Many of these modelling projects are based around the
+&lt;a href="https://en.wikipedia.org/wiki/Elo_rating_system" title="Elo system" target="_blank" rel="noopener">Elo system&lt;/a>. If you
 haven&amp;rsquo;t heard of it before this model is a ranking system originally designed
 for chess by a Hungarian physicist. In the simplest form each player (or team)
 is assigned a ranking. When a match is played you can estimate a win probability
@@ -55,40 +33,40 @@ based on the differences between the rankings. The rankings are then adjusted
 based on the result in such a way that unexpected results cause bigger changes
 than those that are closer to what was predicted. This model is relatively naive
 and simple to implement, no knowledge of the players or teams themselves is
-required, just the results of matches, but can still produce good predictions.&lt;/p&gt;
-&lt;p&gt;Given this I thought it would be a good place to start. My version of the model
-is closely based on the one described by The Arc 
-&lt;a href=&#34;https://thearcfooty.com/2016/12/29/introducing-the-arcs-ratings-system/&#34; title=&#34;The Arc model&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. There were
+required, just the results of matches, but can still produce good predictions.&lt;/p>
+&lt;p>Given this I thought it would be a good place to start. My version of the model
+is closely based on the one described by The Arc
+&lt;a href="https://thearcfooty.com/2016/12/29/introducing-the-arcs-ratings-system/" title="The Arc model" target="_blank" rel="noopener">here&lt;/a>. There were
 a few different things I wanted to try but (as always) everything took longer
 than I planned, so what I have done in the end is very similar. The one area
 where I have done things differently is the process used to select the
 parameters of the model. This part wasn&amp;rsquo;t really described in the post on The
 Arc so I was left to my own devices. Here are brief descriptions of the
 parameters, but if you are interested I suggest you check out the outline of
-the model on The Arc which has a lot more detail:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;New team rating&lt;/strong&gt; - The starting rating for new teams that enter the
-competition (Gold Coast and GWS). Original teams start with a rating of 1500.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;New season adjustment&lt;/strong&gt; - Amount to regress to the mean at the beginning of
-a new season&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HGA alpha&lt;/strong&gt; - Weighting given to travel distance when calculating home
-ground advantage (HGA)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HGA beta&lt;/strong&gt; - Weighting given to ground experience when calculating HGA&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;p&lt;/strong&gt; - Controls how win probabilities are converted to margins&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;k&lt;/strong&gt; - Controls how differences between predicted and actual results affect
+the model on The Arc which has a lot more detail:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>New team rating&lt;/strong> - The starting rating for new teams that enter the
+competition (Gold Coast and GWS). Original teams start with a rating of 1500.&lt;/li>
+&lt;li>&lt;strong>New season adjustment&lt;/strong> - Amount to regress to the mean at the beginning of
+a new season&lt;/li>
+&lt;li>&lt;strong>HGA alpha&lt;/strong> - Weighting given to travel distance when calculating home
+ground advantage (HGA)&lt;/li>
+&lt;li>&lt;strong>HGA beta&lt;/strong> - Weighting given to ground experience when calculating HGA&lt;/li>
+&lt;li>&lt;strong>p&lt;/strong> - Controls how win probabilities are converted to margins&lt;/li>
+&lt;li>&lt;strong>k&lt;/strong> - Controls how differences between predicted and actual results affect
 ratings. Greater values cause greater changes, meaning the the model reacts
 quicker to what has happened but also that it is more unstable. In many ways
 this is the critical parameter for the Elo model. For this version of the
 model we use three different values:
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Early&lt;/strong&gt; - Used for the first five rounds of the regular season&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Normal&lt;/strong&gt; - Used for the remainder of the regular season&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Finals&lt;/strong&gt; - Used for finals matches&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To select these parameters I chose to use a 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Genetic_algorithm&#34; title=&#34;Genetic optimisation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;genetic optimisation algorithm&lt;/a&gt;.
+&lt;ul>
+&lt;li>&lt;strong>Early&lt;/strong> - Used for the first five rounds of the regular season&lt;/li>
+&lt;li>&lt;strong>Normal&lt;/strong> - Used for the remainder of the regular season&lt;/li>
+&lt;li>&lt;strong>Finals&lt;/strong> - Used for finals matches&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>To select these parameters I chose to use a
+&lt;a href="https://en.wikipedia.org/wiki/Genetic_algorithm" title="Genetic optimisation" target="_blank" rel="noopener">genetic optimisation algorithm&lt;/a>.
 Partly because it is potentially able to explore a wider parameter space, but
 also because I think they are cool. To do this we need a measure of fitness that
 we are aiming for. For sport predictions there are generally two things we want
@@ -101,905 +79,795 @@ generations with 100 individuals in each generation, training the model on all
 AFL games from 1997 to 2016 and assessing performance on the games from 2000
 to 2016. This leaves the 2017 season as a validation set to check the selected
 parameters. Here the best performing parameter sets from each of the
-optimisations compared to the default parameters based on The Arc:&lt;/p&gt;
+optimisations compared to the default parameters based on The Arc:&lt;/p>
 &lt;!-- ```{r opt-summary}
-opt_summ &lt;- read_tsv(here(&#34;static/data/afl2018/optimisation_summary.tsv&#34;),
-                     col_types = cols(
-                         .default = col_double(),
-                         Version = col_character()
-                     ))
-opt_summ %&gt;%
-    mutate(new_team_rating = round(new_team_rating),
-           new_season_adjustment = round(new_season_adjustment, 2),
-           hga_alpha = round(hga_alpha, 2),
-           hga_beta = round(hga_beta, 2),
-           pred_p = round(pred_p, 4),
-           adjust_k_early = round(adjust_k_early),
-           adjust_k_normal = round(adjust_k_normal),
-           adjust_k_finals = round(adjust_k_finals),
-           Margin2016 = round(Margin2016, 2),
-           Predict2016 = round(Predict2016, 2),
-           Margin2017 = round(Margin2017, 2),
-           Predict2017 = round(Predict2017, 2)) %&gt;%
-    mutate_all(as.character) %&gt;%
-    select(-Version) %&gt;%
-    rename(NewTeamRating = new_team_rating,
-           NewSeasonAdjustment = new_season_adjustment,
-           HGA_Alpha = hga_alpha,
-           HGA_Beta = hga_beta,
-           p = pred_p,
-           k_Early = adjust_k_early,
-           k_Normal = adjust_k_normal,
-           k_Finals = adjust_k_finals) %&gt;%
-    t() %&gt;%
-    data.frame() %&gt;%
-    rename(Default = X1, Margin = X2, Balanced = X3, Prediction = X4) %&gt;%
-    kable()
-``` --&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Default&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Margin&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Balanced&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Prediction&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;NewTeamRating&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1090&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1292&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1284&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1106&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;NewSeasonAdjustment&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.33&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.39&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.54&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;HGA_Alpha&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.33&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.89&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.05&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;HGA_Beta&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;15&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;12.89&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.68&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;p&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.0464&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.027&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.0204&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.078&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;k_Early&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;82&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;92&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;92&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;55&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;k_Normal&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;62&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;62&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;42&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;38&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;k_Finals&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;72&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;33&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;80&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;43&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Margin2016&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;29.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;29.82&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;29.76&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;32.51&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Predict2016&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.68&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.68&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.68&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.69&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Margin2017&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;29.09&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;28.94&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;29.23&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;30.18&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Predict2017&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.61&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.63&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.61&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.62&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Based on the 2017 results I decided to go with  the Margin model. Despite being
+opt_summ &lt;- read_tsv(here("static/data/afl2018/optimisation_summary.tsv"),
+col_types = cols(
+.default = col_double(),
+Version = col_character()
+))
+opt_summ %>%
+mutate(new_team_rating = round(new_team_rating),
+new_season_adjustment = round(new_season_adjustment, 2),
+hga_alpha = round(hga_alpha, 2),
+hga_beta = round(hga_beta, 2),
+pred_p = round(pred_p, 4),
+adjust_k_early = round(adjust_k_early),
+adjust_k_normal = round(adjust_k_normal),
+adjust_k_finals = round(adjust_k_finals),
+Margin2016 = round(Margin2016, 2),
+Predict2016 = round(Predict2016, 2),
+Margin2017 = round(Margin2017, 2),
+Predict2017 = round(Predict2017, 2)) %>%
+mutate_all(as.character) %>%
+select(-Version) %>%
+rename(NewTeamRating = new_team_rating,
+NewSeasonAdjustment = new_season_adjustment,
+HGA_Alpha = hga_alpha,
+HGA_Beta = hga_beta,
+p = pred_p,
+k_Early = adjust_k_early,
+k_Normal = adjust_k_normal,
+k_Finals = adjust_k_finals) %>%
+t() %>%
+data.frame() %>%
+rename(Default = X1, Margin = X2, Balanced = X3, Prediction = X4) %>%
+kable()
+``` -->
+&lt;table>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;/th>
+&lt;th align="left">Default&lt;/th>
+&lt;th align="left">Margin&lt;/th>
+&lt;th align="left">Balanced&lt;/th>
+&lt;th align="left">Prediction&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>NewTeamRating&lt;/td>
+&lt;td align="left">1090&lt;/td>
+&lt;td align="left">1292&lt;/td>
+&lt;td align="left">1284&lt;/td>
+&lt;td align="left">1106&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>NewSeasonAdjustment&lt;/td>
+&lt;td align="left">0.1&lt;/td>
+&lt;td align="left">0.33&lt;/td>
+&lt;td align="left">0.39&lt;/td>
+&lt;td align="left">0.54&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>HGA_Alpha&lt;/td>
+&lt;td align="left">6&lt;/td>
+&lt;td align="left">1.33&lt;/td>
+&lt;td align="left">2.89&lt;/td>
+&lt;td align="left">2.05&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>HGA_Beta&lt;/td>
+&lt;td align="left">15&lt;/td>
+&lt;td align="left">12.89&lt;/td>
+&lt;td align="left">2.1&lt;/td>
+&lt;td align="left">5.68&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>p&lt;/td>
+&lt;td align="left">0.0464&lt;/td>
+&lt;td align="left">0.027&lt;/td>
+&lt;td align="left">0.0204&lt;/td>
+&lt;td align="left">0.078&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>k_Early&lt;/td>
+&lt;td align="left">82&lt;/td>
+&lt;td align="left">92&lt;/td>
+&lt;td align="left">92&lt;/td>
+&lt;td align="left">55&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>k_Normal&lt;/td>
+&lt;td align="left">62&lt;/td>
+&lt;td align="left">62&lt;/td>
+&lt;td align="left">42&lt;/td>
+&lt;td align="left">38&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>k_Finals&lt;/td>
+&lt;td align="left">72&lt;/td>
+&lt;td align="left">33&lt;/td>
+&lt;td align="left">80&lt;/td>
+&lt;td align="left">43&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Margin2016&lt;/td>
+&lt;td align="left">29.9&lt;/td>
+&lt;td align="left">29.82&lt;/td>
+&lt;td align="left">29.76&lt;/td>
+&lt;td align="left">32.51&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Predict2016&lt;/td>
+&lt;td align="left">0.68&lt;/td>
+&lt;td align="left">0.68&lt;/td>
+&lt;td align="left">0.68&lt;/td>
+&lt;td align="left">0.69&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>Margin2017&lt;/td>
+&lt;td align="left">29.09&lt;/td>
+&lt;td align="left">28.94&lt;/td>
+&lt;td align="left">29.23&lt;/td>
+&lt;td align="left">30.18&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>Predict2017&lt;/td>
+&lt;td align="left">0.61&lt;/td>
+&lt;td align="left">0.63&lt;/td>
+&lt;td align="left">0.61&lt;/td>
+&lt;td align="left">0.62&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Based on the 2017 results I decided to go with the Margin model. Despite being
 optimised for margin accuracy it also performed the best at predicting results
 in 2017. This might suggest that the optimisation procedure is not ideal, but
 that is a problem for another day&amp;hellip; Encouragingly, all three of my models
 outperform the defaults, which suggests that the results will be somewhere in
-the range of the The Arc, and I am more than happy with that.&lt;/p&gt;
-&lt;p&gt;If you are interested in how I have done things I have made an
-
-&lt;a href=&#34;https://github.com/lazappi/aflelo&#34; title=&#34;aflelo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;aflelo&lt;/code&gt;&lt;/a&gt; R package which you can install from GitHub and my analysis
-and predictions for each round will be available 
-&lt;a href=&#34;https://github.com/lazappi/afl-2018&#34; title=&#34;afl2018&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now that I have a model I can use it to make predictions about the 2018 season!&lt;/p&gt;
-&lt;h1 id=&#34;round-5&#34;&gt;Round 5&lt;/h1&gt;
-&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+the range of the The Arc, and I am more than happy with that.&lt;/p>
+&lt;p>If you are interested in how I have done things I have made an
+&lt;a href="https://github.com/lazappi/aflelo" title="aflelo" target="_blank" rel="noopener">&lt;code>aflelo&lt;/code>&lt;/a> R package which you can install from GitHub and my analysis
+and predictions for each round will be available
+&lt;a href="https://github.com/lazappi/afl-2018" title="afl2018" target="_blank" rel="noopener">here&lt;/a>.&lt;/p>
+&lt;p>Now that I have a model I can use it to make predictions about the 2018 season!&lt;/p>
+&lt;h1 id="round-5">Round 5&lt;/h1>
+&lt;h2 id="summary">Summary&lt;/h2>
 &lt;!-- ```{r summ_table}
-summ_table &lt;- read_rds(here(&#34;static/data/afl2018/R5/summary_table.Rds&#34;))
+summ_table &lt;- read_rds(here("static/data/afl2018/R5/summary_table.Rds"))
 summ_table
-``` --&gt;
-&lt;table class=&#34;table table-condensed&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+``` -->
+&lt;table class="table table-condensed">
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:right;">
 Team
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Rating
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Change
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Points
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Percentage
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 ProjRating
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 ProjPoints
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Top2
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Top4
-&lt;/th&gt;
-&lt;th style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;th style="text-align:right;">
 Top8
-&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:right;">
 Richmond
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6&#34;&gt;1570&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;19&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">1570&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">19&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 130
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6&#34;&gt;1555&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #add8e6">1555&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 56.5
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;28.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;49.8&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;78.9&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">28.2&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">49.8&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">78.9&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Sydney
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b1d9e7&#34;&gt;1561&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-6&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b1d9e7">1561&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-6&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 108
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7&#34;&gt;1546&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7">1546&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 56.9
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;27.9&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;49.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;79.0&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">27.9&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">49.4&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">79.0&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 GW Sydney
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7&#34;&gt;1558&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7">1558&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 140
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b3dbe7&#34;&gt;1544&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b3dbe7">1544&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 56.3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb7c2&#34;&gt;27.5&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb7c2&#34;&gt;48.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;79.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb7c2">27.5&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb7c2">48.7&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">79.4&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 West Coast
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b3dbe7&#34;&gt;1556&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;21&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b3dbe7">1556&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">21&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 136
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7&#34;&gt;1545&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b2dae7">1545&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 54.7
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc3cc&#34;&gt;23.0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc0c9&#34;&gt;42.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffbac4&#34;&gt;74.9&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc3cc">23.0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc0c9">42.7&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffbac4">74.9&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Hawthorn
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b4dbe8&#34;&gt;1553&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;34&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b4dbe8">1553&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">34&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 127
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b6dce8&#34;&gt;1539&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b6dce8">1539&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 56.3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb9c3&#34;&gt;26.9&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb8c2&#34;&gt;48.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1&#34;&gt;78.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb9c3">26.9&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb8c2">48.2&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffb6c1">78.7&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Adelaide
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b7dde9&#34;&gt;1546&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-44&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b7dde9">1546&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-44&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 107
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b8dde9&#34;&gt;1535&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b8dde9">1535&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 50.7
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdce1&#34;&gt;13.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd3da&#34;&gt;29.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc5cd&#34;&gt;63.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdce1">13.3&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd3da">29.7&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc5cd">63.1&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Geelong
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #b9dee9&#34;&gt;1542&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;10&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #b9dee9">1542&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">10&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 109
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #badeea&#34;&gt;1532&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #badeea">1532&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 50.0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdfe4&#34;&gt;12.0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd6dc&#34;&gt;27.6&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc6cf&#34;&gt;61.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdfe4">12.0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd6dc">27.6&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc6cf">61.3&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Collingwood
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #bfe0eb&#34;&gt;1530&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;44&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bfe0eb">1530&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">44&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 107
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #c0e1ec&#34;&gt;1521&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c0e1ec">1521&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 49.6
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe2e6&#34;&gt;11.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd7dd&#34;&gt;26.8&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc8d1&#34;&gt;59.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe2e6">11.1&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd7dd">26.8&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc8d1">59.1&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Port Adelaide
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #bfe0eb&#34;&gt;1529&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-18&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bfe0eb">1529&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-18&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 12
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 117
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #c0e1eb&#34;&gt;1522&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #c0e1eb">1522&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 51.9
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd7dd&#34;&gt;15.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcfd6&#34;&gt;32.5&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc3cc&#34;&gt;64.6&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffd7dd">15.4&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcfd6">32.5&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc3cc">64.6&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 North Melbourne
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #cee7f0&#34;&gt;1497&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;28&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cee7f0">1497&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">28&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 134
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #cde7f0&#34;&gt;1499&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cde7f0">1499&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 43.2
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff2f4&#34;&gt;4.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffecef&#34;&gt;12.6&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdce1&#34;&gt;38.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff2f4">4.7&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffecef">12.6&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdce1">38.4&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Essendon
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #cfe8f0&#34;&gt;1494&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;18&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cfe8f0">1494&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">18&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 99
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #cde7f0&#34;&gt;1499&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #cde7f0">1499&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 40.7
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff7f8&#34;&gt;3.0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff2f4&#34;&gt;8.5&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe5e9&#34;&gt;28.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff7f8">3.0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff2f4">8.5&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffe5e9">28.2&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Melbourne
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #d0e8f0&#34;&gt;1493&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-34&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d0e8f0">1493&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-34&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 98
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #d0e8f0&#34;&gt;1495&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d0e8f0">1495&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 43.1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff5f6&#34;&gt;3.8&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeef1&#34;&gt;11.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdee3&#34;&gt;35.5&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff5f6">3.8&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeef1">11.3&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffdee3">35.5&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Western Bulldogs
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ddeff4&#34;&gt;1463&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;6&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ddeff4">1463&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">6&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 4
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 72
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #deeff5&#34;&gt;1470&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #deeff5">1470&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 36.0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd&#34;&gt;0.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafb&#34;&gt;3.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0f3&#34;&gt;16.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd">0.7&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafb">3.2&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff0f3">16.3&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Fremantle
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #e0f0f5&#34;&gt;1458&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: green&#34;&gt;0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e0f0f5">1458&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: green">0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 89
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #e1f0f5&#34;&gt;1466&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e1f0f5">1466&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 39.3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafb&#34;&gt;1.8&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff6f7&#34;&gt;5.9&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeaed&#34;&gt;23.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafb">1.8&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff6f7">5.9&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffeaed">23.3&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 St Kilda
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #e9f4f8&#34;&gt;1438&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-10&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e9f4f8">1438&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-10&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 4
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 68
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #e6f3f7&#34;&gt;1456&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #e6f3f7">1456&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 29.4
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe&#34;&gt;0.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd&#34;&gt;1.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafa&#34;&gt;6.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe">0.2&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd">1.1&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffafa">6.4&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Gold Coast
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #f3f9fb&#34;&gt;1415&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-21&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f3f9fb">1415&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-21&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 83
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #f4f9fb&#34;&gt;1433&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f4f9fb">1433&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 32.7
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfe&#34;&gt;0.4&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffcfd&#34;&gt;1.6&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fff7f8&#34;&gt;9.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfe">0.4&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffcfd">1.6&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fff7f8">9.1&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Brisbane
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #f7fbfc&#34;&gt;1407&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-19&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f7fbfc">1407&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-19&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 64
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #f8fbfd&#34;&gt;1426&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f8fbfd">1426&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 24.3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe&#34;&gt;0.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe&#34;&gt;0.3&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd&#34;&gt;2.7&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe">0.1&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffefe">0.3&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #fffdfd">2.7&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:right;">
 Carlton
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff&#34;&gt;1390&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;color: red&#34;&gt;-28&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1390&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="color: red">-28&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
 61
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff&#34;&gt;1415&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1415&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
 20.5
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff&#34;&gt;0.0&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff&#34;&gt;0.1&lt;/span&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-&lt;span style=&#34;display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff&#34;&gt;1.2&lt;/span&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;predictions&#34;&gt;Predictions&lt;/h2&gt;
-&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/predictions.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/predictions_hu6d0c23abfc508405a1c34059ffa18e48_151638_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/predictions_hu6d0c23abfc508405a1c34059ffa18e48_151638_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;3000&#34; height=&#34;1500&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;projections&#34;&gt;Projections&lt;/h2&gt;
-&lt;h3 id=&#34;ladder&#34;&gt;Ladder&lt;/h3&gt;
-&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/ladder.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/ladder_huc471ee2fa7c9ab0f6ca0f9b83226a86f_307858_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/ladder_huc471ee2fa7c9ab0f6ca0f9b83226a86f_307858_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;3000&#34; height=&#34;3000&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h3 id=&#34;premiership-points&#34;&gt;Premiership points&lt;/h3&gt;
-&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/points.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/points_hua0e0f01356b94a506e1acb54d5986bcc_137949_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/points_hua0e0f01356b94a506e1acb54d5986bcc_137949_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;3000&#34; height=&#34;3000&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
-&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/history.png) --&gt;
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure&gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/history_hud966511d2547c3080988977f412008f9_157406_2000x2000_fit_lanczos_2.png&#34; &gt;
-
-
-  &lt;img data-src=&#34;lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/history_hud966511d2547c3080988977f412008f9_157406_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;3000&#34; height=&#34;3600&#34;&gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.0&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">0.1&lt;/span>
+&lt;/td>
+&lt;td style="text-align:right;">
+&lt;span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1.2&lt;/span>
+&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="predictions">Predictions&lt;/h2>
+&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/predictions.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/predictions_hu6d0c23abfc508405a1c34059ffa18e48_151638_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/predictions_hu6d0c23abfc508405a1c34059ffa18e48_151638_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="3000" height="1500">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="projections">Projections&lt;/h2>
+&lt;h3 id="ladder">Ladder&lt;/h3>
+&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/ladder.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/ladder_huc471ee2fa7c9ab0f6ca0f9b83226a86f_307858_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/ladder_huc471ee2fa7c9ab0f6ca0f9b83226a86f_307858_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="3000" height="3000">
+&lt;/a>
+&lt;/figure>
+&lt;h3 id="premiership-points">Premiership points&lt;/h3>
+&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/points.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/points_hua0e0f01356b94a506e1acb54d5986bcc_137949_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/points_hua0e0f01356b94a506e1acb54d5986bcc_137949_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="3000" height="3000">
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="history">History&lt;/h2>
+&lt;!-- ![](/post/2018-04-21-my-afl-elo-model_files/history.png) -->
+&lt;figure>
+&lt;a data-fancybox="" href="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/history_hud966511d2547c3080988977f412008f9_157406_2000x2000_fit_lanczos_2.png" >
+&lt;img data-src="lazappi.id.au/lazappi.id.au/post/2018-04-21-my-afl-elo-model/history_hud966511d2547c3080988977f412008f9_157406_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="3000" height="3600">
+&lt;/a>
+&lt;/figure></description></item></channel></rss>

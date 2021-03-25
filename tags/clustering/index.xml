@@ -1,62 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>clustering | lazappi</title>
-    <link>lazappi.id.au/tags/clustering/</link>
-      <atom:link href="lazappi.id.au/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
-    <description>clustering</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Mon, 17 Sep 2018 15:40:00 +0000</lastBuildDate>
-    <image>
-      <url>lazappi.id.au/img/icon.png</url>
-      <title>clustering</title>
-      <link>lazappi.id.au/tags/clustering/</link>
-    </image>
-    
-    <item>
-      <title>Using clustering trees to visualise scRNA-seq data</title>
-      <link>lazappi.id.au/talk/2018-09-17-gi2018/</link>
-      <pubDate>Mon, 17 Sep 2018 15:40:00 +0000</pubDate>
-      <guid>lazappi.id.au/talk/2018-09-17-gi2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Clustering trees for visualising scRNA-seq data</title>
-      <link>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</link>
-      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Clustering trees: a visualization for evaluating clusterings at multiple resolutions</title>
-      <link>lazappi.id.au/publication/2018-zappia-clustree/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>lazappi.id.au/publication/2018-zappia-clustree/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>clustree</title>
-      <link>lazappi.id.au/project/clustree/</link>
-      <pubDate>Tue, 27 Mar 2018 11:26:59 +0100</pubDate>
-      <guid>lazappi.id.au/project/clustree/</guid>
-      <description>&lt;p&gt;Deciding what resolution to use can be a difficult question when approaching a 
-clustering analysis. One way to approach this problem is to look at how samples 
-move as the number of clusters increases. The clustree package is availavble 
-from CRAN (&lt;a href=&#34;https://cran.r-project.org/package=clustree&#34;&gt;https://cran.r-project.org/package=clustree&lt;/a&gt;) allows you to produce 
-clustering trees, a visualisation for interrogating clusterings as resolution 
-increases.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Building a clustering tree</title>
-      <link>lazappi.id.au/talk/2017-08-18-joining-the-dots/</link>
-      <pubDate>Fri, 18 Aug 2017 09:55:00 +1000</pubDate>
-      <guid>lazappi.id.au/talk/2017-08-18-joining-the-dots/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>clustering | lazappi</title><link>lazappi.id.au/tags/clustering/</link><atom:link href="lazappi.id.au/tags/clustering/index.xml" rel="self" type="application/rss+xml"/><description>clustering</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Mon, 17 Sep 2018 15:40:00 +0000</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>clustering</title><link>lazappi.id.au/tags/clustering/</link></image><item><title>Using clustering trees to visualise scRNA-seq data</title><link>lazappi.id.au/talk/2018-09-17-gi2018/</link><pubDate>Mon, 17 Sep 2018 15:40:00 +0000</pubDate><guid>lazappi.id.au/talk/2018-09-17-gi2018/</guid><description/></item><item><title>Clustering trees for visualising scRNA-seq data</title><link>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</link><pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate><guid>lazappi.id.au/talk/2018-07-16-ozsinglecells2018/</guid><description/></item><item><title>Clustering trees: a visualization for evaluating clusterings at multiple resolutions</title><link>lazappi.id.au/publication/2018-zappia-clustree/</link><pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate><guid>lazappi.id.au/publication/2018-zappia-clustree/</guid><description/></item><item><title>clustree</title><link>lazappi.id.au/project/clustree/</link><pubDate>Tue, 27 Mar 2018 11:26:59 +0100</pubDate><guid>lazappi.id.au/project/clustree/</guid><description>&lt;p>Deciding what resolution to use can be a difficult question when approaching a
+clustering analysis. One way to approach this problem is to look at how samples
+move as the number of clusters increases. The clustree package is availavble
+from CRAN (&lt;a href="https://cran.r-project.org/package=clustree">https://cran.r-project.org/package=clustree&lt;/a>) allows you to produce
+clustering trees, a visualisation for interrogating clusterings as resolution
+increases.&lt;/p></description></item><item><title>Building a clustering tree</title><link>lazappi.id.au/talk/2017-08-18-joining-the-dots/</link><pubDate>Fri, 18 Aug 2017 09:55:00 +1000</pubDate><guid>lazappi.id.au/talk/2017-08-18-joining-the-dots/</guid><description/></item></channel></rss>
