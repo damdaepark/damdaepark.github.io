@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>collaboration | lazappi</title><link>lazappi.id.au/tags/collaboration/</link><atom:link href="lazappi.id.au/tags/collaboration/index.xml" rel="self" type="application/rss+xml"/><description>collaboration</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sun, 20 Jul 2014 00:00:00 +0000</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>collaboration</title><link>lazappi.id.au/tags/collaboration/</link></image><item><title>Open science workshops</title><link>lazappi.id.au/post/2014-07-20-open-science-workshops/</link><pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate><guid>lazappi.id.au/post/2014-07-20-open-science-workshops/</guid><description>&lt;p>This Saturday I attended the first workshop run by
+&lt;a href="https://openscienceworkshops.github.io/" target="_blank" rel="noopener">Open Science Workshops&lt;/a> at the
+&lt;a href="http://inspire9.com/" target="_blank" rel="noopener">Inspire9&lt;/a> collaborative workspace. Open Source Workshops
+is a new initiative aiming to promote open source tools and techniques to the
+scientific community.&lt;/p>
+&lt;p>The workshop consisted of two main parts: an introduction to the basics of
+Github (creating repositories, commiting, forking, merging&amp;hellip;) and the
+SageMathCloud; and a serious of talks:&lt;/p>
+&lt;ul>
+&lt;li>General discussion of how and why you should take an open approach to
+scientific research (Alex Ghitza, Pure Maths Lecturer,
+University of Melbourne).&lt;/li>
+&lt;li>
+&lt;a href="https://www.authorea.com/" target="_blank" rel="noopener">Authorea&lt;/a> - An online platform for collaborative
+manuscript editing designed for digital publishing that can combines Latex,
+Markdown etc. with interactive visualisations, embedded IPython notebooks and
+built in citation management (Andrea Bedini, Maths and Stats, University of
+Melbourne).&lt;/li>
+&lt;li>
+&lt;a href="https://scirate.com/" target="_blank" rel="noopener">SciRate&lt;/a> - A social media approach to rating and
+sharing the papers available in at arXiv.org (Jaiden Mispy).&lt;/li>
+&lt;li>
+&lt;a href="https://cloud.sagemath.com/" target="_blank" rel="noopener">SageMathCloud&lt;/a> - Collaborative cloud platform
+set up with particular support for IPython and Latex as well as a terminal.
+Kind of like Google docs meets a VM.&lt;/li>
+&lt;li>
+&lt;a href="https://nectar.org.au/" target="_blank" rel="noopener">NeCTAR&lt;/a> - Cloud facility available to Australian
+researchers. Also the Genomics Virtual Laboratory set up that allows quick
+launching of a VM with Galaxy and other bioinformatics tools as well as
+IPython and RStudio (Clare Sloggett, VLSCI).&lt;/li>
+&lt;li>
+&lt;a href="http://software-carpentry.org/" target="_blank" rel="noopener">Software Capentry&lt;/a> - Bootcamps for training
+in scientific computing includiang Git (work tracking), UNIX (automation),
+Programming (modularisation) and SQL (structured data) (Scott Ritchie).&lt;/li>
+&lt;li>
+&lt;a href="http://elifesciences.org/" target="_blank" rel="noopener">eLIFE&lt;/a> - A new open access life sciences journal
+in the UK that uses a consulative peer review process as well as their eLIFE
+Lens and oline system for viewing their papers or anything in PubMed via the
+&lt;a href="http://oa-sandbox.org/" target="_blank" rel="noopener">OA Sandbox&lt;/a> (Ian Mulvany).&lt;/li>
+&lt;/ul>
+&lt;p>A common theme running through the talks (apart from open access) was the need
+to move towards 21st century tools and processes, both for collaboration and
+publishing.&lt;/p>
+&lt;p>Overall it was a worthwhile experience and hopefully there will be more in the
+future, if you are interested in the details the
+&lt;a href="https://github.com/silky/osw-material/tree/master/workshop-melb-2014" target="_blank" rel="noopener">talks&lt;/a>
+and
+&lt;a href="https://github.com/OpenScienceWorkshops/osw-material/wiki/Summary-of-the-July-2014-Melbourne-Open-Science-Workshop" target="_blank" rel="noopener">agenda&lt;/a>
+are available here on Github.&lt;/p></description></item></channel></rss>

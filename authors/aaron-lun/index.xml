@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Aaron Lun | lazappi</title><link>lazappi.id.au/authors/aaron-lun/</link><atom:link href="lazappi.id.au/authors/aaron-lun/index.xml" rel="self" type="application/rss+xml"/><description>Aaron Lun</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Luke Zappia, 2021</copyright><lastBuildDate>Sun, 12 Jul 2020 15:17:55 +0200</lastBuildDate><image><url>lazappi.id.au/img/icon.png</url><title>Aaron Lun</title><link>lazappi.id.au/authors/aaron-lun/</link></image><item><title>zellkonverter</title><link>lazappi.id.au/project/zellkonverter/</link><pubDate>Sun, 12 Jul 2020 15:17:55 +0200</pubDate><guid>lazappi.id.au/project/zellkonverter/</guid><description>&lt;p>zellkonverter is a Bioconductor R package that provides methods to convert
+between Python
+&lt;a href="https://anndata.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">AnnData&lt;/a>
+objects and
+&lt;a href="https://bioconductor.org/packages/SingleCellExperiment/" target="_blank" rel="noopener">SingleCellExperiment&lt;/a>
+objects (&lt;a href="https://bioconductor.org/packages/zellkonveter/)">https://bioconductor.org/packages/zellkonveter/)&lt;/a>. These are primarily
+intended for use by downstream Bioconductor packages that wrap Python methods
+for single-cell data analysis. It also includes functions to read and write H5AD
+files used for saving AnnData objects to disk.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,295 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.7.0"><meta name=author content="Luke Zappia"><meta name=description content="Analysis of packages that use the SingleCellExperiment object"><link rel=alternate hreflang=en-us href=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/><meta name=theme-color content="hsl(324, 100%, 46%)"><script src=/lazappi.id.au/js/mathjax-config.js></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/shades-of-purple.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/shades-of-purple.min.css crossorigin=anonymous title=hl-dark disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js integrity crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Fira+Code%7CLato%7CRubik&display=swap"><link rel=stylesheet href=/lazappi.id.au/css/academic.css><script async src="https://www.googletagmanager.com/gtag/js?id=UA-52309538-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}function trackOutboundLink(a,b){gtag('event','click',{event_category:'outbound',event_label:a,transport_type:'beacon',event_callback:function(){b!=='_blank'&&(document.location=a)}}),console.debug("Outbound link clicked: "+a)}function onClickCallback(a){if(a.target.tagName!=='A'||a.target.host===window.location.host)return;trackOutboundLink(a.target,a.target.getAttribute('target'))}gtag('js',new Date),gtag('config','UA-52309538-1',{anonymize_ip:!0}),document.addEventListener('click',onClickCallback,!1)</script><link rel=manifest href=/lazappi.id.au/index.webmanifest><link rel=icon type=image/png href=/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_192x192_fill_lanczos_center_2.png><link rel=canonical href=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/><meta property="twitter:card" content="summary_large_image"><meta property="twitter:site" content="@_lazappi_"><meta property="twitter:creator" content="@_lazappi_"><meta property="og:site_name" content="lazappi"><meta property="og:url" content="lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/"><meta property="og:title" content="Exploring the SCE-verse | lazappi"><meta property="og:description" content="Analysis of packages that use the SingleCellExperiment object"><meta property="og:image" content="lazappi.id.au/img/icon.png"><meta property="twitter:image" content="lazappi.id.au/img/icon.png"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2018-06-09T00:00:00+00:00"><meta property="article:modified_time" content="2021-03-25T16:31:49+09:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/"},"headline":"Exploring the SCE-verse","datePublished":"2018-06-09T00:00:00Z","dateModified":"2021-03-25T16:31:49+09:00","author":{"@type":"Person","name":"**Luke Zappia**"},"publisher":{"@type":"Organization","name":"lazappi","logo":{"@type":"ImageObject","url":"/lazappi.id.au/images/icon_hu9b26c1d71e744fef00762ed4d57567f0_20503_192x192_fill_lanczos_center_2.png"}},"description":"Analysis of packages that use the SingleCellExperiment object"}</script><script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"hsl(324, 100%, 46%)",text:"#fff"},button:{background:"#fff",text:"hsl(324, 100%, 46%)"}},theme:"classic",content:{message:"This website uses cookies to ensure you get the best experience on our website.",dismiss:"Got it!",link:"Learn more",href:"https://www.cookiesandyou.com"}})})</script><title>Exploring the SCE-verse | lazappi</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=dark><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/lazappi.id.au/>lazappi</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/lazappi.id.au/>lazappi</a></div><div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/lazappi.id.au/#about><span>Home</span></a></li><li class=nav-item><a class=nav-link href=/lazappi.id.au/#posts><span>Posts</span></a></li><li class=nav-item><a class=nav-link href=/lazappi.id.au/#projects><span>Projects</span></a></li><li class=nav-item><a class=nav-link href=/lazappi.id.au/#talks><span>Talks</span></a></li><li class=nav-item><a class=nav-link href=/lazappi.id.au/#publications><span>Publications</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=#><i class="fas fa-search" aria-hidden=true></i></a></li><li class=nav-item><a class="nav-link js-dark-toggle" href=#><i class="fas fa-moon" aria-hidden=true></i></a></li></ul></div></nav><article class=article><div class="article-container pt-3"><h1>Exploring the SCE-verse</h1><div class=article-metadata><div><span><a href=lazappi.id.au/authors/luke-zappia/><strong>Luke Zappia</strong></a></span></div><span class=article-date>Last updated on
+2021-03-25</span>
+<span class=middot-divider></span><span class=article-reading-time>10 min read</span>
+<span class=middot-divider></span><a href=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/#disqus_thread></a><span class=middot-divider></span><span class=article-categories><i class="fas fa-folder mr-1"></i><a href=lazappi.id.au/categories/migrated2020/>migrated2020</a>, <a href=lazappi.id.au/categories/analysis/>analysis</a></span></div></div><div class=article-container><div class=article-style><p>Over the last few years the number of methods for analysing scRNA-seq has
+exploded and there is now well over 200 software tools available. Each of these
+tools need to make a choice about how they store and represent the data used
+during their analysis. One attempt to standardise the data structures that are
+used is the
+<a href=https://www.bioconductor.org/packages/SingleCellExperiment title=SingleCellExperiment target=_blank rel=noopener>SingleCellExperiment</a> package created by
+Davide Risso and Aaron Lun, with help from Keegan Korthauer. This package became
+publicly available as part of the Bioconductor 3.6 release in October 2017.
+Since we have recently had another Bioconductor release I thought I would have a
+look at the community of tools that has been developed around
+SingleCellExperiment.</p><h1 id=what-is-a-singlecellexperiment>What is a SingleCellExperiment?</h1><p>Before we have a look at what packages use the SingleCellExperiment it&rsquo;s
+probably useful to briefly discuss what it is. The SingleCellExperiment object
+is an extension of the older
+<a href=https://www.bioconductor.org/packages/SummarizedExperiment title=SummarizedExperiment target=_blank rel=noopener>SummarizedExperiment</a>
+object. This is an S4 class developed for use in Bioconductor packages with the
+main parts being a central set of matrix &ldquo;assays&rdquo; along with tables providing
+extra information about the rows and columns. There is also a metadata slot
+which is a list containing any other information related to the experiment.</p><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/summarized_experiment_hu8c6c6c878cd5080fac87b03b735b1319_45618_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/summarized_experiment_hu8c6c6c878cd5080fac87b03b735b1319_45618_2000x2000_fit_lanczos_2.png class=lazyload alt width=706 height=602></a></figure><p>One of the key benefits of using a structure like the SummarizedExperiment is
+that all the data related to an analysis is held in one spot. This makes it
+easier to pass things between functions or output results as well as reducing
+the possibilities for mismatches. The SingleCellExperiment adds some extra
+features that are useful for scRNA-seq analysis including:</p><ul><li>Slots for holding:<ul><li>Dimenstionality reductions</li><li>Spike-in information</li><li>Size factors for normalisation</li></ul></li><li>Convenient access for named assays - counts, normcounts, cpm etc.</li></ul><p>The idea is then that the SingleCellExperiment can be used by a range of
+packages to store data during analysis and extended when required. Let&rsquo;s have
+a look at what those packages are currently by seeing what depends on
+SingleCellExperiment.</p><h1 id=getting-package-information>Getting package information</h1><p>First let&rsquo;s load the packages we need for this analysis.
+<a href=https://github.com/seandavi/BiocPkgTools target=_blank rel=noopener>BiocPkgTools</a> will need to be installed from GitHub but the rest
+are on CRAN.</p><pre><code class=language-{r>library(&quot;BiocPkgTools&quot;) # https://github.com/seandavi/BiocPkgTools
+library(&quot;tidygraph&quot;)
+library(&quot;ggraph&quot;)
+library(&quot;tidyverse&quot;)
+</code></pre><p>We can use Sean Davis' BiocPkgTools package to get information about
+Bioconductor packages, but then we need to do some filtering to get the
+information we want. It turns out I needed to do this multiple times so here is
+a function I wrote to make it a bit easier. It takes the database of information
+about all Bioconductor packages, the name of a package we are interested in and
+a flag indicating if we want normal or reverse dependencies.</p><pre><code class=language-{r>get_bioc_deps &lt;- function(bpi, pkg, reverse) {
+    deps &lt;- bpi %&gt;%
+        filter(Package == pkg)
+
+    if (reverse) {
+        deps &lt;- deps %&gt;%
+            select(depends = dependsOnMe, imports = importsMe,
+                   suggests = suggestsMe)
+    } else {
+        deps &lt;- deps %&gt;%
+            select(depends = Depends, imports = Imports,
+                   suggests = Suggests)
+    }
+
+    deps &lt;- deps %&gt;%
+        gather(key = &quot;type&quot;, value = &quot;package&quot;) %&gt;%
+        separate_rows() %&gt;%
+        filter(!is.na(package))
+
+    if (reverse) {
+        deps &lt;- deps %&gt;%
+            mutate(package2 = pkg) %&gt;%
+            rename(package1 = package)
+    } else {
+        deps &lt;- deps %&gt;%
+            mutate(package1 = pkg) %&gt;%
+            rename(package2 = package)
+    }
+
+    deps &lt;- deps %&gt;% select(package1, uses = type, package2)
+}
+</code></pre><p>If we use it to search for reverse dependencies of SingleCellExperiment we can
+see it returns a data frame with which Bioconductor packages use
+SingleCellExperiment and the relationship between them.</p><pre><code class=language-{r>bpi &lt;- getBiocPkgList()
+bioc_revdeps &lt;- get_bioc_deps(bpi, &quot;SingleCellExperiment&quot;, reverse = TRUE)
+head(bioc_revdeps)
+</code></pre><p>We can do a similar thing for CRAN packages with use of the
+<code>tools::package_dependencies</code> function.</p><pre><code class=language-{r>get_cran_deps &lt;- function(pkg, db, reverse) {
+
+    types &lt;- c(&quot;Depends&quot;, &quot;Imports&quot;, &quot;Suggests&quot;)
+
+    deps &lt;- sapply(types, function(type) {
+        deps &lt;- tools::package_dependencies(pkg, db, which = type,
+                                            reverse = reverse)
+        c(type = type, package = paste(deps[[1]], collapse = &quot;, &quot;))
+    })
+
+    deps &lt;- deps %&gt;%
+        t() %&gt;%
+        as_data_frame() %&gt;%
+        mutate(type = tolower(type)) %&gt;%
+        filter(package != &quot;&quot;) %&gt;%
+        separate_rows(package)
+
+    if (nrow(deps) == 0) {
+        return(tibble(package1 = character(), uses = character(),
+                      package2 = character()))
+    }
+
+    if (reverse) {
+        deps &lt;- deps %&gt;%
+            mutate(package2 = pkg) %&gt;%
+            rename(package1 = package)
+    } else {
+        deps &lt;- deps %&gt;%
+            mutate(package1 = pkg) %&gt;%
+            rename(package2 = package)
+    }
+
+    deps &lt;- deps %&gt;% select(package1, uses = type, package2)
+}
+db &lt;- available.packages(repos = &quot;http://cran.r-project.org&quot;)
+cran_revdeps &lt;- get_cran_deps(&quot;SingleCellExperiment&quot;, db, reverse = TRUE)
+head(cran_revdeps)
+</code></pre><h1 id=what-uses-singlecellexperiment>What uses SingleCellExperiment?</h1><p>We now have two tables showing us which Bioconductor and CRAN packages make use
+of SingleCellExperiment. Tables can be fairly boring to look at though so let&rsquo;s
+use the relationships to construct a graph using
+<a href="https://cran.r-project.org/package=tidygraph" title=tidygraph target=_blank rel=noopener>tidygraph</a>.</p><pre><code class=language-{r>nodes &lt;- bioc_revdeps %&gt;%
+    bind_rows(cran_revdeps) %&gt;%
+    select(-uses) %&gt;%
+    gather(key = id, value = package) %&gt;%
+    select(-id) %&gt;%
+    distinct() %&gt;%
+    mutate(repo = if_else(package %in% bpi$Package, &quot;Bioconductor&quot;, &quot;CRAN&quot;))
+edges &lt;- bioc_revdeps %&gt;%
+    bind_rows(cran_revdeps) %&gt;%
+    rename(from = package1, to = package2)
+graph &lt;- tbl_graph(nodes = nodes, edges = edges)
+</code></pre><p>We can now visualise the relationships using
+<a href="https://cran.r-project.org/package=ggraph" title=ggraph target=_blank rel=noopener>ggraph</a>:</p><pre><code class=language-{r>ggraph(graph, layout = &quot;fr&quot;) +
+    geom_edge_fan(aes(colour = uses),
+                  arrow = arrow(length = unit(4, 'mm')),
+                  end_cap = circle(3, 'mm')) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo), repel = TRUE) +
+    scale_color_brewer(palette = &quot;Set1&quot;) +
+    scale_edge_color_brewer(palette = &quot;Dark2&quot;) +
+    theme_graph()
+</code></pre><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-graph-1_hu21acfbc8160c2cec70c1df1e116e5709_194390_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-graph-1_hu21acfbc8160c2cec70c1df1e116e5709_194390_2000x2000_fit_lanczos_2.png class=lazyload alt width=1344 height=960></a></figure><p>This doesn&rsquo;t tell us a lot we didn&rsquo;t already know but it does allow us to see
+everything in one place. We can see that there are only a couple of CRAN
+packages, which is unsurprising given that SingleCellExperiment is part of
+Bioconductor, and that most packages either &ldquo;import&rdquo; or &ldquo;depend&rdquo; on
+SingleCellExperiment.</p><p>What about the relationships between the packages that depend on
+SingleCellExperiment? Are there communitites of related scRNA-seq analysis
+tools?</p><h1 id=adding-an-extra-hop>Adding an extra hop</h1><p>We can reuse the functions we wrote earlier to get the dependencies (and reverse
+dependencies) of our list of scRNA-seq packages. We will also do a little bit
+of extra processing to tidy up some of the results.</p><pre><code class=language-{r>more_deps &lt;- map2(nodes$package, nodes$repo, function(x, y) {
+    if (y == &quot;Bioconductor&quot;) {
+        get_bioc_deps(bpi, x, FALSE)
+    } else {
+        get_cran_deps(x, db, FALSE)
+    }
+}) %&gt;%
+    bind_rows() %&gt;%
+    mutate(package2 = str_remove(package2, &quot; ?\\(\\D+[0-9\\.]+\\)&quot;)) %&gt;%
+    filter(package2 != &quot;R&quot;)
+more_revdeps &lt;- map2(nodes$package, nodes$repo, function(x, y) {
+    if (y == &quot;Bioconductor&quot;) {
+        get_bioc_deps(bpi, x, TRUE)
+    } else {
+        get_cran_deps(x, db, TRUE)
+    }
+}) %&gt;% bind_rows()
+</code></pre><p>Let&rsquo;s build another graph and plot what we get. As you can see it&rsquo;s a bit
+crowded so I have left off the package labels.</p><pre><code class=language-{r>nodes &lt;- more_deps %&gt;%
+    bind_rows(more_revdeps) %&gt;%
+    select(-uses) %&gt;%
+    gather(key = id, value = package) %&gt;%
+    select(-id) %&gt;%
+    distinct() %&gt;%
+    mutate(repo = if_else(package %in% bpi$Package, &quot;Bioconductor&quot;, &quot;CRAN&quot;))
+edges &lt;- more_deps %&gt;%
+    bind_rows(more_revdeps) %&gt;%
+    rename(from = package1, to = package2) %&gt;%
+    distinct()
+graph &lt;- tbl_graph(nodes = nodes, edges = edges)
+ggraph(graph, layout = &quot;fr&quot;) +
+    geom_edge_fan(aes(colour = uses),
+                  arrow = arrow(length = unit(4, 'mm')),
+                  end_cap = circle(3, 'mm')) +
+    geom_node_point(aes(colour = repo)) +
+    #geom_node_text(aes(label = package, colour = repo), repel = TRUE) +
+    scale_color_brewer(palette = &quot;Set1&quot;) +
+    scale_edge_color_brewer(palette = &quot;Dark2&quot;) +
+    theme_graph()
+</code></pre><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-more-1_hufc9a98dcde95aff3afc946d2a128c5da_432023_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/plot-more-1_hufc9a98dcde95aff3afc946d2a128c5da_432023_2000x2000_fit_lanczos_2.png class=lazyload alt width=1344 height=960></a></figure><p>Our graph has a lot more information now, but is probably too complext to tell
+us anything useful. In particularly we can see there are a lot of nodes around
+the edges that have one package depending on them. Let&rsquo;s get rid of those by
+removing sink node.</p><pre><code class=language-{r>graph &lt;- tbl_graph(nodes = nodes, edges = edges) %&gt;%
+    activate(nodes) %&gt;%
+    filter(!node_is_sink())
+ggraph(graph, layout = &quot;fr&quot;) +
+    geom_edge_fan(aes(colour = uses),
+                   arrow = arrow(length = unit(4, 'mm')),
+                   end_cap = circle(3, 'mm')) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo), size = 2,
+                   repel = TRUE) +
+    scale_color_brewer(palette = &quot;Set1&quot;) +
+    scale_edge_color_brewer(palette = &quot;Dark2&quot;) +
+    theme_graph()
+</code></pre><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sinks-1_hu9d61cbc31c66c089f6cabd71056ba4cc_183760_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sinks-1_hu9d61cbc31c66c089f6cabd71056ba4cc_183760_2000x2000_fit_lanczos_2.png class=lazyload alt width=1344 height=960></a></figure><p>That&rsquo;s much better! We can now see some of the structure between our packages.
+There are quite few packages that rely on SingleCellExperiment but nothing else.
+Removing source nodes as well will tidy this up a bit more.</p><pre><code class=language-{r>graph &lt;- tbl_graph(nodes = nodes, edges = edges) %&gt;%
+    activate(nodes) %&gt;%
+    filter(!node_is_sink()) %&gt;%
+    filter(!node_is_source())
+ggraph(graph, layout = &quot;fr&quot;) +
+    geom_edge_fan(aes(colour = uses),
+                   arrow = arrow(length = unit(4, 'mm')),
+                   end_cap = circle(3, 'mm')) +
+    geom_node_point(aes(colour = repo)) +
+    geom_node_text(aes(label = package, colour = repo),
+                   repel = TRUE) +
+    scale_color_brewer(palette = &quot;Set1&quot;) +
+    scale_edge_color_brewer(palette = &quot;Dark2&quot;) +
+    theme_graph()
+</code></pre><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sources-1_hua60491a7d22887ad5be878e81283ecaa_157707_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/remove-sources-1_hua60491a7d22887ad5be878e81283ecaa_157707_2000x2000_fit_lanczos_2.png class=lazyload alt width=1344 height=960></a></figure><p>Now we can see the core SingleCellExperiment package network. Apart from
+SingleCellExperiment itself there are three main packages: scater, scran and
+splatter. Scater and scran are two low-level scRNA-seq analysis package with
+scater providing functions for tasks such as visualisation and filtering and
+scran focusing more on normalisation and removal of batch effects. It is
+unsurprising that these packages show up as Aaron Lun is heavily involved in
+the development of both of them as well as SingleCellExperiment. Splatter is a
+bit of a different case as it suggests many packages that provide the core
+functions for it&rsquo;s simulations but isn&rsquo;t used by any other analysis packages.
+There are a few other influential packages on the periphery of this network,
+particularly monocle and Seurat.</p><h1 id=what-do-these-packages-do>What do these packages do?</h1><p>We have had a look at how packages that use SingleCellExperiment are related but
+what do they actually do? Bioconductor categorises packages using &ldquo;biocViews&rdquo;,
+tags that describe software in various ways. Let&rsquo;s summarise those for the
+packages that use SingleCellExperiment.</p><pre><code class=language-{r>plot_data &lt;- bpi %&gt;%
+    filter(Package %in% bioc_revdeps$package1) %&gt;%
+    select(Package, biocViews) %&gt;%
+    separate_rows(biocViews) %&gt;%
+    group_by(biocViews) %&gt;%
+    summarise(count = n()) %&gt;%
+    arrange(-count) %&gt;%
+    mutate(prop = count / n()) %&gt;%
+    mutate(biocViews = factor(biocViews, level = biocViews))
+ggplot(plot_data, aes(x = biocViews, y = prop)) +
+    geom_col() +
+    scale_y_continuous(labels = scales::percent) +
+    ggtitle(&quot;biocViews for packages that use SingleCellExperiment&quot;) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+          axis.title = element_blank(),
+          panel.grid = element_blank())
+</code></pre><figure><a data-fancybox href=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/biocViews-1_hueeef87b9bb47c88170e8ad383ba2f652_35670_2000x2000_fit_lanczos_2.png><img data-src=/lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/biocViews-1_hueeef87b9bb47c88170e8ad383ba2f652_35670_2000x2000_fit_lanczos_2.png class=lazyload alt width=1344 height=960></a></figure><p>Unsurprisingly the top few categories (&ldquo;SingleCell&rdquo;, &ldquo;GeneExpression&rdquo;,
+&ldquo;RNASeq&rdquo;, &ldquo;Transcriptomics&rdquo;, &ldquo;Sequencing&rdquo;) are related to scRNA-seq data in
+general, along with the &ldquo;Software&rdquo; tag. I actually find it a bit surprising
+that these aren&rsquo;t more common with only 66
+percent of packages labelled as &ldquo;SingleCell&rdquo;. After these we have some of the
+most common scRNA-seq analysis tasks, &ldquo;Clustering&rdquo;, &ldquo;Visualization&rdquo;,
+&ldquo;DifferentialExpression&rdquo; and &ldquo;DimensionReduction&rdquo;. This is similar to what we
+see in the scRNA-tools database, but obviously from a much smaller sample.</p><p>We can&rsquo;t do the same thing for the CRAN packages, but as there are only a couple
+of these we can just describe them. Seurat is perhaps the most complete R
+scRNA-seq analysis covering most steps in a standard workflow. It&rsquo;s connection
+to SingleCellExperiment is through functions that have recently been added
+to convert to/from it&rsquo;s own object. Clustree is a package for visualising
+clustering results in general and suggests SingleCellExperiment to provide a
+convenience function for people working with scRNA-seq data.</p><h1 id=where-to-from-here>Where to from here?</h1><p>It&rsquo;s only been about six months since SingleCellExperiment joined Bioconductor
+release but we are already seeing a community of packages growing up around it.
+Hopefully we see this continue and there is a new batch of packages using it in
+the next Bioconductor release. For anyone who is working on a scRNA-seq package
+I strongly encourage you to consider basing it around SingleCellExperiment. It
+can take some time to get your head around how it works but the infrastructure
+it provides will save you a lot of time in the long run. It also makes things a
+lot easier for your uses who won&rsquo;t have to learn a new data structure to use
+your package and can make use of a range of packages without having to convert
+between objects. If you don&rsquo;t want to be locked into the Bioconductor ecosystem
+think about using the
+<a href="https://cran.r-project.org/package=Seurat" title=Seurat target=_blank rel=noopener>Seurat</a> object instead or if you work in Python
+consider the
+<a href=https://anndata.readthedocs.io/en/latest/ title=anndata target=_blank rel=noopener>anndata</a> object. There is also the
+<a href=http://loompy.org/ title=loom target=_blank rel=noopener>loom</a> format
+which has both R and Python interfaces. Whatever standard works for you everyone
+will be better off if the community can make use of a small number of data
+structure rather than each package using their own.</p></div><p class=edit-page><a href=https://github.com/lazappi/lazappi_blog/edit/master/content/post%5c2018-05-20-exploring-the-sce-verse%5cindex.md><i class="fas fa-pen pr-2"></i>Edit this page</a></p><div class=article-tags><a class="badge badge-light" href=lazappi.id.au/tags/bioconductor/>Bioconductor</a>
+<a class="badge badge-light" href=lazappi.id.au/tags/r/>R</a>
+<a class="badge badge-light" href=lazappi.id.au/tags/scrna-seq/>scRNA-seq</a>
+<a class="badge badge-light" href=lazappi.id.au/tags/singlecellexperiment/>SingleCellExperiment</a></div><div class=share-box aria-hidden=true><ul class=share><li><a href="https://twitter.com/intent/tweet?url=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/&text=Exploring%20the%20SCE-verse" target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/&t=Exploring%20the%20SCE-verse" target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a></li><li><a href="mailto:?subject=Exploring%20the%20SCE-verse&body=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/" target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a></li><li><a href="https://www.linkedin.com/shareArticle?url=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/&title=Exploring%20the%20SCE-verse" target=_blank rel=noopener class=share-btn-linkedin><i class="fab fa-linkedin-in"></i></a></li><li><a href="https://web.whatsapp.com/send?text=Exploring%20the%20SCE-verse%20lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/" target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a></li><li><a href="https://service.weibo.com/share/share.php?url=lazappi.id.au/post/2018-05-20-exploring-the-sce-verse/&title=Exploring%20the%20SCE-verse" target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li></ul></div><div class="media author-card content-widget-hr"><div class=media-body><h5 class=card-title><a href=lazappi.id.au/authors/luke-zappia/></a></h5><ul class=network-icon aria-hidden=true></ul></div></div><section id=comments><div id=disqus_thread></div><script>let disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='https://lazappi.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></section><div class="article-widget content-widget-hr"><h3>Related</h3><ul><li><a href=lazappi.id.au/post/2018-05-04-bioconductor-3-7-wrap-up/>Bioconductor 3.7 wrap-up</a></li><li><a href=lazappi.id.au/post/2017-07-19-building-a-clustering-tree/>Building a clustering tree</a></li><li><a href=lazappi.id.au/post/2016-05-03-bioconductor-3-3-packages/>Bioconductor 3.3 packages</a></li><li><a href=lazappi.id.au/project/clustree/>clustree</a></li><li><a href=lazappi.id.au/project/splatter/>Splatter</a></li></ul></div></div></article><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script><script>const code_highlighting=!0</script><script>const isSiteThemeDark=!0</script><script>const search_config={indexURI:"/lazappi.id.au/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks"}</script><script id=search-hit-fuse-template type=text/x-template>
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script id=dsq-count-scr src=https://lazappi.disqus.com/count.js async></script><script src=/lazappi.id.au/js/academic.min.05ad38647aed3ac5a5800d9026541eee.js></script><div class=container><footer class=site-footer><a href=https://info.flagcounter.com/6RVN><img src=https://s01.flagcounter.com/count2/6RVN/bg_FFFFFF/txt_000000/border_CCCCCC/columns_6/maxflags_250/viewers_0/labels_1/pageviews_0/flags_0/percent_0/ alt="Flag Counter" border=0 , style=display:block;margin-left:auto;margin-right:auto;width:50%></a><br><p class=powered-by><a href=lazappi.id.au/license/>LICENSE: CC-BY<br><i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i></a><br></p><p class=powered-by>© Luke Zappia, 2021</p><p>Made with <a href=https://github.com/lazappi target=_blank rel=noopener><i class="fas fa-code-branch" style=color:#eb008d></i></a>,
+the <a href=https://cran.r-project.org/ target=_blank rel=noopener><i class="fab fa-r-project"></i> </a><a href=https://github.com/rstudio/blogdown target=_blank rel=noopener>blogdown</a> package,
+and the <a href=https://sourcethemes.com/academic/ target=_blank rel=noopener>Academic theme</a> for
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a>.</p></footer></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i> Copy</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i> Download</a><div id=modal-error></div></div></div></div></div></body></html>
