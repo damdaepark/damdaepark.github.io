@@ -1,8 +1,8 @@
 module.exports = {
-  title: 'Dev Ed', // Your website title
-  description: `Ed's Blog`, // Your website description
-  author: 'Ed', // Maybe your name
-  siteUrl: 'https://gatsby-starter-apple.netlify.app', // Your website URL
+  title: "Park's Blog", // Your website title
+  description: "Park's Blog", // Your website description
+  author: 'damdaepark', // Maybe your name
+  siteUrl: 'https://github.com/damdaepark/damdaepark.github.io', // Your website URL
   lang: 'en', // Language
   utterances: 'sungik-choi/gatsby-starter-apple-comment', // Github repository to store comments
   links: {
