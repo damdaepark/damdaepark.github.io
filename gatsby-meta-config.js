@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Park's Blog", // Your website title
+  title: "Play Ground for PSE", // Your website title
   description: "Park's Blog", // Your website description
   author: 'damdaepark', // Maybe your name
   siteUrl: 'https://github.com/damdaepark/damdaepark.github.io', // Your website URL
