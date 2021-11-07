@@ -1,6 +1,6 @@
 module.exports = {
-  title: "Playground for PSE", // Your website title
-  description: "Park's Blog", // Your website description
+  title: "Coming Soon", // Your website title
+  description: "", // Your website description
   author: 'damdaepark', // Maybe your name
   siteUrl: 'https://github.com/damdaepark/damdaepark.github.io', // Your website URL
   lang: 'en', // Language
